@@ -57,20 +57,27 @@ void skenirajMete() {
     pinMode(meta.pinAktivan, INPUT_PULLUP);
 
     if (digitalRead(meta.pinAktivan) == LOW) {
-      Serial.println(meta.naziv);
-      delay(300);
+      // Delegiraj na aktivnu igru
+      switch (aktivnaIgra) {
+        case Igra_301:
+          obradiPogodak_301(meta.naziv);
+          break;
+        // case Igra_501:
+        //   obradiPogodak_501(meta.naziv);
+        //   break;
+        // case Igra_Shanghai:
+        //   obradiPogodak_Shanghai(meta.naziv);
+        //   break;
+        default:
+          Serial.println("Nepoznata igra!");
+          break;
+      }
+
+      delay(300);  // debounce
       while (digitalRead(meta.pinAktivan) == LOW);
       delay(300);
     }
 
     pinMode(meta.pinZajednicki, INPUT_PULLUP);
-  }
-}
-
-void detektirajPromasaj() {
-  int vrijednost = analogRead(PIN_MIKROFON);
-  if (vrijednost > THRESHOLD_PROMASAJ) {
-    Serial.println("Promašaj detektiran!");
-    delay(500);
   }
 }

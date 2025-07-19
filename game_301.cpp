@@ -1,0 +1,55 @@
+#include "game_301.h"
+#include "game.h"
+#include "config.h"
+
+int vrijednostMete(const String& naziv) {
+    if (naziv.startsWith("Triple ")) return 3 * naziv.substring(7).toInt();
+    if (naziv.startsWith("Double ")) return 2 * naziv.substring(7).toInt();
+    if (naziv.startsWith("Simple ")) return naziv.substring(7).toInt();
+    if (naziv.indexOf("25") != -1) return (naziv.indexOf("Double") != -1) ? 50 : 25;
+    return 0;
+}
+
+void inicijalizirajIgru_301() {
+    for (int i = 0; i < brojIgraca; i++) {
+        igraci[i].bodovi = 301;
+        igraci[i].prethodniBodovi = 301;
+    }
+    trenutniIgrac = 0;
+    Serial.println("Igra 301 započinje!");
+    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+}
+
+void obradiPogodak_301(const String& nazivMete) {
+    int vrijednost = vrijednostMete(nazivMete);
+    Igrac& igrac = igraci[trenutniIgrac];
+    igrac.prethodniBodovi = igrac.bodovi;
+
+    int bodoviNakonPogotka = igrac.bodovi - vrijednost;
+
+    if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
+        Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
+        igrac.bodovi = igrac.prethodniBodovi;
+        sljedeciIgrac();
+        return;
+    }
+
+    if (bodoviNakonPogotka == 0) {
+        if (DOUBLE_OUT) {
+            if (nazivMete.startsWith("Double")) {
+                Serial.println(igrac.ime + " je pobijedio!");
+            } else {
+                Serial.println("Završetak mora biti s Double!");
+                igrac.bodovi = igrac.prethodniBodovi;
+                sljedeciIgrac();
+            }
+        } else {
+            Serial.println(igrac.ime + " je pobijedio!");
+        }
+        return;
+    }
+
+    igrac.bodovi = bodoviNakonPogotka;
+    Serial.println(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
+    sljedeciIgrac();
+}
