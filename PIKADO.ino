@@ -9,6 +9,27 @@
 int odabranaIgra = -1;
 int odabraniBrojIgraca = -1;
 bool stanjeZaruljica[18] = {false};
+unsigned long zadnjeBlinkanje = 0;
+bool blinkStanje = false;
+
+void osvjeziZaruljiceIgra() {
+  for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
+  stanjeZaruljica[odabranaIgra] = true;
+
+  int idxIgraca = IGRAC_1 + trenutniIgrac;
+  if (!cekanjeNovogIgraca && brojStrelica == 0) {
+    unsigned long sada = millis();
+    if (sada - zadnjeBlinkanje > 500) {
+      zadnjeBlinkanje = sada;
+      blinkStanje = !blinkStanje;
+    }
+    stanjeZaruljica[idxIgraca] = blinkStanje;
+  } else {
+    stanjeZaruljica[idxIgraca] = true;
+  }
+
+  postaviZaruljice(stanjeZaruljica);
+}
 
 void setup() {
   Serial.begin(9600);
@@ -64,6 +85,7 @@ void loop() {
     inicijalizirajIgrace(odabraniBrojIgraca);
     aktivnaIgra = static_cast<TipIgre>(odabranaIgra);
     pokreniAktivnuIgru();
+    osvjeziZaruljiceIgra();
     cekanjeNovogIgraca = false;
     brojStrelica = 0;
     igraZavrsena = false;
@@ -71,6 +93,7 @@ void loop() {
     // Glavna igračka petlja
     while (!igraZavrsena) {
       ocitajTipke();
+      osvjeziZaruljiceIgra();
       if (tipkaStisnuta(IGRA_RESET)) {
         resetirajAktivnuIgru();
         odabranaIgra = -1;
@@ -103,6 +126,7 @@ void loop() {
     // Čekaj da korisnik pokrene novu igru
     while (igraZavrsena) {
       ocitajTipke();
+      osvjeziZaruljiceIgra();
       if (tipkaStisnuta(IGRA_RESET)) {
         resetirajAktivnuIgru();
         odabranaIgra = -1;
