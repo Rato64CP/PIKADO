@@ -1,20 +1,28 @@
 #include "buttons.h"
-#include <Arduino.h>
 
-const uint8_t gumbi[] = {2, 3, 4, 5, 6, 7}; // tipke za 1–6 igrača
+const uint8_t pinoviTipki[BROJ_TIPKI] = {
+  22, 23, 24, 25, 26, 27, 28, 29, 30, 31,  // IGRA
+  32, 33, 34, 35, 36, 37,                 // IGRACI
+  38, 39                                  // OSTALO
+};
+
+bool stanjaTipki[BROJ_TIPKI];
 
 void inicijalizirajTipke() {
-  for (uint8_t pin : gumbi) {
-    pinMode(pin, INPUT_PULLUP);
+  for (int i = 0; i < BROJ_TIPKI; i++) {
+    pinMode(pinoviTipki[i], INPUT_PULLUP);  // ako koristiš tipke na masu
+    stanjaTipki[i] = false;
   }
 }
 
-int provjeriOdabirIgraca() {
-  for (uint8_t i = 0; i < sizeof(gumbi); i++) {
-    if (digitalRead(gumbi[i]) == LOW) {
-      delay(20); // debounce
-      if (digitalRead(gumbi[i]) == LOW) return i + 1;
-    }
+void ocitajTipke() {
+  for (int i = 0; i < BROJ_TIPKI; i++) {
+    bool trenutno = digitalRead(pinoviTipki[i]) == LOW;  // LOW znači stisnuta
+    stanjaTipki[i] = trenutno;
   }
-  return 0;
+}
+
+bool tipkaStisnuta(int indeks) {
+  if (indeks < 0 || indeks >= BROJ_TIPKI) return false;
+  return stanjaTipki[indeks];
 }
