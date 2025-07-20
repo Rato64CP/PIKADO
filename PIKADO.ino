@@ -91,6 +91,9 @@ void loop() {
       String pogodak = detektirajZonu(); // funkcija iz detection.cpp
       if (pogodak != "") {
         obradiPogodak(pogodak);
+        if (igraZavrsena) {
+          break; // zaustavi obradu ostatka iteracije
+        }
       }
 
       detektirajPromasaj(); // ako postoji implementacija
