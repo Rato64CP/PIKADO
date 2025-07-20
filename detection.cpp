@@ -50,56 +50,58 @@ void inicijalizirajMete() {
   pinMode(PIN_MIKROFON, INPUT);
 }
 
-void skenirajMete() {
+// Helper that scans all targets and returns the hit one
+static const Meta* scanForHit() {
   for (const auto& meta : mete) {
     pinMode(meta.pinZajednicki, OUTPUT);
     digitalWrite(meta.pinZajednicki, LOW);
     pinMode(meta.pinAktivan, INPUT_PULLUP);
 
     if (digitalRead(meta.pinAktivan) == LOW) {
-      // Delegiraj na aktivnu igru
-      switch (aktivnaIgra) {
-        case Igra_301:
-          obradiPogodak_301(meta.naziv);
-          break;
-        // case Igra_501:
-        //   obradiPogodak_501(meta.naziv);
-        //   break;
-        // case Igra_Shanghai:
-        //   obradiPogodak_shanghai(meta.naziv);
-        //   break;
-        default:
-          Serial.println("Nepoznata igra!");
-          break;
-      }
-
-      delay(300);  // debounce
-      while (digitalRead(meta.pinAktivan) == LOW);
+      // Debounce the sensor
       delay(300);
+      while (digitalRead(meta.pinAktivan) == LOW)
+        ;
+      delay(300);
+
+      pinMode(meta.pinZajednicki, INPUT_PULLUP);
+      return &meta;
     }
 
     pinMode(meta.pinZajednicki, INPUT_PULLUP);
+  }
+
+  return nullptr;
+}
+
+void skenirajMete() {
+  const Meta* pogodjena = scanForHit();
+  if (!pogodjena) {
+    return;
+  }
+
+  // Delegiraj na aktivnu igru
+  switch (aktivnaIgra) {
+    case Igra_301:
+      obradiPogodak_301(pogodjena->naziv);
+      break;
+    // case Igra_501:
+    //   obradiPogodak_501(pogodjena->naziv);
+    //   break;
+    // case Igra_Shanghai:
+    //   obradiPogodak_shanghai(pogodjena->naziv);
+    //   break;
+    default:
+      Serial.println("Nepoznata igra!");
+      break;
   }
 }
 
 String detektirajZonu() {
-  for (const auto& meta : mete) {
-    pinMode(meta.pinZajednicki, OUTPUT);
-    digitalWrite(meta.pinZajednicki, LOW);
-    pinMode(meta.pinAktivan, INPUT_PULLUP);
-
-    if (digitalRead(meta.pinAktivan) == LOW) {
-      delay(300);  // debounce
-      while (digitalRead(meta.pinAktivan) == LOW)
-        ;
-      delay(300);
-      pinMode(meta.pinZajednicki, INPUT_PULLUP);
-      return String(meta.naziv);
-    }
-
-    pinMode(meta.pinZajednicki, INPUT_PULLUP);
+  const Meta* pogodjena = scanForHit();
+  if (pogodjena) {
+    return String(pogodjena->naziv);
   }
-
   return String("");
 }
 
