@@ -82,6 +82,27 @@ void skenirajMete() {
   }
 }
 
+String detektirajZonu() {
+  for (const auto& meta : mete) {
+    pinMode(meta.pinZajednicki, OUTPUT);
+    digitalWrite(meta.pinZajednicki, LOW);
+    pinMode(meta.pinAktivan, INPUT_PULLUP);
+
+    if (digitalRead(meta.pinAktivan) == LOW) {
+      delay(300);  // debounce
+      while (digitalRead(meta.pinAktivan) == LOW)
+        ;
+      delay(300);
+      pinMode(meta.pinZajednicki, INPUT_PULLUP);
+      return String(meta.naziv);
+    }
+
+    pinMode(meta.pinZajednicki, INPUT_PULLUP);
+  }
+
+  return String("");
+}
+
 void detektirajPromasaj() {
   int vrijednost = analogRead(PIN_MIKROFON);
   if (vrijednost > THRESHOLD_PROMASAJ) {
