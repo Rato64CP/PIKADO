@@ -12,6 +12,10 @@ bool stanjeZaruljica[18] = {false};
 unsigned long zadnjeBlinkanje = 0;
 bool blinkStanje = false;
 
+// Odabir dodatnih pravila za 301/501
+bool doubleInOdabran = false;
+bool doubleOutOdabran = false;
+
 const int redoslijedIgara[8] = {IGRA_3INLINE, IGRA_HANGMAN, IGRA_SCRAM, IGRA_301, IGRA_501, IGRA_CRICKET, IGRA_SHANGHAI, IGRA_ROULETTE};
 const int redoslijedIgraca[6] = {IGRAC_1, IGRAC_2, IGRAC_3, IGRAC_4, IGRAC_5, IGRAC_6};
 unsigned long zadnjeMijenjanje = 0;
@@ -33,6 +37,10 @@ void osvjeziZaruljiceIgra() {
   } else {
     stanjeZaruljica[idxIgraca] = true;
   }
+
+  // Prikaži odabrane DOUBLE IN/OUT opcije
+  stanjeZaruljica[OSTALO_IN_CUTTHROAT] = DOUBLE_IN;
+  stanjeZaruljica[OSTALO_OUT_TEAM] = DOUBLE_OUT;
 
   postaviZaruljice(stanjeZaruljica);
 }
@@ -95,6 +103,12 @@ void loop() {
       }
     }
 
+    // Omogući odabir DOUBLE IN/OUT za igre 301 i 501
+    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501) {
+      if (tipkaStisnuta(OSTALO_IN_CUTTHROAT)) doubleInOdabran = true;
+      if (tipkaStisnuta(OSTALO_OUT_TEAM))   doubleOutOdabran = true;
+    }
+
     unsigned long sada = millis();
     if (sada - zadnjeMijenjanje > 1000) {
       zadnjeMijenjanje = sada;
@@ -104,6 +118,8 @@ void loop() {
     for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
     stanjeZaruljica[odabranaIgra] = true;
     stanjeZaruljica[redoslijedIgraca[indeksIgraca]] = true;
+    stanjeZaruljica[OSTALO_IN_CUTTHROAT] = doubleInOdabran;
+    stanjeZaruljica[OSTALO_OUT_TEAM] = doubleOutOdabran;
     postaviZaruljice(stanjeZaruljica);
     delay(50);
     return;
@@ -111,6 +127,18 @@ void loop() {
 
   // -------------------- POCETAK IGRE --------------------
   if (odabranaIgra != -1 && odabraniBrojIgraca != -1) {
+    // Postavi globalne opcije DOUBLE IN/OUT prema odabiru
+    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501) {
+      DOUBLE_IN = doubleInOdabran;
+      DOUBLE_OUT = doubleOutOdabran;
+    } else {
+      DOUBLE_IN = false;
+      DOUBLE_OUT = false;
+    }
+
+    if (DOUBLE_IN)  Serial.println("DOUBLE IN aktiviran");
+    if (DOUBLE_OUT) Serial.println("DOUBLE OUT aktiviran");
+
     inicijalizirajIgrace(odabraniBrojIgraca);
     aktivnaIgra = static_cast<TipIgre>(odabranaIgra);
     pokreniAktivnuIgru();
@@ -128,6 +156,10 @@ void loop() {
         resetirajAktivnuIgru();
         odabranaIgra = -1;
         odabraniBrojIgraca = -1;
+        doubleInOdabran = false;
+        doubleOutOdabran = false;
+        DOUBLE_IN = false;
+        DOUBLE_OUT = false;
         igraZavrsena = true;
         break;
       }
@@ -161,6 +193,10 @@ void loop() {
         resetirajAktivnuIgru();
         odabranaIgra = -1;
         odabraniBrojIgraca = -1;
+        doubleInOdabran = false;
+        doubleOutOdabran = false;
+        DOUBLE_IN = false;
+        DOUBLE_OUT = false;
         break;
       }
       if (tipkaStisnuta(IGRA_NEW_PLAYER)) {
