@@ -66,7 +66,7 @@ void skenirajMete() {
         //   obradiPogodak_501(meta.naziv);
         //   break;
         // case Igra_Shanghai:
-        //   obradiPogodak_Shanghai(meta.naziv);
+        //   obradiPogodak_shanghai(meta.naziv);
         //   break;
         default:
           Serial.println("Nepoznata igra!");
@@ -80,6 +80,27 @@ void skenirajMete() {
 
     pinMode(meta.pinZajednicki, INPUT_PULLUP);
   }
+}
+
+String detektirajZonu() {
+  for (const auto& meta : mete) {
+    pinMode(meta.pinZajednicki, OUTPUT);
+    digitalWrite(meta.pinZajednicki, LOW);
+    pinMode(meta.pinAktivan, INPUT_PULLUP);
+
+    if (digitalRead(meta.pinAktivan) == LOW) {
+      delay(300);  // debounce
+      while (digitalRead(meta.pinAktivan) == LOW)
+        ;
+      delay(300);
+      pinMode(meta.pinZajednicki, INPUT_PULLUP);
+      return String(meta.naziv);
+    }
+
+    pinMode(meta.pinZajednicki, INPUT_PULLUP);
+  }
+
+  return String("");
 }
 
 void detektirajPromasaj() {
