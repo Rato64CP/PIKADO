@@ -74,6 +74,8 @@ void zavrsiIgru() {
 }
 
 void resetirajAktivnuIgru() {
+    cekanjeNovogIgraca = false;
+    brojStrelica = 0;
     switch (aktivnaIgra) {
         case Igra_301:      resetirajIgru_301(); break;
         case Igra_501:      resetirajIgru_501(); break;
