@@ -11,6 +11,7 @@
 
 bool DOUBLE_IN = false;
 bool DOUBLE_OUT = false;
+bool BOUNCE_OUT = false;
 
 Igrac igraci[6];
 int brojIgraca = 0;

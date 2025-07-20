@@ -14,3 +14,4 @@ constexpr int THRESHOLD_PROMASAJ = 600;
 // Pravila igre
 extern bool DOUBLE_OUT;
 extern bool DOUBLE_IN;
+extern bool BOUNCE_OUT;
