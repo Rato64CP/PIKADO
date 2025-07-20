@@ -27,6 +27,12 @@ void obradiPogodak_301(const String& nazivMete) {
 
     int bodoviNakonPogotka = igrac.bodovi - vrijednost;
 
+    Serial.print("Pogođeno: ");
+    Serial.print(nazivMete);
+    Serial.print(" (");
+    Serial.print(vrijednost);
+    Serial.println(" bodova)");
+
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
         Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
         igrac.bodovi = igrac.prethodniBodovi;
@@ -38,6 +44,7 @@ void obradiPogodak_301(const String& nazivMete) {
         if (DOUBLE_OUT) {
             if (nazivMete.startsWith("Double")) {
                 Serial.println(igrac.ime + " je pobijedio!");
+                // ovdje možeš završiti igru
             } else {
                 Serial.println("Završetak mora biti s Double!");
                 igrac.bodovi = igrac.prethodniBodovi;
@@ -45,6 +52,7 @@ void obradiPogodak_301(const String& nazivMete) {
             }
         } else {
             Serial.println(igrac.ime + " je pobijedio!");
+            // ovdje možeš završiti igru
         }
         return;
     }
@@ -52,4 +60,18 @@ void obradiPogodak_301(const String& nazivMete) {
     igrac.bodovi = bodoviNakonPogotka;
     Serial.println(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
     sljedeciIgrac();
+}
+
+void sljedeciIgrac() {
+    trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
+    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+}
+
+void resetirajIgru_301() {
+    for (int i = 0; i < brojIgraca; i++) {
+        igraci[i].bodovi = 301;
+        igraci[i].prethodniBodovi = 301;
+    }
+    trenutniIgrac = 0;
+    Serial.println("Igra je resetirana.");
 }
