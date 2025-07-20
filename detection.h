@@ -4,3 +4,4 @@
 void inicijalizirajMete();
 void skenirajMete();
 void detektirajPromasaj();
+String detektirajZonu();
