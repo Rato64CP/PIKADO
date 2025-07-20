@@ -66,7 +66,7 @@ void skenirajMete() {
         //   obradiPogodak_501(meta.naziv);
         //   break;
         // case Igra_Shanghai:
-        //   obradiPogodak_Shanghai(meta.naziv);
+        //   obradiPogodak_shanghai(meta.naziv);
         //   break;
         default:
           Serial.println("Nepoznata igra!");
