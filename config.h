@@ -15,3 +15,6 @@ constexpr int THRESHOLD_PROMASAJ = 600;
 constexpr bool BOUNCE_OUT = true;
 extern bool DOUBLE_OUT;
 extern bool DOUBLE_IN;
+
+// Pin za buzzer koji svira pobjednicki ton
+constexpr uint8_t PIN_BUZZER = 8;

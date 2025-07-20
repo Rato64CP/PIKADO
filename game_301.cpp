@@ -28,7 +28,7 @@ void obradiPogodak_301(const String& nazivMete) {
     if (DOUBLE_IN && !igrac.jeAktiviran) {
         if (!nazivMete.startsWith("Double")) {
             Serial.println("Double IN: pogodak ne vrijedi jer nije Double.");
-            sljedeciIgrac();
+            krajPoteza();
             return;
         }
         igrac.jeAktiviran = true;
@@ -47,7 +47,7 @@ void obradiPogodak_301(const String& nazivMete) {
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
         Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
         igrac.bodovi = igrac.prethodniBodovi;
-        sljedeciIgrac();
+        krajPoteza();
         return;
     }
 
@@ -55,22 +55,26 @@ void obradiPogodak_301(const String& nazivMete) {
         if (DOUBLE_OUT) {
             if (nazivMete.startsWith("Double")) {
                 Serial.println(igrac.ime + " je pobijedio!");
-                // ovdje možeš završiti igru
+                zavrsiIgru();
             } else {
                 Serial.println("Završetak mora biti s Double!");
                 igrac.bodovi = igrac.prethodniBodovi;
-                sljedeciIgrac();
+                krajPoteza();
             }
         } else {
             Serial.println(igrac.ime + " je pobijedio!");
-            // ovdje možeš završiti igru
+            zavrsiIgru();
         }
         return;
     }
 
     igrac.bodovi = bodoviNakonPogotka;
     Serial.println(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
-    sljedeciIgrac();
+
+    brojStrelica++;
+    if (brojStrelica >= 3) {
+        krajPoteza();
+    }
 }
 
 

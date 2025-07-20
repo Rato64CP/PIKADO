@@ -50,6 +50,7 @@ void obradiPogodak_3inline(const String& nazivMete) {
             uzastopni++;
             if (uzastopni >= 3) {
                 Serial.println(igrac.ime + " je pobijedio s 3 uzastopna broja!");
+                zavrsiIgru();
                 return; // kraj igre
             }
         } else {

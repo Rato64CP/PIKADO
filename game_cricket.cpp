@@ -97,6 +97,7 @@ void obradiPogodak_cricket(const String& nazivMete) {
         if (vodi) {
             Serial.println("Igrač " + igraci[trenutniIgrac].ime + " je zatvorio sve brojeve i vodi u bodovima!");
             Serial.println("POBJEDA!");
+            zavrsiIgru();
             return;
         }
     }

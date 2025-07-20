@@ -97,6 +97,7 @@ void obradiPogodak_scram(const String& nazivMete) {
                         Serial.println("Pobjednik je IGRAČ 1!");
                     else
                         Serial.println("Neriješeno!");
+                    zavrsiIgru();
                     return;
                 }
             } else {
