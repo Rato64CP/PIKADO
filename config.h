@@ -12,5 +12,6 @@ constexpr uint8_t PIN_MIKROFON = A0;
 constexpr int THRESHOLD_PROMASAJ = 600;
 
 // Pravila igre
+constexpr bool BOUNCE_OUT = true;
 extern bool DOUBLE_OUT;
 extern bool DOUBLE_IN;

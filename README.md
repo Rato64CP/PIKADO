@@ -46,9 +46,10 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 
 Neka pravila igre se definiraju preko tipki ili u `config.h`:
 
-- `BOUNCE_OUT` – kada je `true`, prelazak ispod nule poništava potez
 - `DOUBLE_OUT` – kada je `true`, igru je moguće završiti samo Double poljem
 - `DOUBLE_IN` – kada je `true`, igrač mora započeti pogodak s Double da bi bodovi vrijedili
+
+Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije potrebno posebno podešavanje.
 
 ---
 
