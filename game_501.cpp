@@ -23,6 +23,17 @@ void inicijalizirajIgru_501() {
 void obradiPogodak_501(const String& nazivMete) {
     int vrijednost = vrijednostMete_501(nazivMete);
     Igrac& igrac = igraci[trenutniIgrac];
+
+    // DOUBLE IN provjera
+    if (DOUBLE_IN && !igrac.jeAktiviran) {
+        if (!nazivMete.startsWith("Double")) {
+            Serial.println("Double IN: pogodak ne vrijedi jer nije Double.");
+            sljedeciIgrac();
+            return;
+        }
+        igrac.jeAktiviran = true;
+    }
+
     igrac.prethodniBodovi = igrac.bodovi;
 
     int bodoviNakonPogotka = igrac.bodovi - vrijednost;

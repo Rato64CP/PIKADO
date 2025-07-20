@@ -5,6 +5,7 @@ struct Igrac {
     String ime;
     int bodovi;
     int prethodniBodovi;
+    bool jeAktiviran = false;
 };
 
 enum TipIgre {

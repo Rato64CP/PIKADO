@@ -7,6 +7,10 @@
 #include "game_scram.h"
 #include "game_cricket.h"
 #include "game_3inline.h"
+#include "config.h"  
+
+bool DOUBLE_IN = false;
+bool DOUBLE_OUT = false;
 
 Igrac igraci[6];
 int brojIgraca = 0;
