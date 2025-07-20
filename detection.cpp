@@ -81,3 +81,11 @@ void skenirajMete() {
     pinMode(meta.pinZajednicki, INPUT_PULLUP);
   }
 }
+
+void detektirajPromasaj() {
+  int vrijednost = analogRead(PIN_MIKROFON);
+  if (vrijednost > THRESHOLD_PROMASAJ) {
+    Serial.println("Promašaj detektiran!");
+    delay(500);
+  }
+}
