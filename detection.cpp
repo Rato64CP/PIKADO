@@ -74,28 +74,6 @@ static const Meta* scanForHit() {
   return nullptr;
 }
 
-void skenirajMete() {
-  const Meta* pogodjena = scanForHit();
-  if (!pogodjena) {
-    return;
-  }
-
-  // Delegiraj na aktivnu igru
-  switch (aktivnaIgra) {
-    case Igra_301:
-      obradiPogodak_301(pogodjena->naziv);
-      break;
-    // case Igra_501:
-    //   obradiPogodak_501(pogodjena->naziv);
-    //   break;
-    // case Igra_Shanghai:
-    //   obradiPogodak_shanghai(pogodjena->naziv);
-    //   break;
-    default:
-      Serial.println("Nepoznata igra!");
-      break;
-  }
-}
 
 String detektirajZonu() {
   const Meta* pogodjena = scanForHit();
