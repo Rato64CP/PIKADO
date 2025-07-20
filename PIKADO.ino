@@ -2,9 +2,8 @@
 #include "config.h"
 #include "detection.h"
 #include "buttons.h"
-#include "led.h"
+#include "zaruljice.h"
 #include "game.h"
-#include "game_301.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
@@ -62,22 +61,17 @@ void loop() {
   // Kada su obje opcije odabrane → pokreni igru
   if (odabranaIgra != -1 && odabraniBrojIgraca != -1) {
     inicijalizirajIgrace(odabraniBrojIgraca);
+    aktivnaIgra = static_cast<TipIgre>(odabranaIgra);
+    pokreniAktivnuIgru();
 
-    switch (odabranaIgra) {
-      case IGRA_301:
-        aktivnaIgra = Igra_301;
-        inicijalizirajIgru_301();
-        break;
-      // dodaj druge igre ovdje kad budu spremne
-      default:
-        Serial.println("Igra još nije implementirana.");
-        return;
-    }
-
-    // Prelazimo u glavnu petlju igre
+    // Glavna igračka petlja
     while (true) {
-      skenirajMete();        // poziva obradiPogodak_301(...)
-      detektirajPromasaj();
+      String pogodak = detektirajZonu(); // funkcija iz detection.cpp
+      if (pogodak != "") {
+        obradiPogodak(pogodak);
+      }
+
+      detektirajPromasaj(); // ako postoji implementacija
       delay(10);
     }
   }

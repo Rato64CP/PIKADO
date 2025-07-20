@@ -7,7 +7,16 @@ struct Igrac {
     int prethodniBodovi;
 };
 
-enum TipIgre { Igra_301, Igra_501, Igra_Shanghai };
+enum TipIgre {
+    Igra_301,
+    Igra_501,
+    Igra_Shanghai,
+    Igra_Hangman,
+    Igra_Roulette,
+    Igra_Scram,
+    Igra_Cricket,
+    Igra_3Inline
+};
 
 extern Igrac igraci[6];
 extern int brojIgraca;
@@ -16,3 +25,7 @@ extern TipIgre aktivnaIgra;
 
 void inicijalizirajIgrace(int broj);
 void sljedeciIgrac();
+
+// Centralne funkcije:
+void pokreniAktivnuIgru();
+void obradiPogodak(const String& nazivMete);
