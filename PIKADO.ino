@@ -12,6 +12,12 @@ bool stanjeZaruljica[18] = {false};
 unsigned long zadnjeBlinkanje = 0;
 bool blinkStanje = false;
 
+const int redoslijedIgara[8] = {IGRA_3INLINE, IGRA_HANGMAN, IGRA_SCRAM, IGRA_301, IGRA_501, IGRA_CRICKET, IGRA_SHANGHAI, IGRA_ROULETTE};
+const int redoslijedIgraca[6] = {IGRAC_1, IGRAC_2, IGRAC_3, IGRAC_4, IGRAC_5, IGRAC_6};
+unsigned long zadnjeMijenjanje = 0;
+int indeksIgre = 0;
+int indeksIgraca = 0;
+
 void osvjeziZaruljiceIgra() {
   for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
   stanjeZaruljica[odabranaIgra] = true;
@@ -56,31 +62,54 @@ void setup() {
 void loop() {
   ocitajTipke();
 
-  // Odabir igre
-  for (int i = IGRA_301; i <= IGRA_3INLINE; i++) {
-    if (tipkaStisnuta(i)) {
-      odabranaIgra = i;
-      Serial.print("Odabrana igra: "); Serial.println(i);
+  // -------------------- ODABIR IGRE --------------------
+  if (odabranaIgra == -1) {
+    for (int i = IGRA_301; i <= IGRA_3INLINE; i++) {
+      if (tipkaStisnuta(i)) {
+        odabranaIgra = i;
+        Serial.print("Odabrana igra: "); Serial.println(i);
+        tone(PIN_BUZZER, 2000, 150); // zvuk prihvacanja
+      }
     }
+
+    unsigned long sada = millis();
+    if (sada - zadnjeMijenjanje > 1000) {
+      zadnjeMijenjanje = sada;
+      indeksIgre = (indeksIgre + 1) % 8;
+    }
+
+    for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
+    stanjeZaruljica[redoslijedIgara[indeksIgre]] = true;
+    postaviZaruljice(stanjeZaruljica);
+    delay(50);
+    return;
   }
 
-  // Odabir broja igrača
-  for (int i = IGRAC_1; i <= IGRAC_6; i++) {
-    if (tipkaStisnuta(i)) {
-      odabraniBrojIgraca = i - IGRAC_1 + 1;
-      Serial.print("Odabrano igrača: "); Serial.println(odabraniBrojIgraca);
+  // -------------------- ODABIR BROJA IGRACA --------------------
+  if (odabraniBrojIgraca == -1) {
+    for (int i = IGRAC_1; i <= IGRAC_6; i++) {
+      if (tipkaStisnuta(i)) {
+        odabraniBrojIgraca = i - IGRAC_1 + 1;
+        Serial.print("Odabrano igraca: "); Serial.println(odabraniBrojIgraca);
+        tone(PIN_BUZZER, 2000, 150); // zvuk prihvacanja
+      }
     }
+
+    unsigned long sada = millis();
+    if (sada - zadnjeMijenjanje > 1000) {
+      zadnjeMijenjanje = sada;
+      indeksIgraca = (indeksIgraca + 1) % 6;
+    }
+
+    for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
+    stanjeZaruljica[odabranaIgra] = true;
+    stanjeZaruljica[redoslijedIgraca[indeksIgraca]] = true;
+    postaviZaruljice(stanjeZaruljica);
+    delay(50);
+    return;
   }
 
-  // Ažuriraj žaruljice
-  for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
-  if (odabranaIgra != -1) stanjeZaruljica[odabranaIgra] = true;
-  if (odabraniBrojIgraca != -1)
-    stanjeZaruljica[IGRAC_1 + odabraniBrojIgraca - 1] = true;
-
-  postaviZaruljice(stanjeZaruljica);
-
-  // Kada su obje opcije odabrane → pokreni igru
+  // -------------------- POCETAK IGRE --------------------
   if (odabranaIgra != -1 && odabraniBrojIgraca != -1) {
     inicijalizirajIgrace(odabraniBrojIgraca);
     aktivnaIgra = static_cast<TipIgre>(odabranaIgra);
@@ -89,6 +118,7 @@ void loop() {
     cekanjeNovogIgraca = false;
     brojStrelica = 0;
     igraZavrsena = false;
+    tone(PIN_BUZZER, 1500, 300); // zvuk za bacanje strelica
 
     // Glavna igračka petlja
     while (!igraZavrsena) {
