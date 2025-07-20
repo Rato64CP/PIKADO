@@ -70,8 +70,3 @@ void resetirajIgru_501() {
     trenutniIgrac = 0;
     Serial.println("Igra 501 je resetirana.");
 }
-
-void sljedeciIgrac_501() {
-    trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
-}
