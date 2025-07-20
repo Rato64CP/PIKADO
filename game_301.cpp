@@ -62,10 +62,6 @@ void obradiPogodak_301(const String& nazivMete) {
     sljedeciIgrac();
 }
 
-void sljedeciIgrac() {
-    trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
-}
 
 void resetirajIgru_301() {
     for (int i = 0; i < brojIgraca; i++) {
