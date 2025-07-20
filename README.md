@@ -86,9 +86,14 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 
 1. Nakon učitavanja, otvori **Serial Monitor na 9600 baud**
 2. Odaberi igru i broj igrača pomoću tipki
-3. LED žaruljice će pokazati trenutne odabire
-4. Igra započinje automatski
-5. Serijski monitor prikazuje sve pogođaje, bodove i status
+3. Ako ste odabrali igru **301** ili **501**, sada možete pritisnuti tipke
+   **DOUBLE IN** i/ili **DOUBLE OUT**. Lampice tih tipki ostat će upaljene i
+   pravilo će vrijediti tijekom cijele igre. Pritiskom ovih tipki za vrijeme
+   igre ništa se neće promijeniti – tek nakon *RESET* opcije moguće je ponovno
+   birati igru i dodatne funkcije.
+4. LED žaruljice će pokazati trenutne odabire
+5. Igra započinje automatski
+6. Serijski monitor prikazuje sve pogođaje, bodove i status
 
 ---
 
