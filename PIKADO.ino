@@ -64,6 +64,8 @@ void loop() {
     inicijalizirajIgrace(odabraniBrojIgraca);
     aktivnaIgra = static_cast<TipIgre>(odabranaIgra);
     pokreniAktivnuIgru();
+    cekanjeNovogIgraca = false;
+    brojStrelica = 0;
     igraZavrsena = false;
 
     // Glavna igračka petlja
@@ -108,6 +110,8 @@ void loop() {
         resetirajAktivnuIgru();
         inicijalizirajIgrace(odabraniBrojIgraca);
         pokreniAktivnuIgru();
+        cekanjeNovogIgraca = false;
+        brojStrelica = 0;
         igraZavrsena = false;
       }
       delay(50);
