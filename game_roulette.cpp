@@ -68,6 +68,7 @@ void obradiPogodak_roulette(const String& nazivMete) {
                     }
                 }
                 Serial.println("Pobjednik je IGRAČ " + String(pobjednik) + "!");
+                zavrsiIgru();
                 return;
             }
 

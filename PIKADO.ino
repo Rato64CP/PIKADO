@@ -15,6 +15,7 @@ void setup() {
   inicijalizirajTipke();
   inicijalizirajZaruljice();
   inicijalizirajMete();
+  pinMode(PIN_BUZZER, OUTPUT);
 
   Serial.println("Dobrodošli u PIKADO aparat!");
 
@@ -63,9 +64,28 @@ void loop() {
     inicijalizirajIgrace(odabraniBrojIgraca);
     aktivnaIgra = static_cast<TipIgre>(odabranaIgra);
     pokreniAktivnuIgru();
+    igraZavrsena = false;
 
     // Glavna igračka petlja
-    while (true) {
+    while (!igraZavrsena) {
+      ocitajTipke();
+      if (tipkaStisnuta(IGRA_RESET)) {
+        resetirajAktivnuIgru();
+        odabranaIgra = -1;
+        odabraniBrojIgraca = -1;
+        igraZavrsena = true;
+        break;
+      }
+
+      if (cekanjeNovogIgraca) {
+        if (tipkaStisnuta(IGRA_NEW_PLAYER)) {
+          sljedeciIgrac();
+          cekanjeNovogIgraca = false;
+        }
+        delay(10);
+        continue;
+      }
+
       String pogodak = detektirajZonu(); // funkcija iz detection.cpp
       if (pogodak != "") {
         obradiPogodak(pogodak);
@@ -73,6 +93,24 @@ void loop() {
 
       detektirajPromasaj(); // ako postoji implementacija
       delay(10);
+    }
+
+    // Čekaj da korisnik pokrene novu igru
+    while (igraZavrsena) {
+      ocitajTipke();
+      if (tipkaStisnuta(IGRA_RESET)) {
+        resetirajAktivnuIgru();
+        odabranaIgra = -1;
+        odabraniBrojIgraca = -1;
+        break;
+      }
+      if (tipkaStisnuta(IGRA_NEW_PLAYER)) {
+        resetirajAktivnuIgru();
+        inicijalizirajIgrace(odabraniBrojIgraca);
+        pokreniAktivnuIgru();
+        igraZavrsena = false;
+      }
+      delay(50);
     }
   }
 

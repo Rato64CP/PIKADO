@@ -23,6 +23,16 @@ extern Igrac igraci[6];
 extern int brojIgraca;
 extern int trenutniIgrac;
 extern TipIgre aktivnaIgra;
+extern bool igraZavrsena;
+extern bool cekanjeNovogIgraca;
+extern uint8_t brojStrelica;
+
+void krajPoteza();
+
+// Zavrsi igru i odsviraj ton na buzzeru
+void zavrsiIgru();
+// Resetira trenutno aktivnu igru
+void resetirajAktivnuIgru();
 
 void inicijalizirajIgrace(int broj);
 void sljedeciIgrac();

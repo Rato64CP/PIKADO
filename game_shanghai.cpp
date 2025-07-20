@@ -63,6 +63,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
             pogodjenoDouble[trenutniIgrac] &&
             pogodjenoTriple[trenutniIgrac]) {
             Serial.println(igraci[trenutniIgrac].ime + " je napravio SHANGHAI i pobijedio!");
+            zavrsiIgru();
             return; // završava igra
         }
 
@@ -90,6 +91,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
                     }
                 }
                 Serial.println("Pobjednik je " + igraci[pobjednik].ime + "!");
+                zavrsiIgru();
                 return;
             } else {
                 Serial.print("Runda "); Serial.print(runda);

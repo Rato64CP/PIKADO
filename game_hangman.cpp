@@ -88,6 +88,7 @@ void sljedeciIgrac_hangman() {
     if (pobjednik != -1) {
         Serial.println("Pobjednik je IGRAČ " + String(pobjednik) + "!");
     }
+    zavrsiIgru();
 }
 
 void resetirajIgru_hangman() {
