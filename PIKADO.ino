@@ -5,6 +5,7 @@
 #include "zaruljice.h"
 #include "game.h"
 #include "melodies.h"
+#include "scoreboard.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
@@ -51,6 +52,7 @@ void setup() {
   inicijalizirajTipke();
   inicijalizirajZaruljice();
   inicijalizirajMete();
+  inicijalizirajDisplay();
   pinMode(PIN_BUZZER, OUTPUT);
 
   Serial.println("Dobrodošli u PIKADO aparat!");

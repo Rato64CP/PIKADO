@@ -1,6 +1,7 @@
 #include "game_501.h"
 #include "game.h"
 #include "config.h"
+#include "scoreboard.h"
 
 int vrijednostMete_501(const String& naziv) {
     if (naziv.startsWith("Triple ")) return 3 * naziv.substring(7).toInt();
@@ -18,6 +19,7 @@ void inicijalizirajIgru_501() {
     trenutniIgrac = 0;
     Serial.println("Igra 501 započinje!");
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
 }
 
 void obradiPogodak_501(const String& nazivMete) {
@@ -47,6 +49,7 @@ void obradiPogodak_501(const String& nazivMete) {
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
         Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
         igrac.bodovi = igrac.prethodniBodovi;
+        prikaziBodove(trenutniIgrac, igrac.bodovi);
         krajPoteza();
         return;
     }
@@ -65,11 +68,13 @@ void obradiPogodak_501(const String& nazivMete) {
             Serial.println(igrac.ime + " je pobijedio!");
             zavrsiIgru();
         }
+        prikaziBodove(trenutniIgrac, igrac.bodovi);
         return;
     }
 
     igrac.bodovi = bodoviNakonPogotka;
     Serial.println(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
+    prikaziBodove(trenutniIgrac, igrac.bodovi);
 
     brojStrelica++;
     if (brojStrelica >= 3) {
@@ -84,4 +89,5 @@ void resetirajIgru_501() {
     }
     trenutniIgrac = 0;
     Serial.println("Igra 501 je resetirana.");
+    osvjeziSveBodove();
 }
