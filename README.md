@@ -29,6 +29,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Modularna struktura igara
 - Double IN i Double OUT kao opcionalna pravila
 - Serijski ispis rezultata i poruka
+- Prikaz bodova na MAX7219 displayu za sve igre
 
 ---
 
@@ -39,6 +40,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Mikrofon spojen na A0
 - Tipke za odabir spojene na digitalne pinove (pull-up)
 - LED žaruljice upravljane preko UCN5821 (shift register)
+- Segmentni display s MAX7219 za prikaz bodova
 
 ---
 
