@@ -82,6 +82,18 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 | 6      | CLOCK            |
 | 7      | LATCH            |
 
+### MAX7219 display
+
+| Pin | Funkcija |
+|-----|----------|
+| 9   | DIN      |
+| 10  | CLK      |
+| 11  | CS       |
+
+### Zvučnik (buzzer)
+
+Spajanje na digitalni pin **8** (`PIN_BUZZER`).
+
 ---
 
 ## 🧪 Korištenje
