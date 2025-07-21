@@ -7,7 +7,8 @@
 #include "game_scram.h"
 #include "game_cricket.h"
 #include "game_3inline.h"
-#include "config.h"  
+#include "config.h"
+#include "melodies.h"
 
 bool DOUBLE_IN = false;
 bool DOUBLE_OUT = false;
@@ -33,12 +34,14 @@ void inicijalizirajIgrace(int broj) {
 void sljedeciIgrac() {
     trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    svirajZvukNovogIgraca();
 }
 
 void krajPoteza() {
     cekanjeNovogIgraca = true;
     brojStrelica = 0;
     Serial.println("Izvadi strelice i pritisni NEW PLAYER.");
+    svirajZvukVadenja();
 }
 
 void pokreniAktivnuIgru() {
@@ -55,6 +58,7 @@ void pokreniAktivnuIgru() {
 }
 
 void obradiPogodak(const String& nazivMete) {
+    svirajZvukBacanja();
     switch (aktivnaIgra) {
         case Igra_301:      obradiPogodak_301(nazivMete); break;
         case Igra_501:      obradiPogodak_501(nazivMete); break;
@@ -69,7 +73,7 @@ void obradiPogodak(const String& nazivMete) {
 
 void zavrsiIgru() {
     igraZavrsena = true;
-    tone(PIN_BUZZER, 1000, 500);  // kratki zvuk kao signal pobjede
+    svirajZvukPobjede();
     Serial.println("Igra završena. Pritisni NEW PLAYER ili RESET za novu igru.");
 }
 
