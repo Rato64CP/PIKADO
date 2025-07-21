@@ -78,7 +78,7 @@ void loop() {
       if (tipkaStisnuta(i)) {
         odabranaIgra = i;
         Serial.print("Odabrana igra: "); Serial.println(i);
-        tone(PIN_BUZZER, 2000, 150); // zvuk prihvacanja
+        svirajZvukTipke();
       }
     }
 
@@ -101,7 +101,7 @@ void loop() {
       if (tipkaStisnuta(i)) {
         odabraniBrojIgraca = i - IGRAC_1 + 1;
         Serial.print("Odabrano igraca: "); Serial.println(odabraniBrojIgraca);
-        tone(PIN_BUZZER, 2000, 150); // zvuk prihvacanja
+        svirajZvukTipke();
       }
     }
 
@@ -148,7 +148,7 @@ void loop() {
     cekanjeNovogIgraca = false;
     brojStrelica = 0;
     igraZavrsena = false;
-    tone(PIN_BUZZER, 1500, 300); // zvuk za bacanje strelica
+    svirajZvukBacanja();
 
     // Glavna igračka petlja
     while (!igraZavrsena) {

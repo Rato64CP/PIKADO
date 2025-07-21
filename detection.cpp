@@ -1,5 +1,6 @@
 #include "detection.h"
 #include "config.h"
+#include "melodies.h"
 
 // Struktura za metu
 struct Meta {
@@ -87,6 +88,7 @@ void detektirajPromasaj() {
   int vrijednost = analogRead(PIN_MIKROFON);
   if (vrijednost > THRESHOLD_PROMASAJ) {
     Serial.println("Promašaj detektiran!");
+    svirajZvukPromasaja();
     delay(500);
   }
 }
