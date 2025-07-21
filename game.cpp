@@ -9,6 +9,7 @@
 #include "game_3inline.h"
 #include "config.h"
 #include "melodies.h"
+#include "scoreboard.h"
 
 bool DOUBLE_IN = false;
 bool DOUBLE_OUT = false;
@@ -29,6 +30,7 @@ void inicijalizirajIgrace(int broj) {
         igraci[i].prethodniBodovi = 0;
     }
     trenutniIgrac = 0;
+    ocistiDisplay();
 }
 
 void sljedeciIgrac() {
