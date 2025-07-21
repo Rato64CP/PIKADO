@@ -1,0 +1,93 @@
+#include "game_701.h"
+#include "game.h"
+#include "config.h"
+#include "scoreboard.h"
+
+int vrijednostMete_701(const String& naziv) {
+    if (naziv.startsWith("Triple ")) return 3 * naziv.substring(7).toInt();
+    if (naziv.startsWith("Double ")) return 2 * naziv.substring(7).toInt();
+    if (naziv.startsWith("Simple ")) return naziv.substring(7).toInt();
+    if (naziv.indexOf("25") != -1) return (naziv.indexOf("Double") != -1) ? 50 : 25;
+    return 0;
+}
+
+void inicijalizirajIgru_701() {
+    for (int i = 0; i < brojIgraca; i++) {
+        igraci[i].bodovi = 701;
+        igraci[i].prethodniBodovi = 701;
+    }
+    trenutniIgrac = 0;
+    Serial.println("Igra 701 započinje!");
+    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
+}
+
+void obradiPogodak_701(const String& nazivMete) {
+    int vrijednost = vrijednostMete_701(nazivMete);
+    Igrac& igrac = igraci[trenutniIgrac];
+
+    // DOUBLE IN provjera
+    if (DOUBLE_IN && !igrac.jeAktiviran) {
+        if (!nazivMete.startsWith("Double")) {
+            Serial.println("Double IN: pogodak ne vrijedi jer nije Double.");
+            krajPoteza();
+            return;
+        }
+        igrac.jeAktiviran = true;
+    }
+
+    igrac.prethodniBodovi = igrac.bodovi;
+
+    int bodoviNakonPogotka = igrac.bodovi - vrijednost;
+
+    Serial.print("Pogođeno: ");
+    Serial.print(nazivMete);
+    Serial.print(" (");
+    Serial.print(vrijednost);
+    Serial.println(" bodova)");
+
+    if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
+        Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
+        igrac.bodovi = igrac.prethodniBodovi;
+        prikaziBodove(trenutniIgrac, igrac.bodovi);
+        krajPoteza();
+        return;
+    }
+
+    if (bodoviNakonPogotka == 0) {
+        if (DOUBLE_OUT) {
+            if (nazivMete.startsWith("Double")) {
+                Serial.println(igrac.ime + " je pobijedio!");
+                zavrsiIgru();
+            } else {
+                Serial.println("Završetak mora biti s Double!");
+                igrac.bodovi = igrac.prethodniBodovi;
+                krajPoteza();
+            }
+        } else {
+            Serial.println(igrac.ime + " je pobijedio!");
+            zavrsiIgru();
+        }
+        prikaziBodove(trenutniIgrac, igrac.bodovi);
+        return;
+    }
+
+    igrac.bodovi = bodoviNakonPogotka;
+    Serial.println(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
+    prikaziBodove(trenutniIgrac, igrac.bodovi);
+
+    brojStrelica++;
+    if (brojStrelica >= 3) {
+        krajPoteza();
+    }
+}
+
+void resetirajIgru_701() {
+    for (int i = 0; i < brojIgraca; i++) {
+        igraci[i].bodovi = 701;
+        igraci[i].prethodniBodovi = 701;
+    }
+    trenutniIgrac = 0;
+    Serial.println("Igra 701 je resetirana.");
+    osvjeziSveBodove();
+}

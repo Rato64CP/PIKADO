@@ -4,7 +4,7 @@
 #include "game_shanghai.h"
 #include "game_hangman.h"
 #include "game_roulette.h"
-#include "game_scram.h"
+#include "game_701.h"
 #include "game_cricket.h"
 #include "game_3inline.h"
 #include "config.h"
@@ -53,7 +53,7 @@ void pokreniAktivnuIgru() {
         case Igra_Shanghai: inicijalizirajIgru_shanghai(); break;
         case Igra_Hangman:  inicijalizirajIgru_hangman(); break;
         case Igra_Roulette: inicijalizirajIgru_roulette(); break;
-        case Igra_Scram:    inicijalizirajIgru_scram(); break;
+        case Igra_701:    inicijalizirajIgru_701(); break;
         case Igra_Cricket:  inicijalizirajIgru_cricket(); break;
         case Igra_3Inline:  inicijalizirajIgru_3inline(); break;
     }
@@ -67,7 +67,7 @@ void obradiPogodak(const String& nazivMete) {
         case Igra_Shanghai: obradiPogodak_shanghai(nazivMete); break;
         case Igra_Hangman:  obradiPogodak_hangman(nazivMete); break;
         case Igra_Roulette: obradiPogodak_roulette(nazivMete); break;
-        case Igra_Scram:    obradiPogodak_scram(nazivMete); break;
+        case Igra_701:    obradiPogodak_701(nazivMete); break;
         case Igra_Cricket:  obradiPogodak_cricket(nazivMete); break;
         case Igra_3Inline:  obradiPogodak_3inline(nazivMete); break;
     }
@@ -88,7 +88,7 @@ void resetirajAktivnuIgru() {
         case Igra_Shanghai: resetirajIgru_shanghai(); break;
         case Igra_Hangman:  resetirajIgru_hangman(); break;
         case Igra_Roulette: resetirajIgru_roulette(); break;
-        case Igra_Scram:    resetirajIgru_scram(); break;
+        case Igra_701:    resetirajIgru_701(); break;
         case Igra_Cricket:  resetirajIgru_cricket(); break;
         case Igra_3Inline:  resetirajIgru_3inline(); break;
     }

@@ -18,7 +18,7 @@ bool blinkStanje = false;
 bool doubleInOdabran = false;
 bool doubleOutOdabran = false;
 
-const int redoslijedIgara[8] = {IGRA_3INLINE, IGRA_HANGMAN, IGRA_SCRAM, IGRA_301, IGRA_501, IGRA_CRICKET, IGRA_SHANGHAI, IGRA_ROULETTE};
+const int redoslijedIgara[8] = {IGRA_3INLINE, IGRA_HANGMAN, IGRA_701, IGRA_301, IGRA_501, IGRA_CRICKET, IGRA_SHANGHAI, IGRA_ROULETTE};
 const int redoslijedIgraca[6] = {IGRAC_1, IGRAC_2, IGRAC_3, IGRAC_4, IGRAC_5, IGRAC_6};
 unsigned long zadnjeMijenjanje = 0;
 int indeksIgre = 0;
