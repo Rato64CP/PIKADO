@@ -1,6 +1,7 @@
 #include "game_hangman.h"
 #include "game.h"
 #include "config.h"
+#include "scoreboard.h"
 
 bool pogodjeniBrojevi[21];       // 1–20
 int greske[6];                  // broj grešaka po igraču
@@ -12,12 +13,14 @@ void inicijalizirajIgru_hangman() {
     for (int i = 0; i < brojIgraca; i++) {
         greske[i] = 0;
         bodoviHangman[i] = 0;
+        igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
     Serial.println("Igra HANGMAN započinje!");
     Serial.println("Pogodi brojeve 1–20 bez ponavljanja.");
     Serial.println("Svaki igrač ima najviše 6 grešaka.");
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
 }
 
 void obradiPogodak_hangman(const String& nazivMete) {
@@ -56,8 +59,10 @@ void obradiPogodak_hangman(const String& nazivMete) {
         pogodjeniBrojevi[broj] = true;
         int bodovi = broj * mnozitelj;
         bodoviHangman[trenutniIgrac] += bodovi;
+        igraci[trenutniIgrac].bodovi = bodoviHangman[trenutniIgrac];
         Serial.println("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
                        " = +" + String(bodovi) + " bodova (Ukupno: " + String(bodoviHangman[trenutniIgrac]) + ")");
+        prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
     }
 
     sljedeciIgrac_hangman();

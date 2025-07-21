@@ -1,6 +1,7 @@
 #include "game_scram.h"
 #include "game.h"
 #include "config.h"
+#include "scoreboard.h"
 
 int faza = 1;
 bool zakljucaniBrojevi[21];  // 1–20
@@ -15,11 +16,14 @@ void inicijalizirajIgru_scram() {
     for (int i = 1; i <= 20; i++) zakljucaniBrojevi[i] = false;
     bodovi[0] = 0;
     bodovi[1] = 0;
+    igraci[0].bodovi = 0;
+    igraci[1].bodovi = 0;
 
     Serial.println("Igra SCRAM (faza 1):");
     Serial.println("Igrač 0 je BLOCKER – pokušava zaključati sve brojeve.");
     Serial.println("Igrač 1 je SCORER – skuplja bodove.");
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
 }
 
 void obradiPogodak_scram(const String& nazivMete) {
@@ -71,8 +75,10 @@ void obradiPogodak_scram(const String& nazivMete) {
         else {
             if (!zakljucaniBrojevi[broj]) {
                 bodovi[1] += broj * mnozitelj;
+                igraci[1].bodovi = bodovi[1];
                 Serial.println("SCORER pogodio " + String(broj) + " × " + String(mnozitelj) +
                                " = +" + String(broj * mnozitelj) + " bodova. (Ukupno: " + String(bodovi[1]) + ")");
+                prikaziBodove(1, igraci[1].bodovi);
             } else {
                 Serial.println("Broj " + String(broj) + " je zaključan – nema bodova.");
             }
@@ -108,8 +114,10 @@ void obradiPogodak_scram(const String& nazivMete) {
         else {
             if (!zakljucaniBrojevi[broj]) {
                 bodovi[0] += broj * mnozitelj;
+                igraci[0].bodovi = bodovi[0];
                 Serial.println("SCORER pogodio " + String(broj) + " × " + String(mnozitelj) +
                                " = +" + String(broj * mnozitelj) + " bodova. (Ukupno: " + String(bodovi[0]) + ")");
+                prikaziBodove(0, igraci[0].bodovi);
             } else {
                 Serial.println("Broj " + String(broj) + " je zaključan – nema bodova.");
             }

@@ -1,6 +1,7 @@
 #include "game_shanghai.h"
 #include "game.h"
 #include "config.h"
+#include "scoreboard.h"
 
 int runda = 1;
 int strelica = 1;
@@ -17,12 +18,14 @@ void inicijalizirajIgru_shanghai() {
         pogodjenoSimple[i] = false;
         pogodjenoDouble[i] = false;
         pogodjenoTriple[i] = false;
+        igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
     Serial.println("Igra SHANGHAI započinje!");
     Serial.print("Runda "); Serial.print(runda);
     Serial.println(": Pogađa se broj " + String(runda));
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
 }
 
 void obradiPogodak_shanghai(const String& nazivMete) {
@@ -47,6 +50,8 @@ void obradiPogodak_shanghai(const String& nazivMete) {
         Serial.println("Promašaj! Važeći broj u ovoj rundi je " + String(runda));
     } else {
         bodoviPoIgracu[trenutniIgrac] += broj * mnozitelj;
+        igraci[trenutniIgrac].bodovi = bodoviPoIgracu[trenutniIgrac];
+        prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         if (mnozitelj == 1) pogodjenoSimple[trenutniIgrac] = true;
         if (mnozitelj == 2) pogodjenoDouble[trenutniIgrac] = true;
         if (mnozitelj == 3) pogodjenoTriple[trenutniIgrac] = true;

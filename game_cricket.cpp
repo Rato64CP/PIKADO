@@ -1,6 +1,7 @@
 #include "game_cricket.h"
 #include "game.h"
 #include "config.h"
+#include "scoreboard.h"
 
 const int BROJEVI[7] = {15, 16, 17, 18, 19, 20, 25}; // validni brojevi
 int pogodci[6][7];   // [igrač][broj index]
@@ -10,11 +11,13 @@ void inicijalizirajIgru_cricket() {
     for (int i = 0; i < brojIgraca; i++) {
         for (int j = 0; j < 7; j++) pogodci[i][j] = 0;
         bodoviCricket[i] = 0;
+        igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
     Serial.println("Igra CRICKET započinje!");
     Serial.println("Pogađaj brojeve 15–20 i bull (25).");
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
 }
 
 int indeksBroja(int broj) {
@@ -66,8 +69,10 @@ void obradiPogodak_cricket(const String& nazivMete) {
 
         if (!sviZatvorili(idx)) {
             bodoviCricket[trenutniIgrac] += BROJEVI[idx] * visak;
+            igraci[trenutniIgrac].bodovi = bodoviCricket[trenutniIgrac];
             Serial.println("Višak pogodaka! +" + String(BROJEVI[idx] * visak) +
                            " bodova. Ukupno: " + String(bodoviCricket[trenutniIgrac]));
+            prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         } else {
             Serial.println("Broj je već zatvoren za sve – nema bodova.");
         }

@@ -1,6 +1,7 @@
 #include "game_roulette.h"
 #include "game.h"
 #include "config.h"
+#include "scoreboard.h"
 
 int runda = 1;
 int strelica = 1;
@@ -13,11 +14,13 @@ void inicijalizirajIgru_roulette() {
     for (int i = 0; i < brojIgraca; i++) {
         ciljaniBroj[i] = random(1, 21);  // 1–20
         bodoviRoulette[i] = 0;
+        igraci[i].bodovi = 0;
         Serial.println("Igrač " + String(i) + " ciljani broj: " + String(ciljaniBroj[i]));
     }
     trenutniIgrac = 0;
     Serial.println("Igra ROULETTE započinje!");
     Serial.println("Runda 1 – Na potezu: " + igraci[trenutniIgrac].ime);
+    osvjeziSveBodove();
 }
 
 void obradiPogodak_roulette(const String& nazivMete) {
@@ -40,8 +43,10 @@ void obradiPogodak_roulette(const String& nazivMete) {
 
     if (broj == ciljaniBroj[trenutniIgrac]) {
         bodoviRoulette[trenutniIgrac] += broj * mnozitelj;
+        igraci[trenutniIgrac].bodovi = bodoviRoulette[trenutniIgrac];
         Serial.println("Pogođen vlastiti broj! +" + String(broj * mnozitelj) +
                        " bodova. Ukupno: " + String(bodoviRoulette[trenutniIgrac]));
+        prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
     } else {
         Serial.println("Promašaj – nije tvoj broj.");
     }
