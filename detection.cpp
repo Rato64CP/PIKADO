@@ -1,5 +1,6 @@
 #include "detection.h"
 #include "config.h"
+#include "melodies.h"
 
 // Struktura za metu
 struct Meta {
