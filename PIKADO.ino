@@ -4,6 +4,7 @@
 #include "buttons.h"
 #include "zaruljice.h"
 #include "game.h"
+#include "melodies.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
@@ -53,6 +54,7 @@ void setup() {
   pinMode(PIN_BUZZER, OUTPUT);
 
   Serial.println("Dobrodošli u PIKADO aparat!");
+  svirajUvodnuMelodiju();
 
   // Test žaruljica
   for (int i = 0; i < 2; i++) {
