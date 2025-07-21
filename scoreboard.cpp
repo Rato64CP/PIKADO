@@ -17,6 +17,13 @@ void inicijalizirajDisplay() {
     }
 }
 
+static void prikaziCrte(uint8_t modul) {
+    if (modul >= BROJ_DISPLEJA) return;
+    for (uint8_t pos = 0; pos < 3; pos++) {
+        lc.setChar(modul, pos, '-', false);
+    }
+}
+
 static void prikaziBroj(uint8_t modul, int broj) {
     if (modul >= BROJ_DISPLEJA) return;
     broj = constrain(broj, 0, 999);
@@ -37,10 +44,13 @@ void osvjeziSveBodove() {
     for (int i = 0; i < brojIgraca; i++) {
         prikaziBodove(i, igraci[i].bodovi);
     }
+    for (int i = brojIgraca; i < BROJ_DISPLEJA; i++) {
+        prikaziCrte(i);
+    }
 }
 
 void ocistiDisplay() {
     for (uint8_t i = 0; i < BROJ_DISPLEJA; i++) {
-        lc.clearDisplay(i);
+        prikaziCrte(i);
     }
 }
