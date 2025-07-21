@@ -10,9 +10,9 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 
 | Igra        | Opis |
 |-------------|------|
-| **301 / 501** | Klasične igre odbrojavanja do nule. Moguće uključiti Double IN i Double OUT. |
+| **301 / 501 / 701** | Klasične igre odbrojavanja do nule. Moguće uključiti Double IN i Double OUT. |
 | **Shangai** | Gađa se broj runde (1–20). Boduju se samo pogođeni ciljani broj. Shanghai (S+D+T) donosi automatsku pobjedu. |
-| **Scram**   | 2 faze: blocker zaključava brojeve, scorer skuplja bodove. Zatim se zamijene uloge. |
+| **701**   | Varijanta odbrojavanja do nule s početnih 701 bodova. |
 | **Roulette** | Svakom igraču se dodijeli nasumični broj koji samo on smije pogađati. Pobjednik je onaj s najviše bodova nakon 5 rundi. |
 | **Hangman** | Igrači pokušavaju pogoditi sve brojeve bez ponavljanja. 6 grešaka = ispadanje. |
 | **Cricket** | Pogađaju se brojevi 15–20 i bull (25). Svaki broj se mora pogoditi 3 puta. Višak pogodaka donosi bodove. |

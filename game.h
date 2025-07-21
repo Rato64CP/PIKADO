@@ -11,10 +11,10 @@ struct Igrac {
 enum TipIgre {
     Igra_301,
     Igra_501,
+    Igra_701,
     Igra_Shanghai,
     Igra_Hangman,
     Igra_Roulette,
-    Igra_Scram,
     Igra_Cricket,
     Igra_3Inline
 };
