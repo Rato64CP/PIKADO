@@ -104,3 +104,26 @@ void detektirajPromasaj() {
     zadnjeVrijeme = millis();
   }
 }
+
+bool detektirajBacanjeBezIgre() {
+  // Provjera pogođene mete
+  if (scanForHit() != nullptr) {
+    return true;
+  }
+
+  // Provjera promašaja preko mikrofona
+  static unsigned long zadnjeVrijeme = 0;
+  int zbroj = 0;
+  for (int i = 0; i < 3; i++) {
+    zbroj += analogRead(PIN_MIKROFON);
+    delay(1);
+  }
+  int vrijednost = zbroj / 3;
+
+  if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
+    zadnjeVrijeme = millis();
+    return true;
+  }
+
+  return false;
+}
