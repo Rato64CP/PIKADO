@@ -90,6 +90,12 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 | 10  | CLK      |
 | 11  | CS       |
 
+### Pikado ploča (detekcija)
+
+- **Aktivni pinovi senzora:** A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, 53, 49, 43
+- **Zajednički pinovi:** 45 (`COM_45`), 47 (`COM_47`), A1 (`COM_A1`), A2 (`COM_A2`)
+- **Mikrofon za promašaje:** A0 (`PIN_MIKROFON`)
+
 ### JQ6500 MP3 modul
 
 Modul je spojen na **Serial1** konekciju Arduina (TX1=18, RX1=19). Na njemu se nalaze MP3 datoteke za sve zvučne efekte.
