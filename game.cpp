@@ -36,7 +36,7 @@ void inicijalizirajIgrace(int broj) {
 void sljedeciIgrac() {
     trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
-    svirajZvukNovogIgraca();
+    svirajImeIgraca(trenutniIgrac);
 }
 
 void krajPoteza() {

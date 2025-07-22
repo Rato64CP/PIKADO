@@ -13,3 +13,9 @@ void svirajZvukVadenja() { mp3.play(4); }
 void svirajZvukNovogIgraca() { mp3.play(5); }
 void svirajZvukPobjede() { mp3.play(6); }
 void svirajZvukTipke() { mp3.play(7); }
+
+void svirajImeIgraca(uint8_t index) {
+    if (index < 6) {
+        mp3.play(20 + index);
+    }
+}
