@@ -22,7 +22,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 ## ⚙️ Funkcionalnosti
 
 - Detekcija svih zona na ploči (Simple, Double, Triple)
-- Detekcija promašaja pomoću mikrofona
+- Detekcija promašaja pomoću mikrofona (svaki promašaj se broji kao bačena strelica)
 - Tipke za odabir igre, broja igrača i pravila
 - LED indikacija za sve odabire
 - Modularna struktura igara
@@ -36,7 +36,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 
 - **Arduino Mega 2560**
 - Dart ploča spojena na digitalne i analogne pinove
-- Mikrofon spojen na A0
+- Mikrofon spojen na A0 za detekciju promašaja (granična vrijednost je `THRESHOLD_PROMASAJ` iz `config.h`)
 - Tipke za odabir spojene na digitalne pinove (pull-up)
 - LED žaruljice upravljane preko UCN5821 (shift register)
 - Segmentni display s MAX7219 (6 modula) za prikaz bodova

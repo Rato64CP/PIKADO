@@ -1,6 +1,7 @@
 #include "detection.h"
 #include "config.h"
 #include "melodies.h"
+#include "game.h"
 
 // Struktura za metu
 struct Meta {
@@ -85,10 +86,21 @@ String detektirajZonu() {
 }
 
 void detektirajPromasaj() {
-  int vrijednost = analogRead(PIN_MIKROFON);
-  if (vrijednost > THRESHOLD_PROMASAJ) {
+  static unsigned long zadnjeVrijeme = 0;
+  int zbroj = 0;
+  for (int i = 0; i < 3; i++) {
+    zbroj += analogRead(PIN_MIKROFON);
+    delay(1);
+  }
+  int vrijednost = zbroj / 3;
+
+  if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
     Serial.println("Promašaj detektiran!");
     svirajZvukPromasaja();
-    delay(500);
+    brojStrelica++;
+    if (brojStrelica >= 3) {
+      krajPoteza();
+    }
+    zadnjeVrijeme = millis();
   }
 }
