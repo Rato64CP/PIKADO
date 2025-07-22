@@ -80,6 +80,7 @@ static const Meta* scanForHit() {
 String detektirajZonu() {
   const Meta* pogodjena = scanForHit();
   if (pogodjena) {
+    registrirajInterakciju();
     return String(pogodjena->naziv);
   }
   return String("");
@@ -97,6 +98,7 @@ void detektirajPromasaj() {
   if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
     Serial.println("Promašaj detektiran!");
     svirajZvukPromasaja();
+    registrirajInterakciju();
     brojStrelica++;
     if (brojStrelica >= 3) {
       krajPoteza();

@@ -24,6 +24,18 @@ unsigned long zadnjeMijenjanje = 0;
 int indeksIgre = 0;
 int indeksIgraca = 0;
 
+// -------------------- Automaticki "sleep" nakon neaktivnosti --------------------
+const unsigned long IDLE_TIMEOUT = 10UL * 60UL * 1000UL; // 10 min
+const unsigned long IDLE_BLINK_INTERVAL = 5000UL;        // 5 sec
+static unsigned long zadnjaInterakcija = 0;
+static unsigned long zadnjiBlinkIdle = 0;
+static bool idleMode = false;
+static bool idleBlink = false;
+
+bool biloKojaTipkaStisnuta();
+void registrirajInterakciju();
+static void azurirajNeaktivnost();
+
 void osvjeziZaruljiceIgra() {
   for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
   stanjeZaruljica[odabranaIgra] = true;
@@ -59,6 +71,47 @@ void osvjeziZaruljiceIgra() {
   postaviZaruljice(stanjeZaruljica);
 }
 
+bool biloKojaTipkaStisnuta() {
+  for (int i = 0; i < BROJ_TIPKI; i++) {
+    if (tipkaStisnuta(i)) return true;
+  }
+  return false;
+}
+
+void registrirajInterakciju() {
+  zadnjaInterakcija = millis();
+  if (idleMode) {
+    idleMode = false;
+    idleBlink = false;
+    osvjeziSveBodove();
+    postaviZaruljice(stanjeZaruljica);
+  }
+}
+
+static void azurirajNeaktivnost() {
+  unsigned long sada = millis();
+  if (!idleMode && sada - zadnjaInterakcija >= IDLE_TIMEOUT) {
+    idleMode = true;
+    idleBlink = false;
+    ugasiDisplay();
+    bool sveFalse[18] = {false};
+    postaviZaruljice(sveFalse);
+    zadnjiBlinkIdle = sada;
+  }
+
+  if (idleMode) {
+    if (!idleBlink && sada - zadnjiBlinkIdle >= IDLE_BLINK_INTERVAL) {
+      ocistiDisplay();
+      idleBlink = true;
+      zadnjiBlinkIdle = sada;
+    } else if (idleBlink && sada - zadnjiBlinkIdle >= 500) {
+      ugasiDisplay();
+      idleBlink = false;
+      zadnjiBlinkIdle = sada;
+    }
+  }
+}
+
 void setup() {
   Serial.begin(9600);
   inicijalizirajTipke();
@@ -85,6 +138,8 @@ void setup() {
 
 void loop() {
   ocitajTipke();
+  if (biloKojaTipkaStisnuta()) registrirajInterakciju();
+  azurirajNeaktivnost();
 
   // -------------------- ODABIR IGRE --------------------
   if (odabranaIgra == -1) {
@@ -176,6 +231,8 @@ void loop() {
     // Glavna igračka petlja
     while (!igraZavrsena) {
       ocitajTipke();
+      if (biloKojaTipkaStisnuta()) registrirajInterakciju();
+      azurirajNeaktivnost();
       osvjeziZaruljiceIgra();
       if (tipkaStisnuta(IGRA_RESET)) {
         resetirajAktivnuIgru();
@@ -213,6 +270,8 @@ void loop() {
     // Čekaj da korisnik pokrene novu igru
     while (igraZavrsena) {
       ocitajTipke();
+      if (biloKojaTipkaStisnuta()) registrirajInterakciju();
+      azurirajNeaktivnost();
       osvjeziZaruljiceIgra();
       if (tipkaStisnuta(IGRA_RESET)) {
         resetirajAktivnuIgru();
