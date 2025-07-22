@@ -23,6 +23,8 @@ const int redoslijedIgraca[6] = {IGRAC_1, IGRAC_2, IGRAC_3, IGRAC_4, IGRAC_5, IG
 unsigned long zadnjeMijenjanje = 0;
 int indeksIgre = 0;
 int indeksIgraca = 0;
+bool prvaTipkaPritisnuta = false;
+bool igraPokrenuta = false;
 
 // -------------------- Automaticki "sleep" nakon neaktivnosti --------------------
 const unsigned long IDLE_TIMEOUT = 10UL * 60UL * 1000UL; // 10 min
@@ -138,11 +140,15 @@ void setup() {
 
 void loop() {
   ocitajTipke();
-  if (biloKojaTipkaStisnuta()) registrirajInterakciju();
+  bool stisnuta = biloKojaTipkaStisnuta();
+  if (stisnuta) {
+    registrirajInterakciju();
+    if (!prvaTipkaPritisnuta) prvaTipkaPritisnuta = true;
+  }
   azurirajNeaktivnost();
 
-  // -------------------- ODABIR IGRE --------------------
-  if (odabranaIgra == -1) {
+  if (!igraPokrenuta) {
+    // ----- Prikupljanje odabira -----
     for (int i = IGRA_301; i <= IGRA_3INLINE; i++) {
       if (tipkaStisnuta(i)) {
         odabranaIgra = i;
@@ -151,25 +157,6 @@ void loop() {
       }
     }
 
-    unsigned long sada = millis();
-    if (sada - zadnjeMijenjanje > 500) {
-      zadnjeMijenjanje = sada;
-      indeksIgre = (indeksIgre + 1) % 8;
-    }
-
-    for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
-    stanjeZaruljica[redoslijedIgara[indeksIgre]] = true;
-    postaviZaruljice(stanjeZaruljica);
-    if (detektirajBacanjeBezIgre()) {
-      Serial.println("Bacena strelica prije odabira igre!");
-      svirajZvukNepostavljenaIgra();
-    }
-    delay(50);
-    return;
-  }
-
-  // -------------------- ODABIR BROJA IGRACA --------------------
-  if (odabraniBrojIgraca == -1) {
     for (int i = IGRAC_1; i <= IGRAC_6; i++) {
       if (tipkaStisnuta(i)) {
         odabraniBrojIgraca = i - IGRAC_1 + 1;
@@ -178,34 +165,45 @@ void loop() {
       }
     }
 
-    // Omogući odabir DOUBLE IN/OUT za igre 301, 501 i 701
     if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
-      if (tipkaStisnuta(OSTALO_IN_CUTTHROAT)) doubleInOdabran = true;
-      if (tipkaStisnuta(OSTALO_OUT_TEAM))   doubleOutOdabran = true;
+      if (tipkaStisnuta(OSTALO_IN_CUTTHROAT))  doubleInOdabran = true;
+      if (tipkaStisnuta(OSTALO_OUT_TEAM))    doubleOutOdabran = true;
+    } else {
+      doubleInOdabran = false;
+      doubleOutOdabran = false;
     }
 
-    unsigned long sada = millis();
-    if (sada - zadnjeMijenjanje > 500) {
-      zadnjeMijenjanje = sada;
-      indeksIgraca = (indeksIgraca + 1) % 6;
-    }
-
+    // ----- LED indikacija -----
     for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
-    stanjeZaruljica[odabranaIgra] = true;
-    stanjeZaruljica[redoslijedIgraca[indeksIgraca]] = true;
-    stanjeZaruljica[OSTALO_IN_CUTTHROAT] = doubleInOdabran;
-    stanjeZaruljica[OSTALO_OUT_TEAM] = doubleOutOdabran;
+    unsigned long sada = millis();
+    if (!prvaTipkaPritisnuta) {
+      if (sada - zadnjeMijenjanje > 500) {
+        zadnjeMijenjanje = sada;
+        indeksIgre = (indeksIgre + 1) % 8;
+        indeksIgraca = (indeksIgraca + 1) % 6;
+      }
+      stanjeZaruljica[redoslijedIgara[indeksIgre]] = true;
+      stanjeZaruljica[redoslijedIgraca[indeksIgraca]] = true;
+    } else {
+      if (odabranaIgra != -1) {
+        stanjeZaruljica[odabranaIgra] = true;
+      }
+      if (odabraniBrojIgraca != -1) {
+        stanjeZaruljica[IGRAC_1 + odabraniBrojIgraca - 1] = true;
+      }
+      stanjeZaruljica[OSTALO_IN_CUTTHROAT] = doubleInOdabran;
+      stanjeZaruljica[OSTALO_OUT_TEAM] = doubleOutOdabran;
+    }
     postaviZaruljice(stanjeZaruljica);
+
     if (detektirajBacanjeBezIgre()) {
-      Serial.println("Bacena strelica prije odabira igraca!");
+      Serial.println("Bacena strelica prije odabira!");
       svirajZvukNepostavljenaIgra();
     }
-    delay(50);
-    return;
-  }
 
-  // -------------------- POCETAK IGRE --------------------
-  if (odabranaIgra != -1 && odabraniBrojIgraca != -1) {
+    // ----- Pokretanje igre -----
+    if (odabranaIgra != -1 && odabraniBrojIgraca != -1 && tipkaStisnuta(IGRA_NEW_PLAYER)) {
+      igraPokrenuta = true;
     // Postavi globalne opcije DOUBLE IN/OUT prema odabiru
     if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
       DOUBLE_IN = doubleInOdabran;
@@ -293,6 +291,7 @@ void loop() {
       }
       delay(50);
     }
+    igraPokrenuta = false;
   }
 
   delay(50); // debounce
