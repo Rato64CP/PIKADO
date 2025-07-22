@@ -107,8 +107,8 @@ void loop() {
       }
     }
 
-    // Omogući odabir DOUBLE IN/OUT za igre 301 i 501
-    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501) {
+    // Omogući odabir DOUBLE IN/OUT za igre 301, 501 i 701
+    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
       if (tipkaStisnuta(OSTALO_IN_CUTTHROAT)) doubleInOdabran = true;
       if (tipkaStisnuta(OSTALO_OUT_TEAM))   doubleOutOdabran = true;
     }
@@ -132,7 +132,7 @@ void loop() {
   // -------------------- POCETAK IGRE --------------------
   if (odabranaIgra != -1 && odabraniBrojIgraca != -1) {
     // Postavi globalne opcije DOUBLE IN/OUT prema odabiru
-    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501) {
+    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
       DOUBLE_IN = doubleInOdabran;
       DOUBLE_OUT = doubleOutOdabran;
     } else {
