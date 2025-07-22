@@ -97,7 +97,7 @@ void loop() {
     }
 
     unsigned long sada = millis();
-    if (sada - zadnjeMijenjanje > 1000) {
+    if (sada - zadnjeMijenjanje > 500) {
       zadnjeMijenjanje = sada;
       indeksIgre = (indeksIgre + 1) % 8;
     }
@@ -126,7 +126,7 @@ void loop() {
     }
 
     unsigned long sada = millis();
-    if (sada - zadnjeMijenjanje > 1000) {
+    if (sada - zadnjeMijenjanje > 500) {
       zadnjeMijenjanje = sada;
       indeksIgraca = (indeksIgraca + 1) % 6;
     }
