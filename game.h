@@ -29,7 +29,7 @@ extern uint8_t brojStrelica;
 
 void krajPoteza();
 
-// Zavrsi igru i odsviraj ton na buzzeru
+// Zavrsi igru i pusti MP3 ton
 void zavrsiIgru();
 // Resetira trenutno aktivnu igru
 void resetirajAktivnuIgru();

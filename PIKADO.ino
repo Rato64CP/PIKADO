@@ -53,7 +53,7 @@ void setup() {
   inicijalizirajZaruljice();
   inicijalizirajMete();
   inicijalizirajDisplay();
-  pinMode(PIN_BUZZER, OUTPUT);
+  inicijalizirajZvuk();
 
   Serial.println("Dobrodošli u PIKADO aparat!");
   svirajUvodnuMelodiju();

@@ -40,6 +40,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Tipke za odabir spojene na digitalne pinove (pull-up)
 - LED žaruljice upravljane preko UCN5821 (shift register)
 - Segmentni display s MAX7219 (6 modula) za prikaz bodova
+- JQ6500 MP3 modul za zvučne efekte (povezan na Serial1)
 
 ---
 
@@ -89,9 +90,9 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 | 10  | CLK      |
 | 11  | CS       |
 
-### Zvučnik (buzzer)
+### JQ6500 MP3 modul
 
-Spajanje na digitalni pin **8** (`PIN_BUZZER`).
+Modul je spojen na **Serial1** konekciju Arduina (TX1=18, RX1=19). Na njemu se nalaze MP3 datoteke za sve zvučne efekte.
 
 ---
 

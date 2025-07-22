@@ -58,7 +58,7 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 ## 🎵 7. Sound Agent (`melodies.cpp`)
 
 - **Odgovornost:** Reproduciranje zvukova i melodija
-- **Hardver:** Buzzer na pinu 8
+- **Hardver:** JQ6500 MP3 modul (Serial1 na pinovima 18 i 19)
 - **Koristi se:** signalizacija pogotka, promašaja i pobjede
 
 ---
