@@ -54,3 +54,9 @@ void ocistiDisplay() {
         prikaziCrte(i);
     }
 }
+
+void ugasiDisplay() {
+    for (uint8_t i = 0; i < BROJ_DISPLEJA; i++) {
+        lc.clearDisplay(i);
+    }
+}
