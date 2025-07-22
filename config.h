@@ -16,5 +16,6 @@ constexpr bool BOUNCE_OUT = true;
 extern bool DOUBLE_OUT;
 extern bool DOUBLE_IN;
 
-// Pin za buzzer koji svira pobjednicki ton
-constexpr uint8_t PIN_BUZZER = 8;
+// Pinovi za JQ6500 MP3 modul (koristi se Serial1)
+constexpr uint8_t PIN_JQ6500_TX = 18; // TX1 -> RX modula
+constexpr uint8_t PIN_JQ6500_RX = 19; // RX1 -> TX modula
