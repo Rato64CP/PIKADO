@@ -105,6 +105,10 @@ void loop() {
     for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
     stanjeZaruljica[redoslijedIgara[indeksIgre]] = true;
     postaviZaruljice(stanjeZaruljica);
+    if (detektirajBacanjeBezIgre()) {
+      Serial.println("Bacena strelica prije odabira igre!");
+      svirajZvukNepostavljenaIgra();
+    }
     delay(50);
     return;
   }
@@ -137,6 +141,10 @@ void loop() {
     stanjeZaruljica[OSTALO_IN_CUTTHROAT] = doubleInOdabran;
     stanjeZaruljica[OSTALO_OUT_TEAM] = doubleOutOdabran;
     postaviZaruljice(stanjeZaruljica);
+    if (detektirajBacanjeBezIgre()) {
+      Serial.println("Bacena strelica prije odabira igraca!");
+      svirajZvukNepostavljenaIgra();
+    }
     delay(50);
     return;
   }

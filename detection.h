@@ -4,3 +4,4 @@
 void inicijalizirajMete();
 void detektirajPromasaj();
 String detektirajZonu();
+bool detektirajBacanjeBezIgre();
