@@ -40,6 +40,18 @@ void osvjeziZaruljiceIgra() {
     stanjeZaruljica[idxIgraca] = true;
   }
 
+  // Treperi lampica NEW_PLAYER dok se čekaju izbačene strelice
+  if (cekanjeNovogIgraca) {
+    unsigned long sada = millis();
+    if (sada - zadnjeBlinkanje > 500) {
+      zadnjeBlinkanje = sada;
+      blinkStanje = !blinkStanje;
+    }
+    stanjeZaruljica[IGRA_NEW_PLAYER] = blinkStanje;
+  } else {
+    stanjeZaruljica[IGRA_NEW_PLAYER] = false;
+  }
+
   // Prikaži odabrane DOUBLE IN/OUT opcije
   stanjeZaruljica[OSTALO_IN_CUTTHROAT] = DOUBLE_IN;
   stanjeZaruljica[OSTALO_OUT_TEAM] = DOUBLE_OUT;
