@@ -11,8 +11,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 | Igra        | Opis |
 |-------------|------|
 | **301 / 501 / 701** | Klasične igre odbrojavanja do nule. Moguće uključiti Double IN i Double OUT. |
-| **Shangai** | Gađa se broj runde (1–20). Boduju se samo pogođeni ciljani broj. Shanghai (S+D+T) donosi automatsku pobjedu. |
-| **701**   | Varijanta odbrojavanja do nule s početnih 701 bodova. |
+| **Shanghai** | Gađa se broj runde (1–20). Boduju se samo pogođeni ciljani broj. Shanghai (S+D+T) donosi automatsku pobjedu. |
 | **Roulette** | Svakom igraču se dodijeli nasumični broj koji samo on smije pogađati. Pobjednik je onaj s najviše bodova nakon 5 rundi. |
 | **Hangman** | Igrači pokušavaju pogoditi sve brojeve bez ponavljanja. 6 grešaka = ispadanje. |
 | **Cricket** | Pogađaju se brojevi 15–20 i bull (25). Svaki broj se mora pogoditi 3 puta. Višak pogodaka donosi bodove. |
@@ -40,7 +39,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Mikrofon spojen na A0
 - Tipke za odabir spojene na digitalne pinove (pull-up)
 - LED žaruljice upravljane preko UCN5821 (shift register)
-- Segmentni display s MAX7219 za prikaz bodova
+- Segmentni display s MAX7219 (6 modula) za prikaz bodova
 
 ---
 
@@ -59,7 +58,7 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 
 1. Otvori `PIKADO.ino` u Arduino IDE ili CLI
 2. Odaberi ploču **Arduino Mega 2560**
-3. Nisu potrebne dodatne biblioteke
+3. Instaliraj Arduino biblioteku **LedControl** (za MAX7219)
 4. Kompajliraj i učitaj na uređaj
 
 ---
