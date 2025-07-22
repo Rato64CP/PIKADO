@@ -29,6 +29,9 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Double IN i Double OUT kao opcionalna pravila
 - Serijski ispis rezultata i poruka
 - Prikaz bodova na MAX7219 displayu za sve igre
+- Prepoznaje bacanje strelice prije odabira igre ili igrača i pušta zvuk upozorenja
+- Snimljeni glasovni pozivi igrača ("Igrač 1", "Igrač 2"...)
+- Automatski prelazak u "sleep" način rada nakon 10 minuta neaktivnosti (display blinka svakih 5 s)
 
 ---
 
