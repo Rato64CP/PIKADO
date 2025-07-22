@@ -48,15 +48,22 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 
 ---
 
-## 📺 6. Display Agent (planirano)
+## 📺 6. Display Agent (`scoreboard.cpp`)
 
 - **Odgovornost:** Prikaz bodova i statusa na segmentnim LED displayima
 - **Tehnologija:** MAX7219, LedControl ili MD_MAX72XX
 - **Prikaz:** Bodovi svakog igrača, status igre, redoslijed
 
 ---
+## 🎵 7. Sound Agent (`melodies.cpp`)
 
-## 👤 7. User Agent
+- **Odgovornost:** Reproduciranje zvukova i melodija
+- **Hardver:** Buzzer na pinu 8
+- **Koristi se:** signalizacija pogotka, promašaja i pobjede
+
+---
+
+## 👤 8. User Agent
 
 - **Fizički korisnik:** igrači koji pritišću tipke i bacaju strelice
 - **Interakcija s hardverom:** tipke, vizualni prikaz (LED), serijski ispis
@@ -64,7 +71,7 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 
 ---
 
-## 📡 8. Serial Monitor Agent (debug UI)
+## 📡 9. Serial Monitor Agent (debug UI)
 
 - **Odgovornost:** Ispisuje poruke za korisnika i razvoj
 - **Svrha:** status, pogodak, pobjeda, greška
@@ -72,7 +79,7 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 
 ---
 
-## 🛠️ 9. Setup Agent (`PIKADO.ino`)
+## 🛠️ 10. Setup Agent (`PIKADO.ino`)
 
 - **Odgovornost:** Glavni ulaz, inicijalizira sve agente
 - **Logika:** bira igru, broj igrača, pravila
