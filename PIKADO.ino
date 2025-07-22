@@ -151,6 +151,7 @@ void loop() {
     brojStrelica = 0;
     igraZavrsena = false;
     svirajZvukBacanja();
+    svirajImeIgraca(trenutniIgrac);
 
     // Glavna igračka petlja
     while (!igraZavrsena) {
