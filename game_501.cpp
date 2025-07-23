@@ -2,6 +2,7 @@
 #include "game.h"
 #include "config.h"
 #include "scoreboard.h"
+#include "melodies.h"
 
 int vrijednostMete_501(const String& naziv) {
     if (naziv.startsWith("Triple ")) return 3 * naziv.substring(7).toInt();
