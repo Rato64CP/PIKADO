@@ -3,7 +3,6 @@
 
 void inicijalizirajZvuk();
 void svirajUvodnuMelodiju();
-void svirajZvukBacanja();
 void svirajZvukPromasaja();
 void svirajZvukVadenja();
 void svirajZvukPobjede();
