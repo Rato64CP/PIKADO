@@ -6,7 +6,6 @@ void svirajUvodnuMelodiju();
 void svirajZvukBacanja();
 void svirajZvukPromasaja();
 void svirajZvukVadenja();
-void svirajZvukNovogIgraca();
 void svirajZvukPobjede();
 void svirajZvukTipke();
 void svirajZvukNepostavljenaIgra();

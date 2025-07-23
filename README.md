@@ -113,7 +113,6 @@ Datoteke moraju imati prefiks s četiri znamenke kako bi odgovarale numeraciji `
 | 2    | `0002.mp3`      | Zvuk bacanja strelice   |
 | 3    | `0003.mp3`      | Zvuk promašaja          |
 | 4    | `0004.mp3`      | Zvuk vađenja strelice   |
-| 5    | `0005.mp3`      | Zvuk za novog igrača    |
 | 6    | `0006.mp3`      | Pobjednička melodija    |
 | 7    | `0007.mp3`      | Zvuk pritiska tipke     |
 | 8    | `0008.mp3`      | Upozorenje nepostavljene igre |
