@@ -103,6 +103,27 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 
 Modul je spojen na **Serial1** konekciju Arduina (TX1=18, RX1=19). Na njemu se nalaze MP3 datoteke za sve zvučne efekte.
 
+#### Nazivi datoteka
+
+Datoteke moraju imati prefiks s četiri znamenke kako bi odgovarale numeraciji `mp3.play()` funkcije. Preporučeni nazivi su:
+
+| Broj | Datoteka        | Opis                     |
+|-----:|-----------------|-------------------------|
+| 1    | `0001.mp3`      | Uvodna melodija         |
+| 2    | `0002.mp3`      | Zvuk bacanja strelice   |
+| 3    | `0003.mp3`      | Zvuk promašaja          |
+| 4    | `0004.mp3`      | Zvuk vađenja strelice   |
+| 5    | `0005.mp3`      | Zvuk za novog igrača    |
+| 6    | `0006.mp3`      | Pobjednička melodija    |
+| 7    | `0007.mp3`      | Zvuk pritiska tipke     |
+| 8    | `0008.mp3`      | Upozorenje nepostavljene igre |
+| 21   | `0021.mp3`      | Snimka "Igrač 1"        |
+| 22   | `0022.mp3`      | Snimka "Igrač 2"        |
+| 23   | `0023.mp3`      | Snimka "Igrač 3"        |
+| 24   | `0024.mp3`      | Snimka "Igrač 4"        |
+| 25   | `0025.mp3`      | Snimka "Igrač 5"        |
+| 26   | `0026.mp3`      | Snimka "Igrač 6"        |
+
 ---
 
 ## 🧪 Korištenje
