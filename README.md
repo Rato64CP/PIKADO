@@ -124,6 +124,75 @@ Datoteke moraju imati prefiks s četiri znamenke kako bi odgovarale numeraciji `
 | 25   | `0025.mp3`      | Snimka "Igrač 5"        |
 | 26   | `0026.mp3`      | Snimka "Igrač 6"        |
 
+### Datoteke za pojedinacne mete
+
+Ove snimke najavljuju pogođeno polje. Svaka datoteka odgovara jednoj zoni na ploci.
+
+| Broj | Datoteka | Opis |
+|-----:|---------|------|
+| 100 | `0100.mp3` | Triple 17 |
+| 101 | `0101.mp3` | Double 17 |
+| 102 | `0102.mp3` | Simple 17 |
+| 103 | `0103.mp3` | Triple 3 |
+| 104 | `0104.mp3` | Double 3 |
+| 105 | `0105.mp3` | Simple 3 |
+| 106 | `0106.mp3` | Triple 19 |
+| 107 | `0107.mp3` | Double 19 |
+| 108 | `0108.mp3` | Simple 19 |
+| 109 | `0109.mp3` | Triple 7 |
+| 110 | `0110.mp3` | Double 7 |
+| 111 | `0111.mp3` | Simple 7 |
+| 112 | `0112.mp3` | Triple 16 |
+| 113 | `0113.mp3` | Double 16 |
+| 114 | `0114.mp3` | Simple 16 |
+| 115 | `0115.mp3` | Triple 6 |
+| 116 | `0116.mp3` | Double 6 |
+| 117 | `0117.mp3` | Simple 6 |
+| 118 | `0118.mp3` | Triple 10 |
+| 119 | `0119.mp3` | Double 10 |
+| 120 | `0120.mp3` | Simple 10 |
+| 121 | `0121.mp3` | Triple 15 |
+| 122 | `0122.mp3` | Double 15 |
+| 123 | `0123.mp3` | Simple 15 |
+| 124 | `0124.mp3` | Triple 2 |
+| 125 | `0125.mp3` | Double 2 |
+| 126 | `0126.mp3` | Simple 2 |
+| 127 | `0127.mp3` | 25 (Double) |
+| 128 | `0128.mp3` | Triple 13 |
+| 129 | `0129.mp3` | Double 13 |
+| 130 | `0130.mp3` | Simple 13 |
+| 131 | `0131.mp3` | Triple 8 |
+| 132 | `0132.mp3` | Double 8 |
+| 133 | `0133.mp3` | Simple 8 |
+| 134 | `0134.mp3` | Triple 14 |
+| 135 | `0135.mp3` | Double 14 |
+| 136 | `0136.mp3` | Simple 14 |
+| 137 | `0137.mp3` | Triple 9 |
+| 138 | `0138.mp3` | Double 9 |
+| 139 | `0139.mp3` | Simple 9 |
+| 140 | `0140.mp3` | Triple 11 |
+| 141 | `0141.mp3` | Double 11 |
+| 142 | `0142.mp3` | Simple 11 |
+| 143 | `0143.mp3` | Triple 12 |
+| 144 | `0144.mp3` | Double 12 |
+| 145 | `0145.mp3` | Simple 12 |
+| 146 | `0146.mp3` | Triple 5 |
+| 147 | `0147.mp3` | Double 5 |
+| 148 | `0148.mp3` | Simple 5 |
+| 149 | `0149.mp3` | Triple 20 |
+| 150 | `0150.mp3` | Double 20 |
+| 151 | `0151.mp3` | Simple 20 |
+| 152 | `0152.mp3` | Triple 1 |
+| 153 | `0153.mp3` | Double 1 |
+| 154 | `0154.mp3` | Simple 1 |
+| 155 | `0155.mp3` | Triple 18 |
+| 156 | `0156.mp3` | Double 18 |
+| 157 | `0157.mp3` | Simple 18 |
+| 158 | `0158.mp3` | Triple 4 |
+| 159 | `0159.mp3` | Double 4 |
+| 160 | `0160.mp3` | 25 (Simple) |
+| 161 | `0161.mp3` | Simple 4 |
+
 ---
 
 ## 🧪 Korištenje
