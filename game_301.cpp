@@ -48,6 +48,7 @@ void obradiPogodak_301(const String& nazivMete) {
 
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
         Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
+        svirajZvukBust();
         igrac.bodovi = igrac.prethodniBodovi;
         prikaziBodove(trenutniIgrac, igrac.bodovi);
         krajPoteza();

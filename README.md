@@ -116,6 +116,7 @@ Datoteke moraju imati prefiks s četiri znamenke kako bi odgovarale numeraciji `
 | 6    | `0006.mp3`      | Pobjednička melodija    |
 | 7    | `0007.mp3`      | Zvuk pritiska tipke     |
 | 8    | `0008.mp3`      | Upozorenje nepostavljene igre |
+| 9    | `0009.mp3`      | Zvuk "Bust" (prelazak preko 0) |
 | 21   | `0021.mp3`      | Snimka "Igrač 1"        |
 | 22   | `0022.mp3`      | Snimka "Igrač 2"        |
 | 23   | `0023.mp3`      | Snimka "Igrač 3"        |
