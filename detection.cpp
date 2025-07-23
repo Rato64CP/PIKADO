@@ -78,11 +78,13 @@ static const Meta* scanForHit() {
 
 
 String detektirajZonu() {
-  const Meta* pogodjena = scanForHit();
-  if (pogodjena) {
-    registrirajInterakciju();
-    return String(pogodjena->naziv);
-  }
+    const Meta* pogodjena = scanForHit();
+    if (pogodjena) {
+        registrirajInterakciju();
+        String naziv = String(pogodjena->naziv);
+        svirajZvukMete(naziv);
+        return naziv;
+    }
   return String("");
 }
 

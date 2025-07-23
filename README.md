@@ -31,6 +31,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Prikaz bodova na MAX7219 displayu za sve igre
 - Prepoznaje bacanje strelice prije odabira igre ili igrača i pušta zvuk upozorenja
 - Snimljeni glasovni pozivi igrača ("Igrač 1", "Igrač 2"...)
+- Glasovna najava pogođenog polja (koristi mp3 datoteke od `0100.mp3` nadalje)
 - Automatski prelazak u "sleep" način rada nakon 10 minuta neaktivnosti (display blinka svakih 5 s)
 
 ---
