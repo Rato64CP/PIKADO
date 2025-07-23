@@ -223,7 +223,6 @@ void loop() {
     cekanjeNovogIgraca = false;
     brojStrelica = 0;
     igraZavrsena = false;
-    svirajZvukBacanja();
     svirajImeIgraca(trenutniIgrac);
 
     // Glavna igračka petlja
