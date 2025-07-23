@@ -2,7 +2,7 @@
 #include "game.h"
 #include "config.h"
 
-bool pogodci[6][21]; // [igrač][broj 1-20], indeks 0 se ne koristi
+static bool pogodci[6][21]; // [igrač][broj 1-20], indeks 0 se ne koristi
 
 void inicijalizirajIgru_3inline() {
     for (int i = 0; i < brojIgraca; i++) {

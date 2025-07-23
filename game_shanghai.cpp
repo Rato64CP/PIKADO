@@ -3,8 +3,8 @@
 #include "config.h"
 #include "scoreboard.h"
 
-int runda = 1;
-int strelica = 1;
+static int runda = 1;
+static int strelica = 1;
 int bodoviPoIgracu[6];
 bool pogodjenoSimple[6];
 bool pogodjenoDouble[6];
