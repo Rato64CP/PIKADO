@@ -293,6 +293,7 @@ void loop() {
     }
     igraPokrenuta = false;
   }
+  }
 
   delay(50); // debounce
 }
