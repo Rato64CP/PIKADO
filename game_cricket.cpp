@@ -4,8 +4,8 @@
 #include "scoreboard.h"
 
 const int BROJEVI[7] = {15, 16, 17, 18, 19, 20, 25}; // validni brojevi
-int pogodci[6][7];   // [igrač][broj index]
-int bodoviCricket[6];
+static int pogodci[6][7];   // [igrač][broj index]
+static int bodoviCricket[6];
 
 void inicijalizirajIgru_cricket() {
     for (int i = 0; i < brojIgraca; i++) {

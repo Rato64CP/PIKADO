@@ -3,8 +3,8 @@
 #include "config.h"
 #include "scoreboard.h"
 
-int runda = 1;
-int strelica = 1;
+static int runda = 1;
+static int strelica = 1;
 int ciljaniBroj[6];  // ciljani broj po igraču
 int bodoviRoulette[6];  // ukupni bodovi
 
