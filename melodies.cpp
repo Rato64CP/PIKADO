@@ -10,7 +10,6 @@ void svirajUvodnuMelodiju() { mp3.play(1); }
 void svirajZvukBacanja() { mp3.play(2); }
 void svirajZvukPromasaja() { mp3.play(3); }
 void svirajZvukVadenja() { mp3.play(4); }
-void svirajZvukNovogIgraca() { mp3.play(5); }
 void svirajZvukPobjede() { mp3.play(6); }
 void svirajZvukTipke() { mp3.play(7); }
 void svirajZvukNepostavljenaIgra() { mp3.play(8); }
