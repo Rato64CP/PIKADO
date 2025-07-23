@@ -60,7 +60,6 @@ void pokreniAktivnuIgru() {
 }
 
 void obradiPogodak(const String& nazivMete) {
-    svirajZvukBacanja();
     switch (aktivnaIgra) {
         case Igra_301:      obradiPogodak_301(nazivMete); break;
         case Igra_501:      obradiPogodak_501(nazivMete); break;
