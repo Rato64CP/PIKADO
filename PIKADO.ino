@@ -6,6 +6,7 @@
 #include "game.h"
 #include "melodies.h"
 #include "scoreboard.h"
+#include "lcd_display.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
@@ -117,12 +118,13 @@ static void azurirajNeaktivnost() {
 void setup() {
   Serial.begin(9600);
   inicijalizirajTipke();
+  inicijalizirajLCD();
   inicijalizirajZaruljice();
   inicijalizirajMete();
   inicijalizirajDisplay();
   inicijalizirajZvuk();
 
-  Serial.println("Dobrodošli u PIKADO aparat!");
+  logPoruka("Dobrodošli u PIKADO aparat!");
   svirajUvodnuMelodiju();
 
   // Test žaruljica
@@ -134,8 +136,8 @@ void setup() {
   for (int j = 0; j < 18; j++) stanjeZaruljica[j] = false;
   postaviZaruljice(stanjeZaruljica);
 
-  Serial.println("Odaberi igru pritiskom na tipku (301, 501...)");
-  Serial.println("Zatim odaberi broj igrača pritiskom na tipku (1–6)");
+  logPoruka("Odaberi igru pritiskom na tipku (301, 501...)");
+  logPoruka("Zatim odaberi broj igrača pritiskom na tipku (1–6)");
 }
 
 void loop() {
@@ -152,7 +154,7 @@ void loop() {
     for (int i = IGRA_301; i <= IGRA_3INLINE; i++) {
       if (tipkaStisnuta(i)) {
         odabranaIgra = i;
-        Serial.print("Odabrana igra: "); Serial.println(i);
+        String msg = "Odabrana igra: " + String(i); logPoruka(msg);
         svirajZvukTipke();
       }
     }
@@ -160,7 +162,7 @@ void loop() {
     for (int i = IGRAC_1; i <= IGRAC_6; i++) {
       if (tipkaStisnuta(i)) {
         odabraniBrojIgraca = i - IGRAC_1 + 1;
-        Serial.print("Odabrano igraca: "); Serial.println(odabraniBrojIgraca);
+        String msg = "Odabrano igraca: " + String(odabraniBrojIgraca); logPoruka(msg);
         svirajZvukTipke();
       }
     }
@@ -197,7 +199,7 @@ void loop() {
     postaviZaruljice(stanjeZaruljica);
 
     if (detektirajBacanjeBezIgre()) {
-      Serial.println("Bacena strelica prije odabira!");
+      logPoruka("Bacena strelica prije odabira!");
       svirajZvukNepostavljenaIgra();
     }
 
@@ -213,8 +215,8 @@ void loop() {
       DOUBLE_OUT = false;
     }
 
-    if (DOUBLE_IN)  Serial.println("DOUBLE IN aktiviran");
-    if (DOUBLE_OUT) Serial.println("DOUBLE OUT aktiviran");
+    if (DOUBLE_IN)  logPoruka("DOUBLE IN aktiviran");
+    if (DOUBLE_OUT) logPoruka("DOUBLE OUT aktiviran");
 
     inicijalizirajIgrace(odabraniBrojIgraca);
     aktivnaIgra = static_cast<TipIgre>(odabranaIgra);

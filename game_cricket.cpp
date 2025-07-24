@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game_cricket.h"
 #include "game.h"
 #include "config.h"
@@ -14,9 +15,9 @@ void inicijalizirajIgru_cricket() {
         igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
-    Serial.println("Igra CRICKET započinje!");
-    Serial.println("Pogađaj brojeve 15–20 i bull (25).");
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Igra CRICKET započinje!");
+    logPoruka("Pogađaj brojeve 15–20 i bull (25).");
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
 
@@ -48,13 +49,13 @@ void obradiPogodak_cricket(const String& nazivMete) {
         broj = nazivMete.substring(7).toInt();
         mnozitelj = 1;
     } else {
-        Serial.println("Nepoznata meta: " + nazivMete);
+        logPoruka("Nepoznata meta: " + nazivMete);
         return;
     }
 
     int idx = indeksBroja(broj);
     if (idx == -1) {
-        Serial.println("Broj " + String(broj) + " nije važeći u Cricketu.");
+        logPoruka("Broj " + String(broj) + " nije važeći u Cricketu.");
         sljedeciIgrac_cricket();
         return;
     }
@@ -70,14 +71,14 @@ void obradiPogodak_cricket(const String& nazivMete) {
         if (!sviZatvorili(idx)) {
             bodoviCricket[trenutniIgrac] += BROJEVI[idx] * visak;
             igraci[trenutniIgrac].bodovi = bodoviCricket[trenutniIgrac];
-            Serial.println("Višak pogodaka! +" + String(BROJEVI[idx] * visak) +
+            logPoruka("Višak pogodaka! +" + String(BROJEVI[idx] * visak) +
                            " bodova. Ukupno: " + String(bodoviCricket[trenutniIgrac]));
             prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         } else {
-            Serial.println("Broj je već zatvoren za sve – nema bodova.");
+            logPoruka("Broj je već zatvoren za sve – nema bodova.");
         }
     } else if (p > pogodakaPrije) {
-        Serial.println("Zabilježeno " + String(mnozitelj) + " pogodaka broja " + String(broj) +
+        logPoruka("Zabilježeno " + String(mnozitelj) + " pogodaka broja " + String(broj) +
                        " (sada ukupno: " + String(p) + ")");
     }
 
@@ -100,8 +101,8 @@ void obradiPogodak_cricket(const String& nazivMete) {
             }
         }
         if (vodi) {
-            Serial.println("Igrač " + igraci[trenutniIgrac].ime + " je zatvorio sve brojeve i vodi u bodovima!");
-            Serial.println("POBJEDA!");
+            logPoruka("Igrač " + igraci[trenutniIgrac].ime + " je zatvorio sve brojeve i vodi u bodovima!");
+            logPoruka("POBJEDA!");
             zavrsiIgru();
             return;
         }
@@ -112,7 +113,7 @@ void obradiPogodak_cricket(const String& nazivMete) {
 
 void sljedeciIgrac_cricket() {
     trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
 }
 
 void resetirajIgru_cricket() {

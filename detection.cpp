@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "detection.h"
 #include "config.h"
 #include "melodies.h"
@@ -98,7 +99,7 @@ void detektirajPromasaj() {
   int vrijednost = zbroj / 3;
 
   if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
-    Serial.println("Promašaj detektiran!");
+    logPoruka("Promašaj detektiran!");
     svirajZvukPromasaja();
     registrirajInterakciju();
     brojStrelica++;

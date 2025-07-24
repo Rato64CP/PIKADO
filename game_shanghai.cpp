@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game_shanghai.h"
 #include "game.h"
 #include "config.h"
@@ -22,12 +23,12 @@ void inicijalizirajIgru_shanghai() {
         igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
-    Serial.println("Igra SHANGHAI započinje!");
-    Serial.print("Runda "); Serial.print(runda);
-    Serial.println(": Pogađa se broj " + String(runda));
+    logPoruka("Igra SHANGHAI započinje!");
+    String msg = "Runda " + String(runda) + ": Pogađa se broj " + String(runda);
+    logPoruka(msg);
     prikaziCilj(trenutniIgrac, runda, 1500);
     najaviCiljaniBroj(runda);
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
 
@@ -45,12 +46,12 @@ void obradiPogodak_shanghai(const String& nazivMete) {
         broj = nazivMete.substring(7).toInt();
         mnozitelj = 1;
     } else {
-        Serial.println("Nepoznata meta: " + nazivMete);
+        logPoruka("Nepoznata meta: " + nazivMete);
         return;
     }
 
     if (broj != runda) {
-        Serial.println("Promašaj! Važeći broj u ovoj rundi je " + String(runda));
+        logPoruka("Promašaj! Važeći broj u ovoj rundi je " + String(runda));
         svirajZvukPromasaja();
     } else {
         bodoviPoIgracu[trenutniIgrac] += broj * mnozitelj;
@@ -62,7 +63,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
 
         svirajZvukTargetHit();
 
-        Serial.println("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
+        logPoruka("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
                        " = +" + String(broj * mnozitelj));
     }
 
@@ -73,7 +74,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
         if (pogodjenoSimple[trenutniIgrac] &&
             pogodjenoDouble[trenutniIgrac] &&
             pogodjenoTriple[trenutniIgrac]) {
-            Serial.println(igraci[trenutniIgrac].ime + " je napravio SHANGHAI i pobijedio!");
+            logPoruka(igraci[trenutniIgrac].ime + " je napravio SHANGHAI i pobijedio!");
             svirajZvukShanghai();
             zavrsiIgru();
             return; // završava igra
@@ -93,29 +94,29 @@ void obradiPogodak_shanghai(const String& nazivMete) {
             trenutniIgrac = 0;
             runda++;
             if (runda > 20) {
-                Serial.println("Kraj igre!");
+                logPoruka("Kraj igre!");
                 // Odredi pobjednika
                 int najvise = -1;
                 int pobjednik = -1;
                 for (int i = 0; i < brojIgraca; i++) {
-                    Serial.println(igraci[i].ime + ": " + String(bodoviPoIgracu[i]) + " bodova");
+                    logPoruka(igraci[i].ime + ": " + String(bodoviPoIgracu[i]) + " bodova");
                     if (bodoviPoIgracu[i] > najvise) {
                         najvise = bodoviPoIgracu[i];
                         pobjednik = i;
                     }
                 }
-                Serial.println("Pobjednik je " + igraci[pobjednik].ime + "!");
+                logPoruka("Pobjednik je " + igraci[pobjednik].ime + "!");
                 zavrsiIgru();
                 return;
             } else {
-                Serial.print("Runda "); Serial.print(runda);
-                Serial.println(": Pogađa se broj " + String(runda));
+                String msg = "Runda " + String(runda) + ": Pogađa se broj " + String(runda);
+                logPoruka(msg);
                 prikaziCilj(trenutniIgrac, runda, 1500);
                 najaviCiljaniBroj(runda);
             }
         }
 
-        Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+        logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     }
 }
 
