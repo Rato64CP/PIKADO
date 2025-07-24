@@ -55,6 +55,12 @@ void ocistiDisplay() {
     }
 }
 
+void prikaziCilj(uint8_t igrac, int broj, unsigned long trajanjeMs) {
+    prikaziBroj(igrac, broj);
+    delay(trajanjeMs);
+    prikaziBodove(igrac, igraci[igrac].bodovi);
+}
+
 void ugasiDisplay() {
     for (uint8_t i = 0; i < BROJ_DISPLEJA; i++) {
         lc.clearDisplay(i);
