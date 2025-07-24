@@ -1,8 +1,8 @@
-#include "modules/lcd_display.h"
-#include "modules/detection.h"
-#include "core/config.h"
-#include "modules/melodies.h"
-#include "core/game.h"
+#include "lcd_display.h"
+#include "detection.h"
+#include "../core/config.h"
+#include "melodies.h"
+#include "../core/game.h"
 
 // Struktura za metu
 struct Meta {

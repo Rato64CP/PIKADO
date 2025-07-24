@@ -1,9 +1,9 @@
-#include "modules/lcd_display.h"
-#include "games/game_501.h"
-#include "core/game.h"
-#include "core/config.h"
-#include "modules/scoreboard.h"
-#include "modules/melodies.h"
+#include "../modules/lcd_display.h"
+#include "game_501.h"
+#include "../core/game.h"
+#include "../core/config.h"
+#include "../modules/scoreboard.h"
+#include "../modules/melodies.h"
 
 int vrijednostMete_501(const String& naziv) {
     if (naziv.startsWith("Triple ")) return 3 * naziv.substring(7).toInt();

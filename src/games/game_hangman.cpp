@@ -1,8 +1,8 @@
-#include "modules/lcd_display.h"
-#include "games/game_hangman.h"
-#include "core/game.h"
-#include "core/config.h"
-#include "modules/scoreboard.h"
+#include "../modules/lcd_display.h"
+#include "game_hangman.h"
+#include "../core/game.h"
+#include "../core/config.h"
+#include "../modules/scoreboard.h"
 
 bool pogodjeniBrojevi[21];       // 1–20
 int greske[6];                  // broj grešaka po igraču
