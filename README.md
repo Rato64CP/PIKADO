@@ -46,6 +46,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - LED žaruljice upravljane preko UCN5821 (shift register)
 - Segmentni display s MAX7219 (6 modula) za prikaz bodova
 - JQ6500 MP3 modul za zvučne efekte (povezan na Serial1)
+- LCD preko I2C na pinovima SDA=20 i SCL=21
 
 ---
 
