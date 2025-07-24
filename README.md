@@ -129,6 +129,8 @@ Datoteke moraju imati prefiks s četiri znamenke kako bi odgovarale numeraciji `
 | 31   | `0031.mp3`      | "Target is" najava      |
 | 32   | `0032.mp3`      | "Target hit"            |
 | 33   | `0033.mp3`      | "Roulette over"         |
+| 34   | `0034.mp3`      | "Shanghai" pobjeda      |
+| 35   | `0035.mp3`      | "Try again" poruka      |
 
 ### Datoteke za pojedinacne mete
 
