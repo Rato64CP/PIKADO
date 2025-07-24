@@ -2,6 +2,7 @@
 #include "game.h"
 #include "config.h"
 #include "scoreboard.h"
+#include "melodies.h"
 
 static int runda = 1;
 static int strelica = 1;
@@ -19,8 +20,10 @@ void inicijalizirajIgru_roulette() {
     }
     trenutniIgrac = 0;
     Serial.println("Igra ROULETTE započinje!");
+    svirajZvukRouletteStart();
     Serial.println("Runda 1 – Na potezu: " + igraci[trenutniIgrac].ime);
     prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
+    najaviCiljaniBroj(ciljaniBroj[trenutniIgrac]);
     osvjeziSveBodove();
 }
 
@@ -48,8 +51,10 @@ void obradiPogodak_roulette(const String& nazivMete) {
         Serial.println("Pogođen vlastiti broj! +" + String(broj * mnozitelj) +
                        " bodova. Ukupno: " + String(bodoviRoulette[trenutniIgrac]));
         prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
+        svirajZvukTargetHit();
     } else {
         Serial.println("Promašaj – nije tvoj broj.");
+        svirajZvukPromasaja();
     }
 
     strelica++;
@@ -64,6 +69,7 @@ void obradiPogodak_roulette(const String& nazivMete) {
 
             if (runda > 5) {
                 Serial.println("Kraj igre ROULETTE!");
+                svirajZvukRouletteOver();
                 int pobjednik = 0;
                 int najvise = bodoviRoulette[0];
                 for (int i = 0; i < brojIgraca; i++) {
@@ -83,6 +89,7 @@ void obradiPogodak_roulette(const String& nazivMete) {
 
         Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
         prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
+        najaviCiljaniBroj(ciljaniBroj[trenutniIgrac]);
     }
 }
 

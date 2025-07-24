@@ -13,3 +13,7 @@ void svirajZvukBust();
 void svirajImeIgraca(uint8_t index);
 // Reproduciraj najavu pogođene mete
 void svirajZvukMete(const String& nazivMete);
+void svirajZvukRouletteStart();
+void najaviCiljaniBroj(int broj);
+void svirajZvukTargetHit();
+void svirajZvukRouletteOver();

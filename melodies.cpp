@@ -56,3 +56,15 @@ void svirajZvukMete(const String& nazivMete) {
         }
     }
 }
+
+void svirajZvukRouletteStart() { mp3.play(30); }
+
+void najaviCiljaniBroj(int broj) {
+    mp3.play(31);
+    delay(700);
+    svirajZvukMete("Simple " + String(broj));
+}
+
+void svirajZvukTargetHit() { mp3.play(32); }
+
+void svirajZvukRouletteOver() { mp3.play(33); }
