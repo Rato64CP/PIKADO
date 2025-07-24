@@ -34,6 +34,7 @@ Koristi mikrofon za detekciju promašaja i tipke za odabir igre, broja igrača i
 - Snimljeni glasovni pozivi igrača ("Igrač 1", "Igrač 2"...)
 - Glasovna najava pogođenog polja (koristi mp3 datoteke od `0100.mp3` nadalje)
 - Automatski prelazak u "sleep" način rada nakon 10 minuta neaktivnosti (display blinka svakih 5 s)
+- Signalizacija grešaka blinkanjem lampice tipke **RESET**
 
 ---
 
@@ -96,4 +97,8 @@ Za detaljniji opis toka igre pogledajte datoteku [TIJEK_IGARA.md](docs/TIJEK_IGA
 ## 📌 Napomena
 
 Ovaj sustav je dizajniran modularno tako da je lako dodavati nove igre i funkcionalnosti. Može se nadograditi s prikazom na OLED/TFT ili komunikacijom s Raspberry Pi.
+
+## ❗ Greške i signalizacija
+
+Greške se mogu prijaviti funkcijom `signalGreska()`. Dok je greška aktivna, lampica tipke **RESET** blinka kako bi korisnik znao da treba ponovno pokrenuti igru ili pregledati sustav.
 

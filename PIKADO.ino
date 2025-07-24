@@ -7,6 +7,7 @@
 #include "src/modules/melodies.h"
 #include "src/modules/scoreboard.h"
 #include "src/modules/lcd_display.h"
+#include "src/modules/error.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
@@ -70,6 +71,12 @@ void osvjeziZaruljiceIgra() {
   // Prikaži odabrane DOUBLE IN/OUT opcije
   stanjeZaruljica[OSTALO_IN_CUTTHROAT] = DOUBLE_IN;
   stanjeZaruljica[OSTALO_OUT_TEAM] = DOUBLE_OUT;
+
+  // Ako je aktivna greška, blinkaj RESET lampicom
+  azurirajGresku();
+  if (greskaAktivna()) {
+    stanjeZaruljica[IGRA_RESET] = greskaBlinkStanje();
+  }
 
   postaviZaruljice(stanjeZaruljica);
 }
@@ -195,6 +202,10 @@ void loop() {
       }
       stanjeZaruljica[OSTALO_IN_CUTTHROAT] = doubleInOdabran;
       stanjeZaruljica[OSTALO_OUT_TEAM] = doubleOutOdabran;
+    }
+    azurirajGresku();
+    if (greskaAktivna()) {
+      stanjeZaruljica[IGRA_RESET] = greskaBlinkStanje();
     }
     postaviZaruljice(stanjeZaruljica);
 
