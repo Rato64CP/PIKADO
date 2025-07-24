@@ -81,7 +81,14 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 
 ---
 
-## 🛠️ 10. Setup Agent (`PIKADO.ino`)
+## 🚨 10. Error Handler Agent (`error.cpp`)
+
+- **Odgovornost:** Centralizirano prijavljivanje i signaliziranje grešaka
+- **Indikacija:** blinkanje lampice tipke RESET dok je greška aktivna
+- **Koristi se:** `signalGreska()` za prijavu i `azurirajGresku()` u petlji
+
+---
+## 🛠️ 11. Setup Agent (`PIKADO.ino`)
 
 - **Odgovornost:** Glavni ulaz, inicijalizira sve agente
 - **Logika:** bira igru, broj igrača, pravila
