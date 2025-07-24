@@ -217,6 +217,8 @@ Ove snimke najavljuju pogođeno polje. Svaka datoteka odgovara jednoj zoni na pl
 6. Igra započinje automatski
 7. Serijski monitor prikazuje sve pogođaje, bodove i status
 
+Za detaljniji opis toka igre pogledajte datoteku [TIJEK_IGARA.md](TIJEK_IGARA.md).
+
 ---
 
 ## 📌 Napomena
