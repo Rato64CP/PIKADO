@@ -65,7 +65,8 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 1. Otvori `PIKADO.ino` u Arduino IDE ili CLI
 2. Odaberi ploču **Arduino Mega 2560**
 3. Instaliraj Arduino biblioteku **LedControl** (za MAX7219)
-4. Kompajliraj i učitaj na uređaj
+4. Instaliraj Arduino biblioteku **LiquidCrystal_I2C** (za LCD)
+5. Kompajliraj i učitaj na uređaj
 
 ---
 Detaljan popis priključaka i MP3 datoteka nalazi se u [POVEZIVANJE_I_MP3.md](POVEZIVANJE_I_MP3.md).
@@ -85,7 +86,7 @@ Detaljan popis priključaka i MP3 datoteka nalazi se u [POVEZIVANJE_I_MP3.md](PO
 4. Zatim odaberite broj igrača
 5. LED žaruljice će pokazati trenutne odabire
 6. Igra započinje automatski
-7. Serijski monitor prikazuje sve pogođaje, bodove i status
+7. Serijski monitor i LCD prikazuje sve pogođaje, bodove i status
 
 Za detaljniji opis toka igre pogledajte datoteku [TIJEK_IGARA.md](TIJEK_IGARA.md).
 

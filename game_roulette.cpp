@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game_roulette.h"
 #include "game.h"
 #include "config.h"
@@ -16,12 +17,12 @@ void inicijalizirajIgru_roulette() {
         ciljaniBroj[i] = random(1, 21);  // 1–20
         bodoviRoulette[i] = 0;
         igraci[i].bodovi = 0;
-        Serial.println("Igrač " + String(i) + " ciljani broj: " + String(ciljaniBroj[i]));
+        logPoruka("Igrač " + String(i) + " ciljani broj: " + String(ciljaniBroj[i]));
     }
     trenutniIgrac = 0;
-    Serial.println("Igra ROULETTE započinje!");
+    logPoruka("Igra ROULETTE započinje!");
     svirajZvukRouletteStart();
-    Serial.println("Runda 1 – Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Runda 1 – Na potezu: " + igraci[trenutniIgrac].ime);
     prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
     najaviCiljaniBroj(ciljaniBroj[trenutniIgrac]);
     osvjeziSveBodove();
@@ -41,19 +42,19 @@ void obradiPogodak_roulette(const String& nazivMete) {
         broj = nazivMete.substring(7).toInt();
         mnozitelj = 1;
     } else {
-        Serial.println("Nepoznata meta: " + nazivMete);
+        logPoruka("Nepoznata meta: " + nazivMete);
         return;
     }
 
     if (broj == ciljaniBroj[trenutniIgrac]) {
         bodoviRoulette[trenutniIgrac] += broj * mnozitelj;
         igraci[trenutniIgrac].bodovi = bodoviRoulette[trenutniIgrac];
-        Serial.println("Pogođen vlastiti broj! +" + String(broj * mnozitelj) +
+        logPoruka("Pogođen vlastiti broj! +" + String(broj * mnozitelj) +
                        " bodova. Ukupno: " + String(bodoviRoulette[trenutniIgrac]));
         prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         svirajZvukTargetHit();
     } else {
-        Serial.println("Promašaj – nije tvoj broj.");
+        logPoruka("Promašaj – nije tvoj broj.");
         svirajZvukPromasaja();
     }
 
@@ -68,26 +69,26 @@ void obradiPogodak_roulette(const String& nazivMete) {
             runda++;
 
             if (runda > 5) {
-                Serial.println("Kraj igre ROULETTE!");
+                logPoruka("Kraj igre ROULETTE!");
                 svirajZvukRouletteOver();
                 int pobjednik = 0;
                 int najvise = bodoviRoulette[0];
                 for (int i = 0; i < brojIgraca; i++) {
-                    Serial.println("Igrač " + String(i) + ": " + String(bodoviRoulette[i]) + " bodova");
+                    logPoruka("Igrač " + String(i) + ": " + String(bodoviRoulette[i]) + " bodova");
                     if (bodoviRoulette[i] > najvise) {
                         najvise = bodoviRoulette[i];
                         pobjednik = i;
                     }
                 }
-                Serial.println("Pobjednik je IGRAČ " + String(pobjednik) + "!");
+                logPoruka("Pobjednik je IGRAČ " + String(pobjednik) + "!");
                 zavrsiIgru();
                 return;
             }
 
-            Serial.println("Runda " + String(runda));
+            logPoruka("Runda " + String(runda));
         }
 
-        Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+        logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
         prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
         najaviCiljaniBroj(ciljaniBroj[trenutniIgrac]);
     }

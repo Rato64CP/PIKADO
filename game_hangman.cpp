@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game_hangman.h"
 #include "game.h"
 #include "config.h"
@@ -16,10 +17,10 @@ void inicijalizirajIgru_hangman() {
         igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
-    Serial.println("Igra HANGMAN započinje!");
-    Serial.println("Pogodi brojeve 1–20 bez ponavljanja.");
-    Serial.println("Svaki igrač ima najviše 6 grešaka.");
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Igra HANGMAN započinje!");
+    logPoruka("Pogodi brojeve 1–20 bez ponavljanja.");
+    logPoruka("Svaki igrač ima najviše 6 grešaka.");
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
 
@@ -37,21 +38,21 @@ void obradiPogodak_hangman(const String& nazivMete) {
         broj = nazivMete.substring(7).toInt();
         mnozitelj = 1;
     } else {
-        Serial.println("Nepoznata meta: " + nazivMete);
+        logPoruka("Nepoznata meta: " + nazivMete);
         return;
     }
 
     if (broj < 1 || broj > 20) {
-        Serial.println("Broj izvan raspona.");
+        logPoruka("Broj izvan raspona.");
         return;
     }
 
     if (pogodjeniBrojevi[broj]) {
         greske[trenutniIgrac]++;
-        Serial.println("Već pogođeni broj – greška! (" + String(greske[trenutniIgrac]) + "/" + String(MAX_GRESAKA) + ")");
+        logPoruka("Već pogođeni broj – greška! (" + String(greske[trenutniIgrac]) + "/" + String(MAX_GRESAKA) + ")");
 
         if (greske[trenutniIgrac] >= MAX_GRESAKA) {
-            Serial.println(igraci[trenutniIgrac].ime + " je izgubio (više od 6 grešaka)!");
+            logPoruka(igraci[trenutniIgrac].ime + " je izgubio (više od 6 grešaka)!");
             // Opcionalno: provjeri je li ostao samo 1 igrač aktivan
             return;
         }
@@ -60,7 +61,7 @@ void obradiPogodak_hangman(const String& nazivMete) {
         int bodovi = broj * mnozitelj;
         bodoviHangman[trenutniIgrac] += bodovi;
         igraci[trenutniIgrac].bodovi = bodoviHangman[trenutniIgrac];
-        Serial.println("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
+        logPoruka("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
                        " = +" + String(bodovi) + " bodova (Ukupno: " + String(bodoviHangman[trenutniIgrac]) + ")");
         prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
     }
@@ -74,24 +75,24 @@ void sljedeciIgrac_hangman() {
         int sljedeci = (prethodni + i) % brojIgraca;
         if (greske[sljedeci] < MAX_GRESAKA) {
             trenutniIgrac = sljedeci;
-            Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+            logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
             return;
         }
     }
 
-    Serial.println("Nema više aktivnih igrača. Kraj igre!");
+    logPoruka("Nema više aktivnih igrača. Kraj igre!");
     // Prikaži rezultat
     int najvise = -1;
     int pobjednik = -1;
     for (int i = 0; i < brojIgraca; i++) {
-        Serial.println("Igrač " + String(i) + ": " + String(bodoviHangman[i]) + " bodova");
+        logPoruka("Igrač " + String(i) + ": " + String(bodoviHangman[i]) + " bodova");
         if (bodoviHangman[i] > najvise) {
             najvise = bodoviHangman[i];
             pobjednik = i;
         }
     }
     if (pobjednik != -1) {
-        Serial.println("Pobjednik je IGRAČ " + String(pobjednik) + "!");
+        logPoruka("Pobjednik je IGRAČ " + String(pobjednik) + "!");
     }
     zavrsiIgru();
 }

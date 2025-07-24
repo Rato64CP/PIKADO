@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game_701.h"
 #include "game.h"
 #include "config.h"
@@ -18,8 +19,8 @@ void inicijalizirajIgru_701() {
         igraci[i].prethodniBodovi = 701;
     }
     trenutniIgrac = 0;
-    Serial.println("Igra 701 započinje!");
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Igra 701 započinje!");
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
 
@@ -30,7 +31,7 @@ void obradiPogodak_701(const String& nazivMete) {
     // DOUBLE IN provjera
     if (DOUBLE_IN && !igrac.jeAktiviran) {
         if (!nazivMete.startsWith("Double")) {
-            Serial.println("Double IN: pogodak ne vrijedi jer nije Double.");
+            logPoruka("Double IN: pogodak ne vrijedi jer nije Double.");
             krajPoteza();
             return;
         }
@@ -41,14 +42,11 @@ void obradiPogodak_701(const String& nazivMete) {
 
     int bodoviNakonPogotka = igrac.bodovi - vrijednost;
 
-    Serial.print("Pogođeno: ");
-    Serial.print(nazivMete);
-    Serial.print(" (");
-    Serial.print(vrijednost);
-    Serial.println(" bodova)");
+    String poruka = "Pogođeno: " + nazivMete + " (" + String(vrijednost) + " bodova)";
+    logPoruka(poruka);
 
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
-        Serial.println("Bust! Prelazak preko 0 nije dozvoljen.");
+        logPoruka("Bust! Prelazak preko 0 nije dozvoljen.");
         svirajZvukBust();
         igrac.bodovi = igrac.prethodniBodovi;
         prikaziBodove(trenutniIgrac, igrac.bodovi);
@@ -59,15 +57,15 @@ void obradiPogodak_701(const String& nazivMete) {
     if (bodoviNakonPogotka == 0) {
         if (DOUBLE_OUT) {
             if (nazivMete.startsWith("Double")) {
-                Serial.println(igrac.ime + " je pobijedio!");
+                logPoruka(igrac.ime + " je pobijedio!");
                 zavrsiIgru();
             } else {
-                Serial.println("Završetak mora biti s Double!");
+                logPoruka("Završetak mora biti s Double!");
                 igrac.bodovi = igrac.prethodniBodovi;
                 krajPoteza();
             }
         } else {
-            Serial.println(igrac.ime + " je pobijedio!");
+            logPoruka(igrac.ime + " je pobijedio!");
             zavrsiIgru();
         }
         prikaziBodove(trenutniIgrac, igrac.bodovi);
@@ -75,7 +73,7 @@ void obradiPogodak_701(const String& nazivMete) {
     }
 
     igrac.bodovi = bodoviNakonPogotka;
-    Serial.println(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
+    logPoruka(igrac.ime + ": " + String(igrac.bodovi) + " bodova");
     prikaziBodove(trenutniIgrac, igrac.bodovi);
 
     brojStrelica++;
@@ -90,6 +88,6 @@ void resetirajIgru_701() {
         igraci[i].prethodniBodovi = 701;
     }
     trenutniIgrac = 0;
-    Serial.println("Igra 701 je resetirana.");
+    logPoruka("Igra 701 je resetirana.");
     osvjeziSveBodove();
 }

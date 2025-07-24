@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game_3inline.h"
 #include "game.h"
 #include "config.h"
@@ -29,8 +30,8 @@ void inicijalizirajIgru_3inline() {
         prikaziBodove(i, 0);
     }
     trenutniIgrac = 0;
-    Serial.println("Igra 3-in-line započinje!");
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Igra 3-in-line započinje!");
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
 }
 
 void obradiPogodak_3inline(const String& nazivMete) {
@@ -39,7 +40,7 @@ void obradiPogodak_3inline(const String& nazivMete) {
     if (nazivMete.startsWith("Triple ") || nazivMete.startsWith("Double ") || nazivMete.startsWith("Simple ")) {
         broj = nazivMete.substring(nazivMete.indexOf(' ') + 1).toInt();
     } else if (nazivMete.indexOf("25") != -1) {
-        Serial.println("Pogodak u 25 ne vrijedi za 3-in-line.");
+        logPoruka("Pogodak u 25 ne vrijedi za 3-in-line.");
         sljedeciIgrac_3inline();
         return;
     } else {
@@ -47,7 +48,7 @@ void obradiPogodak_3inline(const String& nazivMete) {
     }
 
     if (broj < 1 || broj > 20) {
-        Serial.println("Nevažeći broj: " + String(broj));
+        logPoruka("Nevažeći broj: " + String(broj));
         sljedeciIgrac_3inline();
         return;
     }
@@ -56,15 +57,15 @@ void obradiPogodak_3inline(const String& nazivMete) {
 
     if (!pogodci[trenutniIgrac][broj]) {
         pogodci[trenutniIgrac][broj] = true;
-        Serial.println(igrac.ime + " je pogodio broj " + String(broj));
+        logPoruka(igrac.ime + " je pogodio broj " + String(broj));
     } else {
-        Serial.println("Broj " + String(broj) + " je već pogođen.");
+        logPoruka("Broj " + String(broj) + " je već pogođen.");
     }
 
     int niz = izracunajNiz(trenutniIgrac);
 
     if (niz >= 3) {
-        Serial.println(igrac.ime + " je pobijedio s 3 uzastopna broja!");
+        logPoruka(igrac.ime + " je pobijedio s 3 uzastopna broja!");
         blinkBroj(trenutniIgrac, 3, 3, 200);
         zavrsiIgru();
         return; // kraj igre
@@ -89,10 +90,10 @@ void resetirajIgru_3inline() {
         prikaziBodove(i, 0);
     }
     trenutniIgrac = 0;
-    Serial.println("Igra 3-in-line je resetirana.");
+    logPoruka("Igra 3-in-line je resetirana.");
 }
 
 void sljedeciIgrac_3inline() {
     trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
 }

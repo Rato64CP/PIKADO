@@ -1,3 +1,4 @@
+#include "lcd_display.h"
 #include "game.h"
 #include "game_301.h"
 #include "game_501.h"
@@ -35,14 +36,14 @@ void inicijalizirajIgrace(int broj) {
 
 void sljedeciIgrac() {
     trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
-    Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+    logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     svirajImeIgraca(trenutniIgrac);
 }
 
 void krajPoteza() {
     cekanjeNovogIgraca = true;
     brojStrelica = 0;
-    Serial.println("Izvadi strelice i pritisni NEW PLAYER.");
+    logPoruka("Izvadi strelice i pritisni NEW PLAYER.");
     svirajZvukVadenja();
 }
 
@@ -75,7 +76,7 @@ void obradiPogodak(const String& nazivMete) {
 void zavrsiIgru() {
     igraZavrsena = true;
     svirajZvukPobjede();
-    Serial.println("Igra završena. Pritisni NEW PLAYER ili RESET za novu igru.");
+    logPoruka("Igra završena. Pritisni NEW PLAYER ili RESET za novu igru.");
 }
 
 void resetirajAktivnuIgru() {
