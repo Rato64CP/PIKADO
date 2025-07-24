@@ -2,6 +2,7 @@
 #include "game.h"
 #include "config.h"
 #include "scoreboard.h"
+#include "melodies.h"
 
 static int runda = 1;
 static int strelica = 1;
@@ -25,6 +26,7 @@ void inicijalizirajIgru_shanghai() {
     Serial.print("Runda "); Serial.print(runda);
     Serial.println(": Pogađa se broj " + String(runda));
     prikaziCilj(trenutniIgrac, runda, 1500);
+    najaviCiljaniBroj(runda);
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -49,6 +51,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
 
     if (broj != runda) {
         Serial.println("Promašaj! Važeći broj u ovoj rundi je " + String(runda));
+        svirajZvukPromasaja();
     } else {
         bodoviPoIgracu[trenutniIgrac] += broj * mnozitelj;
         igraci[trenutniIgrac].bodovi = bodoviPoIgracu[trenutniIgrac];
@@ -56,6 +59,8 @@ void obradiPogodak_shanghai(const String& nazivMete) {
         if (mnozitelj == 1) pogodjenoSimple[trenutniIgrac] = true;
         if (mnozitelj == 2) pogodjenoDouble[trenutniIgrac] = true;
         if (mnozitelj == 3) pogodjenoTriple[trenutniIgrac] = true;
+
+        svirajZvukTargetHit();
 
         Serial.println("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
                        " = +" + String(broj * mnozitelj));
@@ -69,8 +74,11 @@ void obradiPogodak_shanghai(const String& nazivMete) {
             pogodjenoDouble[trenutniIgrac] &&
             pogodjenoTriple[trenutniIgrac]) {
             Serial.println(igraci[trenutniIgrac].ime + " je napravio SHANGHAI i pobijedio!");
+            svirajZvukShanghai();
             zavrsiIgru();
             return; // završava igra
+        } else {
+            svirajZvukTryAgain();
         }
 
         // Reset za sljedećeg igrača
@@ -103,6 +111,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
                 Serial.print("Runda "); Serial.print(runda);
                 Serial.println(": Pogađa se broj " + String(runda));
                 prikaziCilj(trenutniIgrac, runda, 1500);
+                najaviCiljaniBroj(runda);
             }
         }
 

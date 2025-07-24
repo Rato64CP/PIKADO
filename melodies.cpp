@@ -68,3 +68,7 @@ void najaviCiljaniBroj(int broj) {
 void svirajZvukTargetHit() { mp3.play(32); }
 
 void svirajZvukRouletteOver() { mp3.play(33); }
+
+void svirajZvukShanghai() { mp3.play(34); }
+
+void svirajZvukTryAgain() { mp3.play(35); }
