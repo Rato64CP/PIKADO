@@ -48,10 +48,12 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 
 ---
 
-## 📺 6. Display Agent (`scoreboard.cpp`)
+## 📺 6. Display Agent (`scoreboard.cpp`, `lcd_display.cpp`)
 
-- **Odgovornost:** Prikaz bodova i statusa na segmentnim LED displayima
-- **Tehnologija:** MAX7219, LedControl ili MD_MAX72XX
+- **Odgovornost:** Prikaz bodova i statusa na segmentnim LED displayima i LCD-u
+- **Tehnologija:** MAX7219, LedControl ili MD_MAX72XX za LED display,
+  LiquidCrystal_I2C za LCD
+- **Pinovi:** LCD koristi I2C konekciju (SDA=20, SCL=21) pa ti pinovi moraju biti slobodni
 - **Prikaz:** Bodovi svakog igrača, status igre, redoslijed
 
 ---

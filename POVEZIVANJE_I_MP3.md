@@ -4,6 +4,9 @@ Sadržaj README datoteke koji opisuje raspored pinova na ploči i nazive MP3 dat
 
 ## 🪛 Povezivanje
 
+Napomena: pinovi **20** (SDA) i **21** (SCL) rezervirani su za I2C vezu s LCD
+ekranom te se ne smiju koristiti za tipke ili druge periferije.
+
 ### Tipke (gumbi)
 
 | Pinovi | Funkcija         |
@@ -27,6 +30,14 @@ Sadržaj README datoteke koji opisuje raspored pinova na ploči i nazive MP3 dat
 | 9   | DIN      |
 | 10  | CLK      |
 | 11  | CS       |
+
+### LCD (I2C)
+
+| Pin | Funkcija |
+|-----|----------|
+| 20  | SDA      |
+| 21  | SCL      |
+|     | I2C adresa 0x27 |
 
 ### Pikado ploča (detekcija)
 

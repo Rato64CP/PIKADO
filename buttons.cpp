@@ -1,5 +1,7 @@
 #include "buttons.h"
 
+// Pins 20 (SDA) and 21 (SCL) moraju ostati slobodni za I2C (LCD)
+// zato su tipke povezane tek od pina 22 nadalje
 const uint8_t pinoviTipki[BROJ_TIPKI] = {
   22, 23, 24, 25, 26, 27, 28, 29, 30, 31,  // IGRA
   32, 33, 34, 35, 36, 37,                 // IGRACI
