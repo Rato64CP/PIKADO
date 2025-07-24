@@ -10,3 +10,5 @@ void ocistiDisplay();
 void prikaziCilj(uint8_t igrac, int broj, unsigned long trajanjeMs);
 // Gasi sve segmente na svim modulima
 void ugasiDisplay();
+// Blinka zadani broj na odabranom modulu
+void blinkBroj(uint8_t igrac, int broj, uint8_t ponavljanja, unsigned int trajanjeMs);
