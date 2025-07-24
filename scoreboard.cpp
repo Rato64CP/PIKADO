@@ -66,3 +66,14 @@ void ugasiDisplay() {
         lc.clearDisplay(i);
     }
 }
+
+void blinkBroj(uint8_t modul, int broj, uint8_t ponavljanja, unsigned int trajanjeMs) {
+    if (modul >= BROJ_DISPLEJA) return;
+    for (uint8_t i = 0; i < ponavljanja; i++) {
+        prikaziBroj(modul, broj);
+        delay(trajanjeMs);
+        lc.clearDisplay(modul);
+        delay(trajanjeMs);
+    }
+    prikaziBroj(modul, broj);
+}
