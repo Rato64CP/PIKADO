@@ -1,9 +1,9 @@
-#include "lcd_display.h"
-#include "game_shanghai.h"
-#include "game.h"
-#include "config.h"
-#include "scoreboard.h"
-#include "melodies.h"
+#include "modules/lcd_display.h"
+#include "games/game_shanghai.h"
+#include "core/game.h"
+#include "core/config.h"
+#include "modules/scoreboard.h"
+#include "modules/melodies.h"
 
 static int runda = 1;
 static int strelica = 1;

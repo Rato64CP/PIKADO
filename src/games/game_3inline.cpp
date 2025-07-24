@@ -1,8 +1,8 @@
-#include "lcd_display.h"
-#include "game_3inline.h"
-#include "game.h"
-#include "config.h"
-#include "scoreboard.h"
+#include "modules/lcd_display.h"
+#include "games/game_3inline.h"
+#include "core/game.h"
+#include "core/config.h"
+#include "modules/scoreboard.h"
 
 static bool pogodci[6][21]; // [igrač][broj 1-20], indeks 0 se ne koristi
 static uint8_t najduljiNiz[6];

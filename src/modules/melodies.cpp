@@ -1,6 +1,6 @@
-#include "melodies.h"
-#include "jq6500.h"
-#include "config.h"
+#include "modules/melodies.h"
+#include "modules/jq6500.h"
+#include "core/config.h"
 
 static JQ6500 mp3(Serial1);
 
