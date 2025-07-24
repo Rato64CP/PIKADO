@@ -125,6 +125,10 @@ Datoteke moraju imati prefiks s četiri znamenke kako bi odgovarale numeraciji `
 | 24   | `0024.mp3`      | Snimka "Igrač 4"        |
 | 25   | `0025.mp3`      | Snimka "Igrač 5"        |
 | 26   | `0026.mp3`      | Snimka "Igrač 6"        |
+| 30   | `0030.mp3`      | "Roulette start"        |
+| 31   | `0031.mp3`      | "Target is" najava      |
+| 32   | `0032.mp3`      | "Target hit"            |
+| 33   | `0033.mp3`      | "Roulette over"         |
 
 ### Datoteke za pojedinacne mete
 
