@@ -24,6 +24,7 @@ void inicijalizirajIgru_shanghai() {
     Serial.println("Igra SHANGHAI započinje!");
     Serial.print("Runda "); Serial.print(runda);
     Serial.println(": Pogađa se broj " + String(runda));
+    prikaziCilj(trenutniIgrac, runda, 1500);
     Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -101,6 +102,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
             } else {
                 Serial.print("Runda "); Serial.print(runda);
                 Serial.println(": Pogađa se broj " + String(runda));
+                prikaziCilj(trenutniIgrac, runda, 1500);
             }
         }
 

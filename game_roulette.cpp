@@ -20,6 +20,7 @@ void inicijalizirajIgru_roulette() {
     trenutniIgrac = 0;
     Serial.println("Igra ROULETTE započinje!");
     Serial.println("Runda 1 – Na potezu: " + igraci[trenutniIgrac].ime);
+    prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
     osvjeziSveBodove();
 }
 
@@ -81,6 +82,7 @@ void obradiPogodak_roulette(const String& nazivMete) {
         }
 
         Serial.println("Na potezu: " + igraci[trenutniIgrac].ime);
+        prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
     }
 }
 
