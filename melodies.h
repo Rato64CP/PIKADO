@@ -17,3 +17,5 @@ void svirajZvukRouletteStart();
 void najaviCiljaniBroj(int broj);
 void svirajZvukTargetHit();
 void svirajZvukRouletteOver();
+void svirajZvukShanghai();
+void svirajZvukTryAgain();
