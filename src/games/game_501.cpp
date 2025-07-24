@@ -1,11 +1,11 @@
-#include "lcd_display.h"
-#include "game_701.h"
-#include "game.h"
-#include "config.h"
-#include "scoreboard.h"
-#include "melodies.h"
+#include "modules/lcd_display.h"
+#include "games/game_501.h"
+#include "core/game.h"
+#include "core/config.h"
+#include "modules/scoreboard.h"
+#include "modules/melodies.h"
 
-int vrijednostMete_701(const String& naziv) {
+int vrijednostMete_501(const String& naziv) {
     if (naziv.startsWith("Triple ")) return 3 * naziv.substring(7).toInt();
     if (naziv.startsWith("Double ")) return 2 * naziv.substring(7).toInt();
     if (naziv.startsWith("Simple ")) return naziv.substring(7).toInt();
@@ -13,19 +13,19 @@ int vrijednostMete_701(const String& naziv) {
     return 0;
 }
 
-void inicijalizirajIgru_701() {
+void inicijalizirajIgru_501() {
     for (int i = 0; i < brojIgraca; i++) {
-        igraci[i].bodovi = 701;
-        igraci[i].prethodniBodovi = 701;
+        igraci[i].bodovi = 501;
+        igraci[i].prethodniBodovi = 501;
     }
     trenutniIgrac = 0;
-    logPoruka("Igra 701 započinje!");
+    logPoruka("Igra 501 započinje!");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
 
-void obradiPogodak_701(const String& nazivMete) {
-    int vrijednost = vrijednostMete_701(nazivMete);
+void obradiPogodak_501(const String& nazivMete) {
+    int vrijednost = vrijednostMete_501(nazivMete);
     Igrac& igrac = igraci[trenutniIgrac];
 
     // DOUBLE IN provjera
@@ -82,12 +82,12 @@ void obradiPogodak_701(const String& nazivMete) {
     }
 }
 
-void resetirajIgru_701() {
+void resetirajIgru_501() {
     for (int i = 0; i < brojIgraca; i++) {
-        igraci[i].bodovi = 701;
-        igraci[i].prethodniBodovi = 701;
+        igraci[i].bodovi = 501;
+        igraci[i].prethodniBodovi = 501;
     }
     trenutniIgrac = 0;
-    logPoruka("Igra 701 je resetirana.");
+    logPoruka("Igra 501 je resetirana.");
     osvjeziSveBodove();
 }

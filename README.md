@@ -70,7 +70,7 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 5. Kompajliraj i učitaj na uređaj
 
 ---
-Detaljan popis priključaka i MP3 datoteka nalazi se u [POVEZIVANJE_I_MP3.md](POVEZIVANJE_I_MP3.md).
+Detaljan popis priključaka i MP3 datoteka nalazi se u [POVEZIVANJE_I_MP3.md](docs/POVEZIVANJE_I_MP3.md).
 
 
 ---
@@ -89,7 +89,7 @@ Detaljan popis priključaka i MP3 datoteka nalazi se u [POVEZIVANJE_I_MP3.md](PO
 6. Igra započinje automatski
 7. Serijski monitor i LCD prikazuje sve pogođaje, bodove i status
 
-Za detaljniji opis toka igre pogledajte datoteku [TIJEK_IGARA.md](TIJEK_IGARA.md).
+Za detaljniji opis toka igre pogledajte datoteku [TIJEK_IGARA.md](docs/TIJEK_IGARA.md).
 
 ---
 

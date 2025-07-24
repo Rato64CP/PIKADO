@@ -1,5 +1,5 @@
-#include "scoreboard.h"
-#include "game.h"
+#include "modules/scoreboard.h"
+#include "core/game.h"
 #include <LedControl.h>
 
 const uint8_t PIN_DIN = 9;

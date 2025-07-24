@@ -1,8 +1,8 @@
-#include "lcd_display.h"
-#include "game_cricket.h"
-#include "game.h"
-#include "config.h"
-#include "scoreboard.h"
+#include "modules/lcd_display.h"
+#include "games/game_cricket.h"
+#include "core/game.h"
+#include "core/config.h"
+#include "modules/scoreboard.h"
 
 const int BROJEVI[7] = {15, 16, 17, 18, 19, 20, 25}; // validni brojevi
 static int pogodci[6][7];   // [igrač][broj index]
