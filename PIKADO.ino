@@ -1,12 +1,12 @@
 #include <Arduino.h>
-#include "core/config.h"
-#include "modules/detection.h"
-#include "modules/buttons.h"
-#include "modules/zaruljice.h"
-#include "core/game.h"
-#include "modules/melodies.h"
-#include "modules/scoreboard.h"
-#include "modules/lcd_display.h"
+#include "src/core/config.h"
+#include "src/modules/detection.h"
+#include "src/modules/buttons.h"
+#include "src/modules/zaruljice.h"
+#include "src/core/game.h"
+#include "src/modules/melodies.h"
+#include "src/modules/scoreboard.h"
+#include "src/modules/lcd_display.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
