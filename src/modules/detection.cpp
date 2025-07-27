@@ -28,35 +28,34 @@ static String nazivPina(uint8_t pin) {
 // Definicija svih meta
 const Meta mete[] = {
   // === Common A15 ===
-  {"Triple 17", A7, COM_A15}, {"Double 17", A0, COM_A15}, {"Simple 17", A1, COM_A15},
-  {"Triple 3", A6, COM_A15},  {"Double 3", 51, COM_A15},  {"Simple 3", 53, COM_A15},
-  {"Triple 19", A5, COM_A15}, {"Double 19", 47, COM_A15}, {"Simple 19", 49, COM_A15},
-  {"Triple 7", A4, COM_A15},  {"Double 7", 43, COM_A15},   {"Simple 7", 45, COM_A15},
-  {"Triple 16", A3, COM_A15}, {"Double 16", 41, COM_A15},  {"Simple 16", 39, COM_A15},
+  {"Triple 12", 41, COM_A15}, {"Double 12", A7, COM_A15}, {"Simple 12", A6, COM_A15},
+  {"Triple 9", 43, COM_A15},  {"Double 9", A5, COM_A15},  {"Simple 9", A4, COM_A15},
+  {"Triple 14", 45, COM_A15}, {"Double 14", A3, COM_A15}, {"Simple 14", A2, COM_A15},
+  {"Triple 11", 47, COM_A15}, {"Double 11", A1, COM_A15}, {"Simple 11", A0, COM_A15},
+  {"Triple 8", 49, COM_A15},  {"Double 8", 35, COM_A15},  {"Simple 8", 37, COM_A15},
 
   // === Common A14 ===
-  {"Triple 6", A6, COM_A14},  {"Double 6", 51, COM_A14},  {"Simple 6", 53, COM_A14},
-  {"Triple 10", A5, COM_A14}, {"Double 10", 47, COM_A14}, {"Simple 10", 49, COM_A14},
-  {"Triple 15", A4, COM_A14}, {"Double 15", 43, COM_A14},  {"Simple 15", 45, COM_A14},
-  {"Triple 2", A3, COM_A14},  {"Double 2", 41, COM_A14},   {"Simple 2", 39, COM_A14},
-  {"25 (Double)", A2, COM_A14},
-  {"Triple 13", A7, COM_A14}, {"Double 13", A0, COM_A14}, {"Simple 13", A1, COM_A14},
-
-  // === Common A12 ===
-  {"Triple 8", A7, COM_A12},  {"Double 8", A0, COM_A12},  {"Simple 8", A1, COM_A12},
-  {"Triple 14", A5, COM_A12}, {"Double 14", 47, COM_A12}, {"Simple 14", 49, COM_A12},
-  {"Triple 9", A4, COM_A12},  {"Double 9", 43, COM_A12},   {"Simple 9", 45, COM_A12},
-  {"Triple 11", A6, COM_A12}, {"Double 11", 51, COM_A12}, {"Simple 11", 53, COM_A12},
-  {"Triple 12", A3, COM_A12}, {"Double 12", 41, COM_A12},  {"Simple 12", 39, COM_A12},
+  {"Triple 4", 41, COM_A14},  {"Double 4", A7, COM_A14},  {"Simple 4", A6, COM_A14},
+  {"Triple 18", 43, COM_A14}, {"Double 18", A5, COM_A14}, {"Simple 18", A4, COM_A14},
+  {"Triple 1", 45, COM_A14},  {"Double 1", A3, COM_A14},  {"Simple 1", A2, COM_A14},
+  {"Triple 20", 47, COM_A14}, {"Double 20", A1, COM_A14}, {"Simple 20", A0, COM_A14},
+  {"Triple 5", 49, COM_A14},  {"Double 5", 35, COM_A14},  {"Simple 5", 37, COM_A14},
+  {"25 (Simple)", 39, COM_A14},
 
   // === Common A13 ===
-  {"Triple 5", A7, COM_A13},  {"Double 5", A0, COM_A13},  {"Simple 5", A1, COM_A13},
-  {"Triple 20", A6, COM_A13}, {"Double 20", 51, COM_A13}, {"Simple 20", 53, COM_A13},
-  {"Triple 1", A5, COM_A13},  {"Double 1", 47, COM_A13},  {"Simple 1", 49, COM_A13},
-  {"Triple 18", A4, COM_A13}, {"Double 18", 43, COM_A13},  {"Simple 18", 45, COM_A13},
-  {"Triple 4", A3, COM_A13},  {"Double 4", 41, COM_A13},
-  {"25 (Simple)", A2, COM_A13},
-  {"Simple 4", 39, COM_A13}
+  {"Triple 2", 41, COM_A13},  {"Double 2", A7, COM_A13},  {"Simple 2", A6, COM_A13},
+  {"Triple 15", 43, COM_A13}, {"Double 15", A5, COM_A13}, {"Simple 15", A4, COM_A13},
+  {"Triple 10", 45, COM_A13}, {"Double 10", A3, COM_A13}, {"Simple 10", A2, COM_A13},
+  {"Triple 6", 47, COM_A13},  {"Double 6", A1, COM_A13},  {"Simple 6", A0, COM_A13},
+  {"Triple 13", 49, COM_A13}, {"Double 13", 35, COM_A13}, {"Simple 13", 37, COM_A13},
+  {"25 (Double)", 39, COM_A13},
+
+  // === Common A12 ===
+  {"Triple 16", 41, COM_A12}, {"Double 16", A7, COM_A12}, {"Simple 16", A6, COM_A12},
+  {"Triple 7", 43, COM_A12},  {"Double 7", A5, COM_A12},  {"Simple 7", A4, COM_A12},
+  {"Triple 19", 45, COM_A12}, {"Double 19", A3, COM_A12}, {"Simple 19", A2, COM_A12},
+  {"Triple 3", 47, COM_A12},  {"Double 3", A1, COM_A12},  {"Simple 3", A0, COM_A12},
+  {"Triple 17", 49, COM_A12}, {"Double 17", 35, COM_A12}, {"Simple 17", 37, COM_A12}
 };
 
 void inicijalizirajMete() {

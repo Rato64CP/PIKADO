@@ -4,7 +4,7 @@
 // Novi raspored tipki nakon prilagodbe ploče
 const uint8_t pinoviTipki[BROJ_TIPKI] = {
   36, 34, 30, 40, 28, 38, 32, 42, 46, 44,  // IGRA / OPCIJE
-  37, 35, 33, 31, 29, 27,                 // IGRACI
+  33, 31, 29, 27, 25, 23,                 // IGRACI
   50, 52                                   // PRAVILA (Double OUT / IN)
 };
 

@@ -12,7 +12,7 @@ ekranom te se ne smiju koristiti za tipke ili druge periferije.
 | Pinovi | Funkcija         |
 |--------|------------------|
 | 28–46  | Odabir igre (parni pinovi) |
-| 27–37  | Broj igrača (neparni pinovi) |
+| 23–33  | Broj igrača (neparni pinovi) |
 | 50, 52 | Pravila (Double OUT / IN) |
 
 ### LED žaruljice (preko UCN5821)

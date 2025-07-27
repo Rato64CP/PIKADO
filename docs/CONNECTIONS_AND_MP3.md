@@ -11,7 +11,7 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 | Pins | Function |
 |--------|------------------|
 | 28–46  | Game selection (even pins) |
-| 27–37  | Player count (odd pins) |
+| 23–33  | Player count (odd pins) |
 | 50, 52 | Rules (Double OUT / IN) |
 
 ### LED lamps (via UCN5821)
