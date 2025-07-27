@@ -40,9 +40,9 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 
 ### Dartboard (detection)
 
-- **Active sensor pins:** A4, A5, A6, A7, A8, A9, A10, A11, 53, 51, 49, 47, 45, 43, 41, 39
+- **Active sensor pins:** A0, A1, A2, A3, A4, A5, A6, A7, 53, 51, 49, 47, 45, 43, 41, 39
 - **Common pins:** A15 (`COM_A15`), A14 (`COM_A14`), A12 (`COM_A12`), A13 (`COM_A13`)
-- **Microphone for misses:** A0 (`PIN_MIKROFON`)
+- **Microphone for misses:** A8 (`PIN_MIKROFON`)
 
 ### JQ6500 MP3 module
 
