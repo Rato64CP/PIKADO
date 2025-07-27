@@ -42,7 +42,7 @@ ekranom te se ne smiju koristiti za tipke ili druge periferije.
 ### Pikado ploča (detekcija)
 
 - **Aktivni pinovi senzora:** A4, A5, A6, A7, A8, A9, A10, A11, 53, 51, 49, 47, 45, 43, 41, 39
-- **Zajednički pinovi:** A15 (`COM_45`), A14 (`COM_47`), A12 (`COM_A1`), A13 (`COM_A2`)
+- **Zajednički pinovi:** A15 (`COM_A15`), A14 (`COM_A14`), A12 (`COM_A12`), A13 (`COM_A13`)
 - **Mikrofon za promašaje:** A0 (`PIN_MIKROFON`)
 
 ### JQ6500 MP3 modul

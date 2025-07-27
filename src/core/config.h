@@ -3,10 +3,10 @@
 
 // Zajednički pinovi
 // Novi raspored zajedničkih pinova nakon prenamjene ploče
-constexpr uint8_t COM_45 = A15;  // bijela žica
-constexpr uint8_t COM_47 = A14;  // crna žica
-constexpr uint8_t COM_A1 = A12;
-constexpr uint8_t COM_A2 = A13;
+constexpr uint8_t COM_A15 = A15;  // bijela žica
+constexpr uint8_t COM_A14 = A14;  // crna žica
+constexpr uint8_t COM_A12 = A12;
+constexpr uint8_t COM_A13 = A13;
 
 // Pin za mikrofon
 constexpr uint8_t PIN_MIKROFON = A0;
