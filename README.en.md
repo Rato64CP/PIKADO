@@ -94,3 +94,9 @@ The system is modular so new games and features can easily be added. It can be e
 ## ❗ Errors and signalling
 
 Errors can be reported with `signalGreska()`. While active, the **RESET** button LED blinks so the user knows to restart or check the system.
+
+---
+
+## 🛠️ Target calibration
+
+If the dartboard reports wrong targets after rewiring, upload `examples/calibration.ino` to the Arduino. Open the serial monitor at 9600 baud and hit different fields. The detected target name and the pin numbers that were triggered will be printed, helping verify pin assignments.

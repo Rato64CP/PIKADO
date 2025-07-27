@@ -102,3 +102,9 @@ Ovaj sustav je dizajniran modularno tako da je lako dodavati nove igre i funkcio
 
 Greške se mogu prijaviti funkcijom `signalGreska()`. Dok je greška aktivna, lampica tipke **RESET** blinka kako bi korisnik znao da treba ponovno pokrenuti igru ili pregledati sustav.
 
+---
+
+## 🛠️ Kalibracija meta
+
+Ako nakon izmjene ožičenja pikado ploča ne javlja ispravne mete, isprobajte pomoćni program `examples/calibration.ino`. Učitajte ga na Arduino, otvorite serijski monitor (9600 baud) i gađajte pojedina polja. Na serijskom monitoru ispisat će se naziv detektirane mete i brojevi pinova koji su aktivirani, što olakšava provjeru rasporeda pinova.
+
