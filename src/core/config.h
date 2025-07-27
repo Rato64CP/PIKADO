@@ -2,10 +2,11 @@
 #include <Arduino.h>
 
 // Zajednički pinovi
-constexpr uint8_t COM_45 = 45;
-constexpr uint8_t COM_47 = 47;
-constexpr uint8_t COM_A1 = A1;
-constexpr uint8_t COM_A2 = A2;
+// Novi raspored zajedničkih pinova nakon prenamjene ploče
+constexpr uint8_t COM_45 = A15;  // bijela žica
+constexpr uint8_t COM_47 = A14;  // crna žica
+constexpr uint8_t COM_A1 = A12;
+constexpr uint8_t COM_A2 = A13;
 
 // Pin za mikrofon
 constexpr uint8_t PIN_MIKROFON = A0;

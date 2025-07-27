@@ -11,9 +11,9 @@ ekranom te se ne smiju koristiti za tipke ili druge periferije.
 
 | Pinovi | Funkcija         |
 |--------|------------------|
-| 22–31  | Odabir igre      |
-| 32–37  | Broj igrača      |
-| 38–39  | Pravila (IN/OUT) |
+| 28–46  | Odabir igre (parni pinovi) |
+| 27–37  | Broj igrača (neparni pinovi) |
+| 50, 52 | Pravila (Double OUT / IN) |
 
 ### LED žaruljice (preko UCN5821)
 
@@ -41,8 +41,8 @@ ekranom te se ne smiju koristiti za tipke ili druge periferije.
 
 ### Pikado ploča (detekcija)
 
-- **Aktivni pinovi senzora:** A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, 53, 49, 43
-- **Zajednički pinovi:** 45 (`COM_45`), 47 (`COM_47`), A1 (`COM_A1`), A2 (`COM_A2`)
+- **Aktivni pinovi senzora:** A4, A5, A6, A7, A8, A9, A10, A11, 53, 51, 49, 47, 45, 43, 41, 39
+- **Zajednički pinovi:** A15 (`COM_45`), A14 (`COM_47`), A12 (`COM_A1`), A13 (`COM_A2`)
 - **Mikrofon za promašaje:** A0 (`PIN_MIKROFON`)
 
 ### JQ6500 MP3 modul
