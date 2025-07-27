@@ -11,6 +11,20 @@ struct Meta {
   uint8_t pinZajednicki;
 };
 
+// Helper to convert a pin number to a human readable label
+static String nazivPina(uint8_t pin) {
+  if (pin == COM_A15) return String("COM_A15");
+  if (pin == COM_A14) return String("COM_A14");
+  if (pin == COM_A12) return String("COM_A12");
+  if (pin == COM_A13) return String("COM_A13");
+
+  if (pin >= A0 && pin <= A15) {
+    return String("A") + String(pin - A0);
+  }
+
+  return String(pin);
+}
+
 // Definicija svih meta
 const Meta mete[] = {
   // === Common A15 ===
@@ -114,7 +128,7 @@ String detektirajBacanjeBezIgre() {
   // Provjera pogođene mete
   const Meta* meta = scanForHit();
   if (meta != nullptr) {
-    return String(meta->naziv);
+    return nazivPina(meta->pinZajednicki) + " -- " + nazivPina(meta->pinAktivan);
   }
 
   // Provjera promašaja preko mikrofona
