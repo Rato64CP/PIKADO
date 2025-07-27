@@ -40,7 +40,7 @@ This project detects hits on an electronic dartboard using an **Arduino Mega 256
 
 - **Arduino Mega 2560**
 - Dartboard connected to digital and analog pins
-- Microphone on A0 for miss detection (`THRESHOLD_PROMASAJ` in `config.h`)
+- Microphone on A8 for miss detection (`THRESHOLD_PROMASAJ` in `config.h`)
 - Selection buttons wired to digital pins (pull-up)
 - LED lamps driven via UCN5821 shift register
 - MAX7219 6-module seven segment display for scores

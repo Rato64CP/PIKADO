@@ -9,7 +9,7 @@ constexpr uint8_t COM_A12 = A12;
 constexpr uint8_t COM_A13 = A13;
 
 // Pin za mikrofon
-constexpr uint8_t PIN_MIKROFON = A0;
+constexpr uint8_t PIN_MIKROFON = A8;
 constexpr int THRESHOLD_PROMASAJ = 600;
 
 // Pravila igre
