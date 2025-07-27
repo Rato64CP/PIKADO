@@ -10,9 +10,9 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 
 | Pins | Function |
 |--------|------------------|
-| 22–31  | Game selection |
-| 32–37  | Player count |
-| 38–39  | Rules (IN/OUT) |
+| 28–46  | Game selection (even pins) |
+| 27–37  | Player count (odd pins) |
+| 50, 52 | Rules (Double OUT / IN) |
 
 ### LED lamps (via UCN5821)
 
@@ -40,8 +40,8 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 
 ### Dartboard (detection)
 
-- **Active sensor pins:** A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, 53, 49, 43
-- **Common pins:** 45 (`COM_45`), 47 (`COM_47`), A1 (`COM_A1`), A2 (`COM_A2`)
+- **Active sensor pins:** A4, A5, A6, A7, A8, A9, A10, A11, 53, 51, 49, 47, 45, 43, 41, 39
+- **Common pins:** A15 (`COM_45`), A14 (`COM_47`), A12 (`COM_A1`), A13 (`COM_A2`)
 - **Microphone for misses:** A0 (`PIN_MIKROFON`)
 
 ### JQ6500 MP3 module
