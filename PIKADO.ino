@@ -209,9 +209,12 @@ void loop() {
     }
     postaviZaruljice(stanjeZaruljica);
 
-    if (detektirajBacanjeBezIgre()) {
-      logPoruka("Bacena strelica prije odabira!");
-      svirajZvukNepostavljenaIgra();
+    {
+      String razlog = detektirajBacanjeBezIgre();
+      if (razlog != "") {
+        logPoruka("Bacena strelica prije odabira! (" + razlog + ")");
+        svirajZvukNepostavljenaIgra();
+      }
     }
 
     // ----- Pokretanje igre -----
