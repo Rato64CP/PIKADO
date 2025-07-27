@@ -110,10 +110,11 @@ void detektirajPromasaj() {
   }
 }
 
-bool detektirajBacanjeBezIgre() {
+String detektirajBacanjeBezIgre() {
   // Provjera pogođene mete
-  if (scanForHit() != nullptr) {
-    return true;
+  const Meta* meta = scanForHit();
+  if (meta != nullptr) {
+    return String(meta->naziv);
   }
 
   // Provjera promašaja preko mikrofona
@@ -127,8 +128,8 @@ bool detektirajBacanjeBezIgre() {
 
   if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
     zadnjeVrijeme = millis();
-    return true;
+    return String("MIC");
   }
 
-  return false;
+  return String("");
 }
