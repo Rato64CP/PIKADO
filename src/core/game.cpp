@@ -76,7 +76,7 @@ void obradiPogodak(const String& nazivMete) {
 void zavrsiIgru() {
     igraZavrsena = true;
     svirajZvukPobjede();
-    logPoruka("Igra završena. Pritisni NEW PLAYER ili RESET za novu igru.");
+    logPoruka("Igra zavrsena. Pritisni tipku igre za novu.");
 }
 
 void resetirajAktivnuIgru() {
