@@ -143,6 +143,48 @@ static void azurirajNeaktivnost() {
   }
 }
 
+// Obrada pritiska tipke RESET. Prvi pritisak restartira trenutnu igru s istim
+// postavkama. Ako se drugi pritisak dogodi unutar 1.5 sekunde, vraca se na
+// pocetni izbornik.
+static void obradiReset() {
+  static unsigned long zadnjiReset = 0;
+  static bool cekaDrugi = false;
+  unsigned long sada = millis();
+
+  bool dvostruki = cekaDrugi && (sada - zadnjiReset <= 1500);
+  zadnjiReset = sada;
+  cekaDrugi = !dvostruki;
+
+  if (dvostruki) {
+    // Povratak na izbornik
+    resetirajAktivnuIgru();
+    odabranaIgra = -1;
+    odabraniBrojIgraca = -1;
+    doubleInOdabran = false;
+    doubleOutOdabran = false;
+    DOUBLE_IN = false;
+    DOUBLE_OUT = false;
+    porukaStartPrikazana = false;
+    igraPokrenuta = false;
+    igraZavrsena = true;
+  } else {
+    // Ponovno pokretanje iste igre
+    resetirajAktivnuIgru();
+    inicijalizirajIgrace(odabraniBrojIgraca);
+    pokreniAktivnuIgru();
+    cekanjeNovogIgraca = false;
+    brojStrelica = 0;
+    igraZavrsena = false;
+    svirajImeIgraca(trenutniIgrac);
+  }
+
+  // Pricekaj otpustanje tipke kako bismo izbjegli vise okidanja
+  while (tipkaStisnuta(IGRA_RESET)) {
+    ocitajTipke();
+    delay(10);
+  }
+}
+
 void setup() {
   Serial.begin(9600);
   inicijalizirajTipke();
@@ -300,16 +342,8 @@ void loop() {
       azurirajNeaktivnost();
       osvjeziZaruljiceIgra();
       if (tipkaStisnuta(IGRA_RESET)) {
-        resetirajAktivnuIgru();
-        odabranaIgra = -1;
-        odabraniBrojIgraca = -1;
-        doubleInOdabran = false;
-        doubleOutOdabran = false;
-        DOUBLE_IN = false;
-        DOUBLE_OUT = false;
-        porukaStartPrikazana = false;
-        igraZavrsena = true;
-        break;
+        obradiReset();
+        continue;
       }
 
       if (cekanjeNovogIgraca) {
@@ -341,15 +375,9 @@ void loop() {
       azurirajNeaktivnost();
       osvjeziZaruljiceIgra();
       if (tipkaStisnuta(IGRA_RESET)) {
-        resetirajAktivnuIgru();
-        odabranaIgra = -1;
-        odabraniBrojIgraca = -1;
-        doubleInOdabran = false;
-        doubleOutOdabran = false;
-        DOUBLE_IN = false;
-        DOUBLE_OUT = false;
-        porukaStartPrikazana = false;
-        break;
+        obradiReset();
+        if (!igraPokrenuta) break;
+        continue;
       }
       if (tipkaStisnuta(IGRA_NEW_PLAYER)) {
         resetirajAktivnuIgru();
