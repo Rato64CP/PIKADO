@@ -30,6 +30,20 @@ bool prvaTipkaPritisnuta = false;
 bool igraPokrenuta = false;
 bool porukaStartPrikazana = false;
 
+static String nazivIgre(int tipka) {
+  switch (tipka) {
+    case IGRA_301:      return "301";
+    case IGRA_501:      return "501";
+    case IGRA_701:      return "701";
+    case IGRA_SHANGHAI: return "Shanghai";
+    case IGRA_HANGMAN:  return "Hangman";
+    case IGRA_ROULETTE: return "Roulette";
+    case IGRA_CRICKET:  return "Cricket";
+    case IGRA_3INLINE:  return "3-in-line";
+    default:            return String(tipka);
+  }
+}
+
 // -------------------- Automaticki "sleep" nakon neaktivnosti --------------------
 const unsigned long IDLE_TIMEOUT = 10UL * 60UL * 1000UL; // 10 min
 const unsigned long IDLE_BLINK_INTERVAL = 5000UL;        // 5 sec
@@ -172,7 +186,7 @@ void loop() {
     for (int i = IGRA_301; i <= IGRA_3INLINE; i++) {
       if (tipkaStisnuta(i)) {
         odabranaIgra = i;
-        String msg = "Odabrana igra: " + String(i); logPoruka(msg);
+        String msg = "Odabrana igra: " + nazivIgre(i); logPoruka(msg);
         porukaStartPrikazana = false;
         svirajZvukTipke();
       }
