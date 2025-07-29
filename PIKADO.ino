@@ -38,8 +38,6 @@ static bool idleMode = false;
 static bool idleBlink = false;
 
 // Test mode helpers - declared in test.h
-=======
-// Test mode helpers
 bool resetHeld(unsigned long ms);
 void testMode();
 
@@ -232,14 +230,15 @@ void loop() {
     // ----- Pokretanje igre -----
     if (odabranaIgra != -1 && odabraniBrojIgraca != -1 && tipkaStisnuta(IGRA_NEW_PLAYER)) {
       igraPokrenuta = true;
-    // Postavi globalne opcije DOUBLE IN/OUT prema odabiru
-    if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
-      DOUBLE_IN = doubleInOdabran;
-      DOUBLE_OUT = doubleOutOdabran;
-    } else {
-      DOUBLE_IN = false;
-      DOUBLE_OUT = false;
-    }
+
+      // Postavi globalne opcije DOUBLE IN/OUT prema odabiru
+      if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
+        DOUBLE_IN = doubleInOdabran;
+        DOUBLE_OUT = doubleOutOdabran;
+      } else {
+        DOUBLE_IN = false;
+        DOUBLE_OUT = false;
+      }
 
     if (DOUBLE_IN)  logPoruka("DOUBLE IN aktiviran");
     if (DOUBLE_OUT) logPoruka("DOUBLE OUT aktiviran");
@@ -249,9 +248,9 @@ void loop() {
     pokreniAktivnuIgru();
     osvjeziZaruljiceIgra();
     cekanjeNovogIgraca = false;
-    brojStrelica = 0;
-    igraZavrsena = false;
-    svirajImeIgraca(trenutniIgrac);
+      brojStrelica = 0;
+      igraZavrsena = false;
+      svirajImeIgraca(trenutniIgrac);
 
     // Glavna igracka petlja
     while (!igraZavrsena) {
@@ -318,8 +317,8 @@ void loop() {
       }
       delay(50);
     }
-    igraPokrenuta = false;
-  }
+      igraPokrenuta = false;
+    }
   }
 
   delay(50); // debounce
