@@ -168,8 +168,7 @@ void setup() {
     testMode();
   }
 
-  logPoruka("Odaberi igru.");
-  logPoruka("Izaberi igrace.");
+  logPoruka("Odaberi igru i igraca.");
 }
 
 void loop() {
@@ -186,18 +185,34 @@ void loop() {
     for (int i = IGRA_301; i <= IGRA_3INLINE; i++) {
       if (tipkaStisnuta(i)) {
         odabranaIgra = i;
-        String msg = "Odabrana igra: " + nazivIgre(i); logPoruka(msg);
-        porukaStartPrikazana = false;
+        String msg = "Odabrana igra: " + nazivIgre(i);
+        logPoruka(msg);
         svirajZvukTipke();
+        delay(2000);
+        if (odabraniBrojIgraca == -1) {
+          logPoruka("Odaberi igraca.");
+          porukaStartPrikazana = false;
+        } else {
+          logPoruka("Pritisni NEW PLAYER za start.");
+          porukaStartPrikazana = true;
+        }
       }
     }
 
     for (int i = IGRAC_1; i <= IGRAC_6; i++) {
       if (tipkaStisnuta(i)) {
         odabraniBrojIgraca = i - IGRAC_1 + 1;
-        String msg = "Odabrano igraca: " + String(odabraniBrojIgraca); logPoruka(msg);
-        porukaStartPrikazana = false;
+        String msg = "Odabrano igraca: " + String(odabraniBrojIgraca);
+        logPoruka(msg);
         svirajZvukTipke();
+        delay(2000);
+        if (odabranaIgra == -1) {
+          logPoruka("Odaberi igru.");
+          porukaStartPrikazana = false;
+        } else {
+          logPoruka("Pritisni NEW PLAYER za start.");
+          porukaStartPrikazana = true;
+        }
       }
     }
 
@@ -245,7 +260,7 @@ void loop() {
     }
 
     if (!porukaStartPrikazana && odabranaIgra != -1 && odabraniBrojIgraca != -1) {
-      logPoruka("Pritisni NEW PLAYER za pocetak");
+      logPoruka("Pritisni NEW PLAYER za start.");
       porukaStartPrikazana = true;
     }
 
