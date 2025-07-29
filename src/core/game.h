@@ -40,3 +40,7 @@ void sljedeciIgrac();
 // Centralne funkcije:
 void pokreniAktivnuIgru();
 void obradiPogodak(const String& nazivMete);
+
+// Ako je DOUBLE IN ukljucen, provjerava jesu li svi igraci vec ostvarili
+// pocetni Double. U tom slucaju gasi opciju DOUBLE IN (i pripadajucu lampicu).
+void provjeriDoubleInZavrsen();

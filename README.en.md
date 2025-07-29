@@ -77,7 +77,7 @@ A detailed list of connections is in [CONNECTIONS_AND_MP3.md](docs/CONNECTIONS_A
 
 1. After uploading, open the **Serial Monitor at 9600 baud**
 2. Choose the game using the buttons
-3. For **301** and **501**, you can then press the **DOUBLE IN** and/or **DOUBLE OUT** buttons. Their LEDs will stay on and the rule applies for the whole game. Pressing them during a game has no effect – you must *RESET* to choose again.
+3. For **301** and **501**, you can then press the **DOUBLE IN** and/or **DOUBLE OUT** buttons. The LEDs indicate the active rules. The **DOUBLE IN** LED will turn off automatically once all players have opened with a Double, while **DOUBLE OUT** stays active until the end of the game. Pressing these buttons during a game has no effect – you must *RESET* to choose again.
 4. Then select the number of players
 5. LEDs show the current selections
 6. The game starts automatically

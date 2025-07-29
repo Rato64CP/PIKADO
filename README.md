@@ -81,10 +81,11 @@ Detaljan popis priključaka nalazi se u [POVEZIVANJE_I_MP3.md](docs/POVEZIVANJE_
 1. Nakon učitavanja, otvori **Serial Monitor na 9600 baud**
 2. Odaberi igru pomoću tipki
 3. Za igre **301** i **501** nakon toga možete pritisnuti tipke
-   **DOUBLE IN** i/ili **DOUBLE OUT**. Lampice tih tipki ostat će upaljene i
-   pravilo će vrijediti tijekom cijele igre. Pritiskom ovih tipki za vrijeme
-   igre ništa se neće promijeniti – tek nakon *RESET* opcije moguće je ponovno
-   birati igru i dodatne funkcije.
+   **DOUBLE IN** i/ili **DOUBLE OUT**. Lampice prikazuju aktivna pravila.
+   Lampica **DOUBLE IN** automatski se gasi nakon što svi igrači uđu u igru
+   pogođenim Double poljem, dok **DOUBLE OUT** ostaje aktivan do kraja igre.
+   Pritiskom ovih tipki za vrijeme igre ništa se ne mijenja – tek nakon
+   *RESET* opcije moguće je ponovno birati igru i dodatne funkcije.
 4. Zatim odaberite broj igrača
 5. LED žaruljice će pokazati trenutne odabire
 6. Igra započinje automatski
