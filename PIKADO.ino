@@ -196,6 +196,7 @@ void setup() {
 
   logPoruka("Dobrodosli!");
   svirajUvodnuMelodiju();
+  delay(2000);
 
   // Test zaruljica
   for (int i = 0; i < 2; i++) {
@@ -211,7 +212,7 @@ void setup() {
     testMode();
   }
 
-  logPoruka("Odaberi igru i igraca.");
+  logPoruka("Odaberite igru i broj igraca");
 }
 
 void loop() {
@@ -234,10 +235,10 @@ void loop() {
         svirajZvukTipke();
         delay(2000);
         if (odabraniBrojIgraca == -1) {
-          logPoruka("Odaberi igraca.");
+          logPoruka("Odaberite broj igraca");
           porukaStartPrikazana = false;
         } else {
-          logPoruka("Pritisni NEW PLAYER za start.");
+          logPoruka("Pritisnite NEW PLAYER za pocetak igre");
           porukaStartPrikazana = true;
         }
       }
@@ -246,15 +247,20 @@ void loop() {
     for (int i = IGRAC_1; i <= IGRAC_6; i++) {
       if (tipkaStisnuta(i)) {
         odabraniBrojIgraca = i - IGRAC_1 + 1;
-        String msg = "Odabrano igraca: " + String(odabraniBrojIgraca);
-        logPoruka(msg);
+        if (odabranaIgra != -1) {
+          logPorukaDvijeLinije("Igra: " + nazivIgre(odabranaIgra),
+                               "Igraci: " + String(odabraniBrojIgraca));
+        } else {
+          String msg = "Odabrano igraca: " + String(odabraniBrojIgraca);
+          logPoruka(msg);
+        }
         svirajZvukTipke();
         delay(2000);
         if (odabranaIgra == -1) {
-          logPoruka("Odaberi igru.");
+          logPoruka("Odaberite igru");
           porukaStartPrikazana = false;
         } else {
-          logPoruka("Pritisni NEW PLAYER za start.");
+          logPoruka("Pritisnite NEW PLAYER za pocetak igre");
           porukaStartPrikazana = true;
         }
       }
@@ -304,7 +310,7 @@ void loop() {
     }
 
     if (!porukaStartPrikazana && odabranaIgra != -1 && odabraniBrojIgraca != -1) {
-      logPoruka("Pritisni NEW PLAYER za start.");
+      logPoruka("Pritisnite NEW PLAYER za pocetak igre");
       porukaStartPrikazana = true;
     }
 

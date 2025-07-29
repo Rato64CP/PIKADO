@@ -28,6 +28,19 @@ void ispisiNaLCD(const String &poruka) {
     }
 }
 
+void ispisiDvijeLinije(const String &red1, const String &red2) {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print(red1.substring(0, 16));
+    lcd.setCursor(0, 1);
+    lcd.print(red2.substring(0, 16));
+}
+
+void logPorukaDvijeLinije(const String &r1, const String &r2) {
+    Serial.println(r1 + " | " + r2);
+    ispisiDvijeLinije(r1, r2);
+}
+
 void logPoruka(const String &poruka) {
     Serial.println(poruka);
     ispisiNaLCD(poruka);
