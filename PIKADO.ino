@@ -55,6 +55,7 @@ static bool idleBlink = false;
 // Test mode helpers - declared in test.h
 bool resetHeld(unsigned long ms);
 void testMode();
+void provjeriTestMod();
 
 bool biloKojaTipkaStisnuta();
 void registrirajInterakciju();
@@ -173,6 +174,7 @@ void setup() {
 
 void loop() {
   ocitajTipke();
+  provjeriTestMod();
   bool stisnuta = biloKojaTipkaStisnuta();
   if (stisnuta) {
     registrirajInterakciju();
@@ -293,6 +295,7 @@ void loop() {
     // Glavna igracka petlja
     while (!igraZavrsena) {
       ocitajTipke();
+      provjeriTestMod();
       if (biloKojaTipkaStisnuta()) registrirajInterakciju();
       azurirajNeaktivnost();
       osvjeziZaruljiceIgra();
@@ -333,6 +336,7 @@ void loop() {
     // Cekaj da korisnik pokrene novu igru
     while (igraZavrsena) {
       ocitajTipke();
+      provjeriTestMod();
       if (biloKojaTipkaStisnuta()) registrirajInterakciju();
       azurirajNeaktivnost();
       osvjeziZaruljiceIgra();
