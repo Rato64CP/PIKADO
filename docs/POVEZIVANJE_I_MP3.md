@@ -15,6 +15,29 @@ ekranom te se ne smiju koristiti za tipke ili druge periferije.
 | 23–33  | Broj igrača (neparni pinovi) |
 | 50, 52 | Pravila (Double OUT / IN) |
 
+Raspored pojedinih tipki:
+
+| Pin | Povezana tipka |
+|-----|----------------|
+| 36  | Igra 301 |
+| 34  | Igra 501 |
+| 30  | Shanghai |
+| 40  | Hangman |
+| 28  | Roulette |
+| 38  | 701 |
+| 32  | Cricket |
+| 42  | 3-in-line |
+| 46  | NEW PLAYER |
+| 44  | RESET |
+| 33  | Igrač 1 |
+| 31  | Igrač 2 |
+| 29  | Igrač 3 |
+| 27  | Igrač 4 |
+| 25  | Igrač 5 |
+| 23  | Igrač 6 |
+| 50  | Double OUT |
+| 52  | Double IN |
+
 ### LED žaruljice (preko UCN5821)
 
 | Pin    | Funkcija         |
