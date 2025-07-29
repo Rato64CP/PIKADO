@@ -36,6 +36,7 @@ void obradiPogodak_301(const String& nazivMete) {
             return;
         }
         igrac.jeAktiviran = true;
+        provjeriDoubleInZavrsen();
     }
 
     igrac.prethodniBodovi = igrac.bodovi;

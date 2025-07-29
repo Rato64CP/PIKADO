@@ -29,9 +29,18 @@ void inicijalizirajIgrace(int broj) {
         igraci[i].ime = "Igrac " + String(i + 1);
         igraci[i].bodovi = 0;
         igraci[i].prethodniBodovi = 0;
+        igraci[i].jeAktiviran = false;
     }
     trenutniIgrac = 0;
     ocistiDisplay();
+}
+
+void provjeriDoubleInZavrsen() {
+    if (!DOUBLE_IN) return;
+    for (int i = 0; i < brojIgraca; i++) {
+        if (!igraci[i].jeAktiviran) return;
+    }
+    DOUBLE_IN = false;
 }
 
 void sljedeciIgrac() {
