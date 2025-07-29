@@ -104,7 +104,15 @@ Greške se mogu prijaviti funkcijom `signalGreska()`. Dok je greška aktivna, la
 
 ---
 
-## 🛠️ Kalibracija meta
+## 🧪 Testni mod
 
-Ako nakon izmjene ožičenja pikado ploča ne javlja ispravne mete, isprobajte pomoćni program `examples/calibration.ino`. Učitajte ga na Arduino, otvorite serijski monitor (9600 baud) i gađajte pojedina polja. Na serijskom monitoru ispisat će se naziv detektirane mete i brojevi pinova koji su aktivirani, što olakšava provjeru rasporeda pinova.
+Za provjeru rada tipki, LED lampica i detekcije strelica ugrađen je testni mod.
+
+- Nakon pokretanja držite tipku **RESET** približno 5 sekundi da biste ušli u testni mod.
+- Kratkim pritiskom svake tipke na serijskom monitoru ispisuje se njezin broj.
+- Ako tipku držite oko 2 sekunde, pripadajuća LED će se uključiti ili isključiti.
+- Pogoci i promašaji prikazuju se tekstualno na serijskom monitoru (npr. "Double 20" ili `MIC`).
+- Ponovnim držanjem tipke **RESET** 5 sekundi izlazi se iz testa.
+
+
 
