@@ -69,7 +69,7 @@ The *bounce-out* rule in **301** and **501** is always active and needs no extra
 5. Compile and upload to the device
 
 ---
-A detailed list of connections and MP3 files can be found in [CONNECTIONS_AND_MP3.md](docs/CONNECTIONS_AND_MP3.md).
+A detailed list of connections is in [CONNECTIONS_AND_MP3.md](docs/CONNECTIONS_AND_MP3.md), and the MP3 file list in [MP3_SOUND_LIST.md](docs/MP3_SOUND_LIST.md).
 
 ---
 
@@ -96,7 +96,14 @@ The system is modular so new games and features can easily be added. It can be e
 Errors can be reported with `signalGreska()`. While active, the **RESET** button LED blinks so the user knows to restart or check the system.
 
 ---
+## 🧪 Test mode
 
-## 🛠️ Target calibration
+A test mode is built in to verify buttons, LEDs and target detection.
 
-If the dartboard reports wrong targets after rewiring, upload `examples/calibration.ino` to the Arduino. Open the serial monitor at 9600 baud and hit different fields. The detected target name and the pin numbers that were triggered will be printed, helping verify pin assignments.
+- After startup hold the **RESET** button for about 5 seconds to enter test mode.
+- A short press of any button prints its number on the serial monitor.
+- Holding a button for about 2 seconds toggles the associated LED.
+- Hits and misses are printed on the serial monitor (e.g. "Double 20" or `MIC`).
+- Hold **RESET** for 5 seconds again to exit the test.
+
+
