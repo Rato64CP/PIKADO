@@ -1,12 +1,9 @@
 #include "buttons.h"
+#include "../core/pins.h"
 
 // Pins 20 (SDA) and 21 (SCL) moraju ostati slobodni za I2C (LCD)
 // Novi raspored tipki nakon prilagodbe ploce
-const uint8_t pinoviTipki[BROJ_TIPKI] = {
-  36, 34, 30, 40, 28, 38, 32, 42, 46, 44,  // IGRA / OPCIJE
-  33, 31, 29, 27, 25, 23,                 // IGRACI
-  50, 52                                   // PRAVILA (Double OUT / IN)
-};
+static const uint8_t* const pinoviTipki = PIN_TIPKE;
 
 bool stanjaTipki[BROJ_TIPKI];
 

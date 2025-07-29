@@ -1,15 +1,12 @@
 #include "zaruljice.h"
+#include "../core/pins.h"
 
-// Prilagodi ove pinove prema stvarnom ozicenju
 // Pin assignments for the UCN5821 shift register (270 Ω series resistors)
-const int PIN_DATA = 2;
-const int PIN_CLK  = 3;
-const int PIN_LATCH = 4;
 
 void inicijalizirajZaruljice() {
-  pinMode(PIN_DATA, OUTPUT);
-  pinMode(PIN_CLK, OUTPUT);
-  pinMode(PIN_LATCH, OUTPUT);
+  pinMode(PIN_LED_DATA, OUTPUT);
+  pinMode(PIN_LED_CLK, OUTPUT);
+  pinMode(PIN_LED_LATCH, OUTPUT);
 }
 
 void postaviZaruljice(bool stanja[18]) {
@@ -21,9 +18,9 @@ void postaviZaruljice(bool stanja[18]) {
     }
   }
 
-  digitalWrite(PIN_LATCH, LOW);
+  digitalWrite(PIN_LED_LATCH, LOW);
   for (int i = 0; i < 3; i++) {
-    shiftOut(PIN_DATA, PIN_CLK, MSBFIRST, bajtovi[i]);
+    shiftOut(PIN_LED_DATA, PIN_LED_CLK, MSBFIRST, bajtovi[i]);
   }
-  digitalWrite(PIN_LATCH, HIGH);
+  digitalWrite(PIN_LED_LATCH, HIGH);
 }
