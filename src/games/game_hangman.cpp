@@ -5,8 +5,8 @@
 #include "../modules/scoreboard.h"
 
 bool pogodjeniBrojevi[21];       // 1–20
-int greske[6];                  // broj grešaka po igraču
-int bodoviHangman[6];           // bodovi po igraču
+int greske[6];                  // broj gresaka po igracu
+int bodoviHangman[6];           // bodovi po igracu
 const int MAX_GRESAKA = 6;
 
 void inicijalizirajIgru_hangman() {
@@ -17,9 +17,9 @@ void inicijalizirajIgru_hangman() {
         igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
-    logPoruka("Igra HANGMAN započinje!");
+    logPoruka("Igra HANGMAN zapocinje!");
     logPoruka("Pogodi brojeve 1–20 bez ponavljanja.");
-    logPoruka("Svaki igrač ima najviše 6 grešaka.");
+    logPoruka("Svaki igrac ima najvise 6 gresaka.");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -49,11 +49,11 @@ void obradiPogodak_hangman(const String& nazivMete) {
 
     if (pogodjeniBrojevi[broj]) {
         greske[trenutniIgrac]++;
-        logPoruka("Već pogođeni broj – greška! (" + String(greske[trenutniIgrac]) + "/" + String(MAX_GRESAKA) + ")");
+        logPoruka("Vec pogodeni broj – greska! (" + String(greske[trenutniIgrac]) + "/" + String(MAX_GRESAKA) + ")");
 
         if (greske[trenutniIgrac] >= MAX_GRESAKA) {
-            logPoruka(igraci[trenutniIgrac].ime + " je izgubio (više od 6 grešaka)!");
-            // Opcionalno: provjeri je li ostao samo 1 igrač aktivan
+            logPoruka(igraci[trenutniIgrac].ime + " je izgubio (vise od 6 gresaka)!");
+            // Opcionalno: provjeri je li ostao samo 1 igrac aktivan
             return;
         }
     } else {
@@ -61,7 +61,7 @@ void obradiPogodak_hangman(const String& nazivMete) {
         int bodovi = broj * mnozitelj;
         bodoviHangman[trenutniIgrac] += bodovi;
         igraci[trenutniIgrac].bodovi = bodoviHangman[trenutniIgrac];
-        logPoruka("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
+        logPoruka("Pogodeno " + String(broj) + " × " + String(mnozitelj) +
                        " = +" + String(bodovi) + " bodova (Ukupno: " + String(bodoviHangman[trenutniIgrac]) + ")");
         prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
     }
@@ -80,19 +80,19 @@ void sljedeciIgrac_hangman() {
         }
     }
 
-    logPoruka("Nema više aktivnih igrača. Kraj igre!");
-    // Prikaži rezultat
+    logPoruka("Nema vise aktivnih igraca. Kraj igre!");
+    // Prikazi rezultat
     int najvise = -1;
     int pobjednik = -1;
     for (int i = 0; i < brojIgraca; i++) {
-        logPoruka("Igrač " + String(i) + ": " + String(bodoviHangman[i]) + " bodova");
+        logPoruka("Igrac " + String(i) + ": " + String(bodoviHangman[i]) + " bodova");
         if (bodoviHangman[i] > najvise) {
             najvise = bodoviHangman[i];
             pobjednik = i;
         }
     }
     if (pobjednik != -1) {
-        logPoruka("Pobjednik je IGRAČ " + String(pobjednik) + "!");
+        logPoruka("Pobjednik je IGRAC " + String(pobjednik) + "!");
     }
     zavrsiIgru();
 }

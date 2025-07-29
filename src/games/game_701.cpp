@@ -19,7 +19,7 @@ void inicijalizirajIgru_701() {
         igraci[i].prethodniBodovi = 701;
     }
     trenutniIgrac = 0;
-    logPoruka("Igra 701 započinje!");
+    logPoruka("Igra 701 zapocinje!");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -42,7 +42,7 @@ void obradiPogodak_701(const String& nazivMete) {
 
     int bodoviNakonPogotka = igrac.bodovi - vrijednost;
 
-    String poruka = "Pogođeno: " + nazivMete + " (" + String(vrijednost) + " bodova)";
+    String poruka = "Pogodeno: " + nazivMete + " (" + String(vrijednost) + " bodova)";
     logPoruka(poruka);
 
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
@@ -60,7 +60,7 @@ void obradiPogodak_701(const String& nazivMete) {
                 logPoruka(igrac.ime + " je pobijedio!");
                 zavrsiIgru();
             } else {
-                logPoruka("Završetak mora biti s Double!");
+                logPoruka("Zavrsetak mora biti s Double!");
                 igrac.bodovi = igrac.prethodniBodovi;
                 krajPoteza();
             }

@@ -112,7 +112,7 @@ void detektirajPromasaj() {
   int vrijednost = zbroj / 3;
 
   if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
-    logPoruka("Promašaj detektiran!");
+    logPoruka("Promasaj detektiran!");
     svirajZvukPromasaja();
     registrirajInterakciju();
     brojStrelica++;
@@ -124,13 +124,13 @@ void detektirajPromasaj() {
 }
 
 String detektirajBacanjeBezIgre() {
-  // Provjera pogođene mete
+  // Provjera pogodene mete
   const Meta* meta = scanForHit();
   if (meta != nullptr) {
     return nazivPina(meta->pinZajednicki) + " -- " + nazivPina(meta->pinAktivan);
   }
 
-  // Provjera promašaja preko mikrofona
+  // Provjera promasaja preko mikrofona
   static unsigned long zadnjeVrijeme = 0;
   int zbroj = 0;
   for (int i = 0; i < 3; i++) {

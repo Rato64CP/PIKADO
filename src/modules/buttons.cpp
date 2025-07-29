@@ -1,7 +1,7 @@
 #include "buttons.h"
 
 // Pins 20 (SDA) and 21 (SCL) moraju ostati slobodni za I2C (LCD)
-// Novi raspored tipki nakon prilagodbe ploče
+// Novi raspored tipki nakon prilagodbe ploce
 const uint8_t pinoviTipki[BROJ_TIPKI] = {
   36, 34, 30, 40, 28, 38, 32, 42, 46, 44,  // IGRA / OPCIJE
   33, 31, 29, 27, 25, 23,                 // IGRACI
@@ -12,14 +12,14 @@ bool stanjaTipki[BROJ_TIPKI];
 
 void inicijalizirajTipke() {
   for (int i = 0; i < BROJ_TIPKI; i++) {
-    pinMode(pinoviTipki[i], INPUT_PULLUP);  // ako koristiš tipke na masu
+    pinMode(pinoviTipki[i], INPUT_PULLUP);  // ako koristis tipke na masu
     stanjaTipki[i] = false;
   }
 }
 
 void ocitajTipke() {
   for (int i = 0; i < BROJ_TIPKI; i++) {
-    bool trenutno = digitalRead(pinoviTipki[i]) == LOW;  // LOW znači stisnuta
+    bool trenutno = digitalRead(pinoviTipki[i]) == LOW;  // LOW znaci stisnuta
     stanjaTipki[i] = trenutno;
   }
 }

@@ -5,7 +5,7 @@
 #include "../modules/scoreboard.h"
 
 const int BROJEVI[7] = {15, 16, 17, 18, 19, 20, 25}; // validni brojevi
-static int pogodci[6][7];   // [igrač][broj index]
+static int pogodci[6][7];   // [igrac][broj index]
 static int bodoviCricket[6];
 
 void inicijalizirajIgru_cricket() {
@@ -15,8 +15,8 @@ void inicijalizirajIgru_cricket() {
         igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
-    logPoruka("Igra CRICKET započinje!");
-    logPoruka("Pogađaj brojeve 15–20 i bull (25).");
+    logPoruka("Igra CRICKET zapocinje!");
+    logPoruka("Pogadaj brojeve 15–20 i bull (25).");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -55,7 +55,7 @@ void obradiPogodak_cricket(const String& nazivMete) {
 
     int idx = indeksBroja(broj);
     if (idx == -1) {
-        logPoruka("Broj " + String(broj) + " nije važeći u Cricketu.");
+        logPoruka("Broj " + String(broj) + " nije vazeci u Cricketu.");
         sljedeciIgrac_cricket();
         return;
     }
@@ -71,18 +71,18 @@ void obradiPogodak_cricket(const String& nazivMete) {
         if (!sviZatvorili(idx)) {
             bodoviCricket[trenutniIgrac] += BROJEVI[idx] * visak;
             igraci[trenutniIgrac].bodovi = bodoviCricket[trenutniIgrac];
-            logPoruka("Višak pogodaka! +" + String(BROJEVI[idx] * visak) +
+            logPoruka("Visak pogodaka! +" + String(BROJEVI[idx] * visak) +
                            " bodova. Ukupno: " + String(bodoviCricket[trenutniIgrac]));
             prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         } else {
-            logPoruka("Broj je već zatvoren za sve – nema bodova.");
+            logPoruka("Broj je vec zatvoren za sve – nema bodova.");
         }
     } else if (p > pogodakaPrije) {
-        logPoruka("Zabilježeno " + String(mnozitelj) + " pogodaka broja " + String(broj) +
+        logPoruka("Zabiljezeno " + String(mnozitelj) + " pogodaka broja " + String(broj) +
                        " (sada ukupno: " + String(p) + ")");
     }
 
-    // Provjera je li sve zatvoreno kod ovog igrača
+    // Provjera je li sve zatvoreno kod ovog igraca
     bool sveZatvoreno = true;
     for (int i = 0; i < 7; i++) {
         if (pogodci[trenutniIgrac][i] < 3) {
@@ -101,7 +101,7 @@ void obradiPogodak_cricket(const String& nazivMete) {
             }
         }
         if (vodi) {
-            logPoruka("Igrač " + igraci[trenutniIgrac].ime + " je zatvorio sve brojeve i vodi u bodovima!");
+            logPoruka("Igrac " + igraci[trenutniIgrac].ime + " je zatvorio sve brojeve i vodi u bodovima!");
             logPoruka("POBJEDA!");
             zavrsiIgru();
             return;
