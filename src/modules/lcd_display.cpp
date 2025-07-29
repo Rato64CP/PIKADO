@@ -11,12 +11,20 @@ void inicijalizirajLCD() {
 }
 
 void ispisiNaLCD(const String &poruka) {
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print(poruka.substring(0, 16));
-    if (poruka.length() > 16) {
-        lcd.setCursor(0, 1);
-        lcd.print(poruka.substring(16, 32));
+    size_t len = poruka.length();
+    size_t offset = 0;
+    while (offset < len) {
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print(poruka.substring(offset, offset + 16));
+        if (offset + 16 < len) {
+            lcd.setCursor(0, 1);
+            lcd.print(poruka.substring(offset + 16, offset + 32));
+        }
+        offset += 32;
+        if (offset < len) {
+            delay(3000);
+        }
     }
 }
 
