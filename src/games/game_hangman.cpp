@@ -18,8 +18,8 @@ void inicijalizirajIgru_hangman() {
     }
     trenutniIgrac = 0;
     logPoruka("Igra HANGMAN zapocinje!");
-    logPoruka("Pogodi brojeve 1–20 bez ponavljanja.");
-    logPoruka("Svaki igrac ima najvise 6 gresaka.");
+    logPoruka("Pogodi 1-20 bez ponavljanja.");
+    logPoruka("Svaki igrac ima do 6 gresaka.");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -80,7 +80,7 @@ void sljedeciIgrac_hangman() {
         }
     }
 
-    logPoruka("Nema vise aktivnih igraca. Kraj igre!");
+    logPoruka("Nema aktivnih igraca, kraj!");
     // Prikazi rezultat
     int najvise = -1;
     int pobjednik = -1;

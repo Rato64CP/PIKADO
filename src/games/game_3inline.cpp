@@ -40,7 +40,7 @@ void obradiPogodak_3inline(const String& nazivMete) {
     if (nazivMete.startsWith("Triple ") || nazivMete.startsWith("Double ") || nazivMete.startsWith("Simple ")) {
         broj = nazivMete.substring(nazivMete.indexOf(' ') + 1).toInt();
     } else if (nazivMete.indexOf("25") != -1) {
-        logPoruka("Pogodak u 25 ne vrijedi za 3-in-line.");
+        logPoruka("25 ne vrijedi za 3-in-line.");
         sljedeciIgrac_3inline();
         return;
     } else {

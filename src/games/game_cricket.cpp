@@ -16,7 +16,7 @@ void inicijalizirajIgru_cricket() {
     }
     trenutniIgrac = 0;
     logPoruka("Igra CRICKET zapocinje!");
-    logPoruka("Pogadaj brojeve 15–20 i bull (25).");
+    logPoruka("Pogodi 15-20 i bull (25).");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     osvjeziSveBodove();
 }
@@ -71,15 +71,15 @@ void obradiPogodak_cricket(const String& nazivMete) {
         if (!sviZatvorili(idx)) {
             bodoviCricket[trenutniIgrac] += BROJEVI[idx] * visak;
             igraci[trenutniIgrac].bodovi = bodoviCricket[trenutniIgrac];
-            logPoruka("Visak pogodaka! +" + String(BROJEVI[idx] * visak) +
-                           " bodova. Ukupno: " + String(bodoviCricket[trenutniIgrac]));
+            logPoruka(String("Visak +") + String(BROJEVI[idx] * visak) +
+                       " bod. Uk:" + String(bodoviCricket[trenutniIgrac]));
             prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         } else {
-            logPoruka("Broj je vec zatvoren za sve – nema bodova.");
+            logPoruka("Broj zatvoren - nema bodova.");
         }
     } else if (p > pogodakaPrije) {
-        logPoruka("Zabiljezeno " + String(mnozitelj) + " pogodaka broja " + String(broj) +
-                       " (sada ukupno: " + String(p) + ")");
+        logPoruka(String("Dodano ") + String(mnozitelj) + "x" + String(broj) +
+                       " (uk " + String(p) + ")");
     }
 
     // Provjera je li sve zatvoreno kod ovog igraca
