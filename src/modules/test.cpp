@@ -64,3 +64,17 @@ void testMode() {
     delay(10);
   }
 }
+
+static unsigned long testHoldStart = 0;
+
+void provjeriTestMod() {
+  if (tipkaStisnuta(IGRA_RESET)) {
+    if (testHoldStart == 0) testHoldStart = millis();
+    if (millis() - testHoldStart >= 5000) {
+      testHoldStart = 0;
+      testMode();
+    }
+  } else {
+    testHoldStart = 0;
+  }
+}

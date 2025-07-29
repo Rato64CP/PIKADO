@@ -6,3 +6,6 @@ bool resetHeld(unsigned long ms);
 
 // Ulazi u testni mod dok se ne pritisne RESET 5 sekundi ili ne ugasi uredjaj
 void testMode();
+
+// Provjerava drzi li se RESET dovoljno dugo tijekom rada programa
+void provjeriTestMod();
