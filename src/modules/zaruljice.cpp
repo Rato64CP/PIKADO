@@ -38,7 +38,9 @@ void postaviZaruljice(bool stanja[18]) {
   for (int i = 0; i < 18; i++) {
     if (stanja[i]) {
       uint8_t bit = LED_MAP[i];
-      bajtovi[bit / 8] |= (1 << (7 - (bit % 8))); // MSB first
+      // When shifting out LSB first, OUT1 corresponds to the least significant
+      // bit of each byte.
+      bajtovi[bit / 8] |= (1 << (bit % 8));
     }
   }
 
@@ -46,7 +48,7 @@ void postaviZaruljice(bool stanja[18]) {
   // Send bytes in reverse order so the last chip in the chain receives its
   // data first (Chip3 -> Chip2 -> Chip1)
   for (int i = 2; i >= 0; i--) {
-    shiftOut(PIN_LED_DATA, PIN_LED_CLK, MSBFIRST, bajtovi[i]);
+    shiftOut(PIN_LED_DATA, PIN_LED_CLK, LSBFIRST, bajtovi[i]);
   }
   digitalWrite(PIN_LED_LATCH, HIGH);
 }

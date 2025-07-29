@@ -26,7 +26,9 @@ LED outputs are connected in the following order:
 
 > **Note**: When sending data to the daisy-chained UCN5821 shift registers,
 > transmit the byte for **Chip3** first, then **Chip2**, and finally **Chip1** so
-> that each chip receives the correct bits.
+> that each chip receives the correct bits. The firmware shifts data **LSB
+> first** because the board's wiring flips the order of outputs (OUT1 &harr;
+> OUT8).
 
 | Output | Connected LED |
 |--------|---------------|
