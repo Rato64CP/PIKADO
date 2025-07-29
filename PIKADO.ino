@@ -28,6 +28,7 @@ int indeksIgre = 0;
 int indeksIgraca = 0;
 bool prvaTipkaPritisnuta = false;
 bool igraPokrenuta = false;
+bool porukaStartPrikazana = false;
 
 // -------------------- Automaticki "sleep" nakon neaktivnosti --------------------
 const unsigned long IDLE_TIMEOUT = 10UL * 60UL * 1000UL; // 10 min
@@ -172,6 +173,7 @@ void loop() {
       if (tipkaStisnuta(i)) {
         odabranaIgra = i;
         String msg = "Odabrana igra: " + String(i); logPoruka(msg);
+        porukaStartPrikazana = false;
         svirajZvukTipke();
       }
     }
@@ -180,6 +182,7 @@ void loop() {
       if (tipkaStisnuta(i)) {
         odabraniBrojIgraca = i - IGRAC_1 + 1;
         String msg = "Odabrano igraca: " + String(odabraniBrojIgraca); logPoruka(msg);
+        porukaStartPrikazana = false;
         svirajZvukTipke();
       }
     }
@@ -227,9 +230,15 @@ void loop() {
       }
     }
 
+    if (!porukaStartPrikazana && odabranaIgra != -1 && odabraniBrojIgraca != -1) {
+      logPoruka("Pritisni NEW PLAYER za pocetak");
+      porukaStartPrikazana = true;
+    }
+
     // ----- Pokretanje igre -----
     if (odabranaIgra != -1 && odabraniBrojIgraca != -1 && tipkaStisnuta(IGRA_NEW_PLAYER)) {
       igraPokrenuta = true;
+      porukaStartPrikazana = false;
 
       // Postavi globalne opcije DOUBLE IN/OUT prema odabiru
       if (odabranaIgra == IGRA_301 || odabranaIgra == IGRA_501 || odabranaIgra == IGRA_701) {
@@ -266,6 +275,7 @@ void loop() {
         doubleOutOdabran = false;
         DOUBLE_IN = false;
         DOUBLE_OUT = false;
+        porukaStartPrikazana = false;
         igraZavrsena = true;
         break;
       }
@@ -305,6 +315,7 @@ void loop() {
         doubleOutOdabran = false;
         DOUBLE_IN = false;
         DOUBLE_OUT = false;
+        porukaStartPrikazana = false;
         break;
       }
       if (tipkaStisnuta(IGRA_NEW_PLAYER)) {
@@ -312,6 +323,7 @@ void loop() {
         inicijalizirajIgrace(odabraniBrojIgraca);
         pokreniAktivnuIgru();
         cekanjeNovogIgraca = false;
+        porukaStartPrikazana = false;
         brojStrelica = 0;
         igraZavrsena = false;
       }
