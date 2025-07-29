@@ -36,6 +36,10 @@ static unsigned long zadnjiBlinkIdle = 0;
 static bool idleMode = false;
 static bool idleBlink = false;
 
+// Test mode helpers
+bool resetHeld(unsigned long ms);
+void testMode();
+
 bool biloKojaTipkaStisnuta();
 void registrirajInterakciju();
 static void azurirajNeaktivnost();
@@ -122,6 +126,66 @@ static void azurirajNeaktivnost() {
   }
 }
 
+bool resetHeld(unsigned long ms) {
+  unsigned long start = millis();
+  while (tipkaStisnuta(IGRA_RESET)) {
+    if (millis() - start >= ms) return true;
+    ocitajTipke();
+    delay(10);
+  }
+  return false;
+}
+
+void testMode() {
+  logPoruka("Dobrodosli u test mod");
+  bool led[18] = {false};
+  bool prev[18] = {false};
+  unsigned long holdStart[18] = {0};
+  postaviZaruljice(led);
+  while (true) {
+    ocitajTipke();
+
+    if (tipkaStisnuta(IGRA_RESET)) {
+      if (holdStart[IGRA_RESET] == 0) holdStart[IGRA_RESET] = millis();
+      if (millis() - holdStart[IGRA_RESET] >= 5000) {
+        logPoruka("Izlaz iz test moda");
+        for (int i = 0; i < 18; i++) led[i] = false;
+        postaviZaruljice(led);
+        delay(500);
+        return;
+      }
+    } else {
+      holdStart[IGRA_RESET] = 0;
+    }
+
+    for (int i = 0; i < BROJ_TIPKI; i++) {
+      if (i == IGRA_RESET) continue;
+      bool cur = tipkaStisnuta(i);
+      if (cur && !prev[i]) {
+        logPoruka(String("Tipka ") + String(i));
+        holdStart[i] = millis();
+      } else if (cur) {
+        if (millis() - holdStart[i] >= 2000) {
+          led[i] = !led[i];
+          postaviZaruljice(led);
+          holdStart[i] = millis();
+        }
+      } else {
+        holdStart[i] = 0;
+      }
+      prev[i] = cur;
+    }
+
+    String hit = detektirajZonuTest();
+    if (hit != "") {
+      if (hit == "MIC") logPoruka("Promasaj (MIC)");
+      else logPoruka(hit);
+    }
+
+    delay(10);
+  }
+}
+
 void setup() {
   Serial.begin(9600);
   inicijalizirajTipke();
@@ -142,6 +206,11 @@ void setup() {
   }
   for (int j = 0; j < 18; j++) stanjeZaruljica[j] = false;
   postaviZaruljice(stanjeZaruljica);
+
+  ocitajTipke();
+  if (tipkaStisnuta(IGRA_RESET) && resetHeld(5000)) {
+    testMode();
+  }
 
   logPoruka("Odaberi igru.");
   logPoruka("Izaberi igrace.");

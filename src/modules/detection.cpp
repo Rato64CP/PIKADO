@@ -146,3 +146,27 @@ String detektirajBacanjeBezIgre() {
 
   return String("");
 }
+
+String detektirajZonuTest() {
+  const Meta* meta = scanForHit();
+  if (meta != nullptr) {
+    registrirajInterakciju();
+    return String(meta->naziv);
+  }
+
+  static unsigned long zadnjeVrijeme = 0;
+  int zbroj = 0;
+  for (int i = 0; i < 3; i++) {
+    zbroj += analogRead(PIN_MIKROFON);
+    delay(1);
+  }
+  int vrijednost = zbroj / 3;
+
+  if (vrijednost > THRESHOLD_PROMASAJ && millis() - zadnjeVrijeme > 300) {
+    zadnjeVrijeme = millis();
+    registrirajInterakciju();
+    return String("MIC");
+  }
+
+  return String("");
+}

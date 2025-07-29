@@ -8,3 +8,6 @@ String detektirajZonu();
 String detektirajBacanjeBezIgre();
 // Pozvati kada je detektirana ikakva radnja (tipka ili pogodak)
 void registrirajInterakciju();
+// Detekcija pogotka ili promasaja bez ikakvih game side-effecta.
+// Vraca naziv mete ili "MIC" za promasaj.
+String detektirajZonuTest();
