@@ -71,7 +71,7 @@ Pravilo *bounce-out* (bust) u igrama **301** i **501** uvijek je aktivno i nije 
 5. Kompajliraj i učitaj na uređaj
 
 ---
-Detaljan popis priključaka i MP3 datoteka nalazi se u [POVEZIVANJE_I_MP3.md](docs/POVEZIVANJE_I_MP3.md).
+Detaljan popis priključaka nalazi se u [POVEZIVANJE_I_MP3.md](docs/POVEZIVANJE_I_MP3.md), a popis MP3 datoteka u [POPIS_MP3_ZVUKOVA.md](docs/POPIS_MP3_ZVUKOVA.md).
 
 
 ---
