@@ -26,9 +26,9 @@ constexpr uint8_t PIN_SCORE_CS  = 11;
 
 // Button pins (order matches enum Tipka)
 static const uint8_t PIN_TIPKE[18] = {
-    36, 34, 30, 40, 28, 38, 32, 42, 46, 44,
+    38, 40, 44, 34, 46, 36, 42, 32, 28, 30,
     33, 31, 29, 27, 25, 23,
-    50, 52
+    52, 50
 };
 
 // Dartboard sensor pins
