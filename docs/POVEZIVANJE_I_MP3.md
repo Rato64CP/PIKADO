@@ -19,9 +19,9 @@ ekranom te se ne smiju koristiti za tipke ili druge periferije.
 
 | Pin    | Funkcija         |
 |--------|------------------|
-| 5      | DATA             |
-| 6      | CLOCK            |
-| 7      | LATCH            |
+| 2      | DATA             |
+| 3      | CLOCK            |
+| 4      | LATCH            |
 
 ### MAX7219 display
 

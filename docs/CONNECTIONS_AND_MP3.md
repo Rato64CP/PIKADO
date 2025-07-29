@@ -18,9 +18,9 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 
 | Pin | Function |
 |-----|----------|
-| 5   | DATA |
-| 6   | CLOCK |
-| 7   | LATCH |
+| 2   | DATA |
+| 3   | CLOCK |
+| 4   | LATCH |
 
 ### MAX7219 display
 
