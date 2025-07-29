@@ -31,7 +31,7 @@ void obradiPogodak_701(const String& nazivMete) {
     // DOUBLE IN provjera
     if (DOUBLE_IN && !igrac.jeAktiviran) {
         if (!nazivMete.startsWith("Double")) {
-            logPoruka("Double IN: pogodak ne vrijedi jer nije Double.");
+            logPoruka("Double IN: treba Double.");
             krajPoteza();
             return;
         }
@@ -47,7 +47,7 @@ void obradiPogodak_701(const String& nazivMete) {
     logPoruka(poruka);
 
     if (BOUNCE_OUT && bodoviNakonPogotka < 0) {
-        logPoruka("Bust! Prelazak preko 0 nije dozvoljen.");
+        logPoruka("Bust! Prelazak preko 0 nije OK.");
         svirajZvukBust();
         igrac.bodovi = igrac.prethodniBodovi;
         prikaziBodove(trenutniIgrac, igrac.bodovi);

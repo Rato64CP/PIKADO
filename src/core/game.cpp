@@ -52,7 +52,7 @@ void sljedeciIgrac() {
 void krajPoteza() {
     cekanjeNovogIgraca = true;
     brojStrelica = 0;
-    logPoruka("Izvadi strelice i pritisni NEW PLAYER.");
+    logPoruka("Izvadi strelice i stisni NEW.");
     svirajZvukVadenja();
 }
 
@@ -85,7 +85,7 @@ void obradiPogodak(const String& nazivMete) {
 void zavrsiIgru() {
     igraZavrsena = true;
     svirajZvukPobjede();
-    logPoruka("Igra zavrsena. Pritisni tipku igre za novu.");
+    logPoruka("Igra gotova. Odaberi novu igru.");
 }
 
 void resetirajAktivnuIgru() {
