@@ -22,6 +22,29 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 | 3   | CLOCK |
 | 4   | LATCH |
 
+LED outputs are connected in the following order:
+
+| Output | Connected LED |
+|--------|---------------|
+| Chip1 OUT1 | Cricket |
+| Chip1 OUT2 | 3-in-LINE |
+| Chip1 OUT3 | NEW PLAYER |
+| Chip1 OUT4 | Hangman |
+| Chip1 OUT5 | Roulette |
+| Chip1 OUT6 | 701 |
+| Chip1 OUT7 | Shanghai |
+| Chip1 OUT8 | RESET |
+| Chip2 OUT1 | Player 4 |
+| Chip2 OUT2 | Player 3 |
+| Chip2 OUT3 | Player 2 |
+| Chip2 OUT4 | 501 |
+| Chip2 OUT5 | Double IN |
+| Chip2 OUT6 | Double OUT |
+| Chip2 OUT7 | Player 1 |
+| Chip2 OUT8 | Player 6 |
+| Chip3 OUT1 | Player 5 |
+| Chip3 OUT2 | 301 |
+
 ### MAX7219 display
 
 | Pin | Function |
