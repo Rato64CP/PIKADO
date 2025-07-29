@@ -1,13 +1,11 @@
 #include "scoreboard.h"
 #include "../core/game.h"
+#include "../core/pins.h"
 #include <LedControl.h>
 
-const uint8_t PIN_DIN = 9;
-const uint8_t PIN_CLK = 10;
-const uint8_t PIN_CS  = 11;
 const uint8_t BROJ_DISPLEJA = 6;
 
-static LedControl lc(PIN_DIN, PIN_CLK, PIN_CS, BROJ_DISPLEJA);
+static LedControl lc(PIN_SCORE_DIN, PIN_SCORE_CLK, PIN_SCORE_CS, BROJ_DISPLEJA);
 
 void inicijalizirajDisplay() {
     for (uint8_t i = 0; i < BROJ_DISPLEJA; i++) {
