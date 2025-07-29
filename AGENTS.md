@@ -27,7 +27,7 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 - **Odgovornost:** Upravljanje žaruljicama (LED) povezanima s tipkama
 - **Hardver:** UCN5821 shift register
 - **Područje:** prikazuje koji su izbori trenutno aktivni
-- **Pinovi:** DATA (5), CLOCK (6), LATCH (7)
+- **Pinovi:** DATA (2), CLOCK (3), LATCH (4)
 
 ---
 
