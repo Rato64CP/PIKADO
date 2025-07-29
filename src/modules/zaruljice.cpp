@@ -1,6 +1,6 @@
 #include "zaruljice.h"
 
-// Prilagodi ove pinove prema stvarnom ožičenju
+// Prilagodi ove pinove prema stvarnom ozicenju
 const int PIN_DATA = 5;
 const int PIN_CLK  = 6;
 const int PIN_LATCH = 7;

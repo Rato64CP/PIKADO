@@ -4,7 +4,7 @@
 #include "../core/config.h"
 #include "../modules/scoreboard.h"
 
-static bool pogodci[6][21]; // [igrač][broj 1-20], indeks 0 se ne koristi
+static bool pogodci[6][21]; // [igrac][broj 1-20], indeks 0 se ne koristi
 static uint8_t najduljiNiz[6];
 
 static int izracunajNiz(uint8_t igrac) {
@@ -30,7 +30,7 @@ void inicijalizirajIgru_3inline() {
         prikaziBodove(i, 0);
     }
     trenutniIgrac = 0;
-    logPoruka("Igra 3-in-line započinje!");
+    logPoruka("Igra 3-in-line zapocinje!");
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
 }
 
@@ -48,7 +48,7 @@ void obradiPogodak_3inline(const String& nazivMete) {
     }
 
     if (broj < 1 || broj > 20) {
-        logPoruka("Nevažeći broj: " + String(broj));
+        logPoruka("Nevazeci broj: " + String(broj));
         sljedeciIgrac_3inline();
         return;
     }
@@ -59,7 +59,7 @@ void obradiPogodak_3inline(const String& nazivMete) {
         pogodci[trenutniIgrac][broj] = true;
         logPoruka(igrac.ime + " je pogodio broj " + String(broj));
     } else {
-        logPoruka("Broj " + String(broj) + " je već pogođen.");
+        logPoruka("Broj " + String(broj) + " je vec pogoden.");
     }
 
     int niz = izracunajNiz(trenutniIgrac);

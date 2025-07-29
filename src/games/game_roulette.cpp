@@ -7,7 +7,7 @@
 
 static int runda = 1;
 static int strelica = 1;
-int ciljaniBroj[6];  // ciljani broj po igraču
+int ciljaniBroj[6];  // ciljani broj po igracu
 int bodoviRoulette[6];  // ukupni bodovi
 
 void inicijalizirajIgru_roulette() {
@@ -17,10 +17,10 @@ void inicijalizirajIgru_roulette() {
         ciljaniBroj[i] = random(1, 21);  // 1–20
         bodoviRoulette[i] = 0;
         igraci[i].bodovi = 0;
-        logPoruka("Igrač " + String(i) + " ciljani broj: " + String(ciljaniBroj[i]));
+        logPoruka("Igrac " + String(i) + " ciljani broj: " + String(ciljaniBroj[i]));
     }
     trenutniIgrac = 0;
-    logPoruka("Igra ROULETTE započinje!");
+    logPoruka("Igra ROULETTE zapocinje!");
     svirajZvukRouletteStart();
     logPoruka("Runda 1 – Na potezu: " + igraci[trenutniIgrac].ime);
     prikaziCilj(trenutniIgrac, ciljaniBroj[trenutniIgrac], 1500);
@@ -49,12 +49,12 @@ void obradiPogodak_roulette(const String& nazivMete) {
     if (broj == ciljaniBroj[trenutniIgrac]) {
         bodoviRoulette[trenutniIgrac] += broj * mnozitelj;
         igraci[trenutniIgrac].bodovi = bodoviRoulette[trenutniIgrac];
-        logPoruka("Pogođen vlastiti broj! +" + String(broj * mnozitelj) +
+        logPoruka("Pogoden vlastiti broj! +" + String(broj * mnozitelj) +
                        " bodova. Ukupno: " + String(bodoviRoulette[trenutniIgrac]));
         prikaziBodove(trenutniIgrac, igraci[trenutniIgrac].bodovi);
         svirajZvukTargetHit();
     } else {
-        logPoruka("Promašaj – nije tvoj broj.");
+        logPoruka("Promasaj – nije tvoj broj.");
         svirajZvukPromasaja();
     }
 
@@ -74,13 +74,13 @@ void obradiPogodak_roulette(const String& nazivMete) {
                 int pobjednik = 0;
                 int najvise = bodoviRoulette[0];
                 for (int i = 0; i < brojIgraca; i++) {
-                    logPoruka("Igrač " + String(i) + ": " + String(bodoviRoulette[i]) + " bodova");
+                    logPoruka("Igrac " + String(i) + ": " + String(bodoviRoulette[i]) + " bodova");
                     if (bodoviRoulette[i] > najvise) {
                         najvise = bodoviRoulette[i];
                         pobjednik = i;
                     }
                 }
-                logPoruka("Pobjednik je IGRAČ " + String(pobjednik) + "!");
+                logPoruka("Pobjednik je IGRAC " + String(pobjednik) + "!");
                 zavrsiIgru();
                 return;
             }

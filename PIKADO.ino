@@ -56,7 +56,7 @@ void osvjeziZaruljiceIgra() {
     stanjeZaruljica[idxIgraca] = true;
   }
 
-  // Treperi lampica NEW_PLAYER dok se čekaju izbačene strelice
+  // Treperi lampica NEW_PLAYER dok se cekaju izbacene strelice
   if (cekanjeNovogIgraca) {
     unsigned long sada = millis();
     if (sada - zadnjeBlinkanje > 500) {
@@ -68,11 +68,11 @@ void osvjeziZaruljiceIgra() {
     stanjeZaruljica[IGRA_NEW_PLAYER] = false;
   }
 
-  // Prikaži odabrane DOUBLE IN/OUT opcije
+  // Prikazi odabrane DOUBLE IN/OUT opcije
   stanjeZaruljica[OSTALO_IN_CUTTHROAT] = DOUBLE_IN;
   stanjeZaruljica[OSTALO_OUT_TEAM] = DOUBLE_OUT;
 
-  // Ako je aktivna greška, blinkaj RESET lampicom
+  // Ako je aktivna greska, blinkaj RESET lampicom
   azurirajGresku();
   if (greskaAktivna()) {
     stanjeZaruljica[IGRA_RESET] = greskaBlinkStanje();
@@ -131,10 +131,10 @@ void setup() {
   inicijalizirajDisplay();
   inicijalizirajZvuk();
 
-  logPoruka("Dobrodošli!");
+  logPoruka("Dobrodosli!");
   svirajUvodnuMelodiju();
 
-  // Test žaruljica
+  // Test zaruljica
   for (int i = 0; i < 2; i++) {
     for (int j = 0; j < 18; j++) stanjeZaruljica[j] = i % 2;
     postaviZaruljice(stanjeZaruljica);
@@ -241,7 +241,7 @@ void loop() {
     igraZavrsena = false;
     svirajImeIgraca(trenutniIgrac);
 
-    // Glavna igračka petlja
+    // Glavna igracka petlja
     while (!igraZavrsena) {
       ocitajTipke();
       if (biloKojaTipkaStisnuta()) registrirajInterakciju();
@@ -280,7 +280,7 @@ void loop() {
       delay(10);
     }
 
-    // Čekaj da korisnik pokrene novu igru
+    // Cekaj da korisnik pokrene novu igru
     while (igraZavrsena) {
       ocitajTipke();
       if (biloKojaTipkaStisnuta()) registrirajInterakciju();

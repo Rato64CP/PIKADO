@@ -23,8 +23,8 @@ void inicijalizirajIgru_shanghai() {
         igraci[i].bodovi = 0;
     }
     trenutniIgrac = 0;
-    logPoruka("Igra SHANGHAI započinje!");
-    String msg = "Runda " + String(runda) + ": Pogađa se broj " + String(runda);
+    logPoruka("Igra SHANGHAI zapocinje!");
+    String msg = "Runda " + String(runda) + ": Pogada se broj " + String(runda);
     logPoruka(msg);
     prikaziCilj(trenutniIgrac, runda, 1500);
     najaviCiljaniBroj(runda);
@@ -51,7 +51,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
     }
 
     if (broj != runda) {
-        logPoruka("Promašaj! Važeći broj u ovoj rundi je " + String(runda));
+        logPoruka("Promasaj! Vazeci broj u ovoj rundi je " + String(runda));
         svirajZvukPromasaja();
     } else {
         bodoviPoIgracu[trenutniIgrac] += broj * mnozitelj;
@@ -63,7 +63,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
 
         svirajZvukTargetHit();
 
-        logPoruka("Pogođeno " + String(broj) + " × " + String(mnozitelj) +
+        logPoruka("Pogodeno " + String(broj) + " × " + String(mnozitelj) +
                        " = +" + String(broj * mnozitelj));
     }
 
@@ -77,12 +77,12 @@ void obradiPogodak_shanghai(const String& nazivMete) {
             logPoruka(igraci[trenutniIgrac].ime + " je napravio SHANGHAI i pobijedio!");
             svirajZvukShanghai();
             zavrsiIgru();
-            return; // završava igra
+            return; // zavrsava igra
         } else {
             svirajZvukTryAgain();
         }
 
-        // Reset za sljedećeg igrača
+        // Reset za sljedeceg igraca
         pogodjenoSimple[trenutniIgrac] = false;
         pogodjenoDouble[trenutniIgrac] = false;
         pogodjenoTriple[trenutniIgrac] = false;
@@ -109,7 +109,7 @@ void obradiPogodak_shanghai(const String& nazivMete) {
                 zavrsiIgru();
                 return;
             } else {
-                String msg = "Runda " + String(runda) + ": Pogađa se broj " + String(runda);
+                String msg = "Runda " + String(runda) + ": Pogada se broj " + String(runda);
                 logPoruka(msg);
                 prikaziCilj(trenutniIgrac, runda, 1500);
                 najaviCiljaniBroj(runda);
@@ -125,5 +125,5 @@ void resetirajIgru_shanghai() {
 }
 
 void sljedeciIgrac_shanghai() {
-    // Ne koristi se u ovoj igri jer je logika već u obradi
+    // Ne koristi se u ovoj igri jer je logika vec u obradi
 }

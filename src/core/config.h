@@ -1,10 +1,10 @@
 #pragma once
 #include <Arduino.h>
 
-// Zajednički pinovi
-// Novi raspored zajedničkih pinova nakon prenamjene ploče
-constexpr uint8_t COM_A15 = A15;  // bijela žica
-constexpr uint8_t COM_A14 = A14;  // crna žica
+// Zajednicki pinovi
+// Novi raspored zajednickih pinova nakon prenamjene ploce
+constexpr uint8_t COM_A15 = A15;  // bijela zica
+constexpr uint8_t COM_A14 = A14;  // crna zica
 constexpr uint8_t COM_A12 = A12;
 constexpr uint8_t COM_A13 = A13;
 
