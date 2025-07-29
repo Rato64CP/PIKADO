@@ -8,6 +8,7 @@
 #include "src/modules/scoreboard.h"
 #include "src/modules/lcd_display.h"
 #include "src/modules/error.h"
+#include "src/modules/test.h"
 
 // Definicija globalnih varijabli za odabir
 int odabranaIgra = -1;
@@ -35,6 +36,8 @@ static unsigned long zadnjaInterakcija = 0;
 static unsigned long zadnjiBlinkIdle = 0;
 static bool idleMode = false;
 static bool idleBlink = false;
+
+// Test mode helpers - declared in test.h
 
 bool biloKojaTipkaStisnuta();
 void registrirajInterakciju();
@@ -122,6 +125,7 @@ static void azurirajNeaktivnost() {
   }
 }
 
+
 void setup() {
   Serial.begin(9600);
   inicijalizirajTipke();
@@ -142,6 +146,11 @@ void setup() {
   }
   for (int j = 0; j < 18; j++) stanjeZaruljica[j] = false;
   postaviZaruljice(stanjeZaruljica);
+
+  ocitajTipke();
+  if (tipkaStisnuta(IGRA_RESET) && resetHeld(5000)) {
+    testMode();
+  }
 
   logPoruka("Odaberi igru.");
   logPoruka("Izaberi igrace.");
