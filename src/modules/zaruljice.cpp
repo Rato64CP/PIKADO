@@ -43,7 +43,9 @@ void postaviZaruljice(bool stanja[18]) {
   }
 
   digitalWrite(PIN_LED_LATCH, LOW);
-  for (int i = 0; i < 3; i++) {
+  // Send bytes in reverse order so the last chip in the chain receives its
+  // data first (Chip3 -> Chip2 -> Chip1)
+  for (int i = 2; i >= 0; i--) {
     shiftOut(PIN_LED_DATA, PIN_LED_CLK, MSBFIRST, bajtovi[i]);
   }
   digitalWrite(PIN_LED_LATCH, HIGH);

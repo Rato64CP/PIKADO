@@ -24,6 +24,10 @@ Note: pins **20** (SDA) and **21** (SCL) are reserved for the LCD I2C bus and mu
 
 LED outputs are connected in the following order:
 
+> **Note**: When sending data to the daisy-chained UCN5821 shift registers,
+> transmit the byte for **Chip3** first, then **Chip2**, and finally **Chip1** so
+> that each chip receives the correct bits.
+
 | Output | Connected LED |
 |--------|---------------|
 | Chip1 OUT1 | Cricket |
