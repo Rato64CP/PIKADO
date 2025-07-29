@@ -131,7 +131,7 @@ void setup() {
   inicijalizirajDisplay();
   inicijalizirajZvuk();
 
-  logPoruka("Dobrodošli u PIKADO aparat!");
+  logPoruka("Dobrodošli!");
   svirajUvodnuMelodiju();
 
   // Test žaruljica
@@ -143,8 +143,8 @@ void setup() {
   for (int j = 0; j < 18; j++) stanjeZaruljica[j] = false;
   postaviZaruljice(stanjeZaruljica);
 
-  logPoruka("Odaberi igru pritiskom na tipku (301, 501...)");
-  logPoruka("Zatim odaberi broj igrača pritiskom na tipku (1–6)");
+  logPoruka("Odaberi igru.");
+  logPoruka("Izaberi igrace.");
 }
 
 void loop() {
