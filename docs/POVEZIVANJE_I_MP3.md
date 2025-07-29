@@ -19,24 +19,24 @@ Raspored pojedinih tipki:
 
 | Pin | Povezana tipka |
 |-----|----------------|
-| 36  | Igra 301 |
-| 34  | Igra 501 |
-| 30  | Shanghai |
-| 40  | Hangman |
-| 28  | Roulette |
-| 38  | 701 |
-| 32  | Cricket |
-| 42  | 3-in-line |
-| 46  | NEW PLAYER |
-| 44  | RESET |
+| 38  | Igra 301 |
+| 40  | Igra 501 |
+| 44  | Shanghai |
+| 34  | Hangman |
+| 46  | Roulette |
+| 36  | 701 |
+| 42  | Cricket |
+| 32  | 3-in-line |
+| 28  | NEW PLAYER |
+| 30  | RESET |
 | 33  | Igrač 1 |
 | 31  | Igrač 2 |
 | 29  | Igrač 3 |
 | 27  | Igrač 4 |
 | 25  | Igrač 5 |
 | 23  | Igrač 6 |
-| 50  | Double OUT |
-| 52  | Double IN |
+| 52  | Double OUT |
+| 50  | Double IN |
 
 ### LED žaruljice (preko UCN5821)
 
