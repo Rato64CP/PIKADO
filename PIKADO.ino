@@ -38,6 +38,10 @@ static bool idleMode = false;
 static bool idleBlink = false;
 
 // Test mode helpers - declared in test.h
+=======
+// Test mode helpers
+bool resetHeld(unsigned long ms);
+void testMode();
 
 bool biloKojaTipkaStisnuta();
 void registrirajInterakciju();
@@ -124,7 +128,6 @@ static void azurirajNeaktivnost() {
     }
   }
 }
-
 
 void setup() {
   Serial.begin(9600);
