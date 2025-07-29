@@ -19,6 +19,7 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 - **Područje:** izbor igre, broj igrača, posebna pravila (Double In/Out)
 - **Tehnika:** INPUT_PULLUP logika – tipke idu na masu
 - **Tipke:** 22–39 (igra, igrači, IN/OUT)
+- **Detekcija rane strelice:** javlja kad je strelica bačena prije odabira igre i svira upozorenje
 
 ---
 
@@ -62,6 +63,7 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 - **Odgovornost:** Reproduciranje zvukova i melodija
 - **Hardver:** JQ6500 MP3 modul (Serial1 na pinovima 18 i 19)
 - **Koristi se:** signalizacija pogotka, promašaja i pobjede
+- **Glasovne najave:** govori ime igrača i pogođenu zonu (koristi mp3 datoteke)
 
 ---
 
@@ -93,6 +95,22 @@ Ova datoteka opisuje uloge (agents) unutar sustava elektroničkog pikada, kako b
 - **Odgovornost:** Glavni ulaz, inicijalizira sve agente
 - **Logika:** bira igru, broj igrača, pravila
 - **Pokreće:** `pokreniAktivnuIgru()` i zatim prepušta tok
+
+---
+
+## 🧪 12. Test Mode Agent (`test.cpp`)
+
+- **Odgovornost:** Provjera tipki, LED lampica i detekcije pogođenih zona
+- **Aktivacija:** držanjem tipke RESET oko 5 s prilikom pokretanja
+- **Izlazak:** ponovnim držanjem RESET-a 5 s
+
+---
+
+## 💤 13. Idle / Power Agent (unutar `PIKADO.ino`)
+
+- **Odgovornost:** Praćenje neaktivnosti i prelazak u "sleep" nakon 10 min
+- **Indikacija:** display blinka svakih 5 s dok je uređaj u mirovanju
+- **Buđenje:** bilo kojim pritiskom tipke ili detekcijom pogođaja
 
 ---
 
