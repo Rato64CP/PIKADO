@@ -21,15 +21,21 @@ bool blinkStanje = false;
 bool doubleInOdabran = false;
 bool doubleOutOdabran = false;
 
-const int redoslijedIgara[8] = {IGRA_3INLINE, IGRA_HANGMAN, IGRA_701, IGRA_301, IGRA_501, IGRA_CRICKET, IGRA_SHANGHAI, IGRA_ROULETTE};
-const int redoslijedIgraca[6] = {IGRAC_1, IGRAC_2, IGRAC_3, IGRAC_4, IGRAC_5, IGRAC_6};
+// Vrijeme izmjene animacije na pocetnom ekranu
 unsigned long zadnjeMijenjanje = 0;
-int indeksIgre = 0;
-int indeksIgraca = 0;
+// Trenutna pozicija u startnoj sekvenci treptanja
+int indeksStartBlinka = 0;
 bool prvaTipkaPritisnuta = false;
 bool igraPokrenuta = false;
 bool porukaStartPrikazana = false;
-bool startBlink = false;
+// Redoslijed lampica koje trepere prilikom pokretanja dok se ne odabere igra
+const int startBlinkOrder[18] = {
+  IGRA_NEW_PLAYER, IGRA_RESET,     IGRA_3INLINE, IGRA_HANGMAN,
+  IGRA_701,       IGRA_301,       IGRA_501,      IGRA_CRICKET,
+  IGRA_SHANGHAI,  IGRA_ROULETTE,  IGRAC_1,       IGRAC_2,
+  IGRAC_3,        IGRAC_4,        IGRAC_5,       IGRAC_6,
+  OSTALO_IN_CUTTHROAT,            OSTALO_OUT_TEAM
+};
 
 static String nazivIgre(int tipka) {
   switch (tipka) {
@@ -279,18 +285,15 @@ void loop() {
     for (int i = 0; i < 18; i++) stanjeZaruljica[i] = false;
     unsigned long sada = millis();
     if (!prvaTipkaPritisnuta) {
-      if (sada - zadnjeMijenjanje > 500) {
-        zadnjeMijenjanje = sada;
-        indeksIgre = (indeksIgre + 1) % 8;
-        indeksIgraca = (indeksIgraca + 1) % 6;
-        startBlink = !startBlink;
+      if (sada - zadnjeBlinkanje > 500) {
+        zadnjeBlinkanje = sada;
+        blinkStanje = !blinkStanje;
       }
-      stanjeZaruljica[redoslijedIgara[indeksIgre]] = true;
-      stanjeZaruljica[redoslijedIgraca[indeksIgraca]] = true;
-      stanjeZaruljica[IGRA_NEW_PLAYER] = startBlink;
-      stanjeZaruljica[IGRA_RESET] = startBlink;
-      stanjeZaruljica[OSTALO_IN_CUTTHROAT] = startBlink;
-      stanjeZaruljica[OSTALO_OUT_TEAM] = startBlink;
+      if (sada - zadnjeMijenjanje > 1000) {
+        zadnjeMijenjanje = sada;
+        indeksStartBlinka = (indeksStartBlinka + 1) % 18;
+      }
+      stanjeZaruljica[startBlinkOrder[indeksStartBlinka]] = blinkStanje;
     } else {
       if (odabranaIgra != -1) {
         stanjeZaruljica[odabranaIgra] = true;
