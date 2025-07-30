@@ -10,6 +10,7 @@ static LedControl lc(PIN_SCORE_DIN, PIN_SCORE_CLK, PIN_SCORE_CS, BROJ_DISPLEJA);
 void inicijalizirajDisplay() {
     for (uint8_t i = 0; i < BROJ_DISPLEJA; i++) {
         lc.shutdown(i, false);
+        lc.setScanLimit(i, 2); // each module uses only 3 digits
         lc.setIntensity(i, 8);
         lc.clearDisplay(i);
     }
