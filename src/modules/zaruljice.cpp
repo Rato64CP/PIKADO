@@ -7,6 +7,13 @@ void inicijalizirajZaruljice() {
   pinMode(PIN_LED_DATA, OUTPUT);
   pinMode(PIN_LED_CLK, OUTPUT);
   pinMode(PIN_LED_LATCH, OUTPUT);
+
+  // Clear all outputs so LEDs don't light up randomly on power-up
+  digitalWrite(PIN_LED_LATCH, LOW);
+  for (int i = 0; i < 3; i++) {
+    shiftOut(PIN_LED_DATA, PIN_LED_CLK, MSBFIRST, 0);
+  }
+  digitalWrite(PIN_LED_LATCH, HIGH);
 }
 
 // Mapping from enum Tipka index to shift register output bit

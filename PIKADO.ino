@@ -29,6 +29,7 @@ int indeksIgraca = 0;
 bool prvaTipkaPritisnuta = false;
 bool igraPokrenuta = false;
 bool porukaStartPrikazana = false;
+bool startBlink = false;
 
 static String nazivIgre(int tipka) {
   switch (tipka) {
@@ -282,9 +283,14 @@ void loop() {
         zadnjeMijenjanje = sada;
         indeksIgre = (indeksIgre + 1) % 8;
         indeksIgraca = (indeksIgraca + 1) % 6;
+        startBlink = !startBlink;
       }
       stanjeZaruljica[redoslijedIgara[indeksIgre]] = true;
       stanjeZaruljica[redoslijedIgraca[indeksIgraca]] = true;
+      stanjeZaruljica[IGRA_NEW_PLAYER] = startBlink;
+      stanjeZaruljica[IGRA_RESET] = startBlink;
+      stanjeZaruljica[OSTALO_IN_CUTTHROAT] = startBlink;
+      stanjeZaruljica[OSTALO_OUT_TEAM] = startBlink;
     } else {
       if (odabranaIgra != -1) {
         stanjeZaruljica[odabranaIgra] = true;
