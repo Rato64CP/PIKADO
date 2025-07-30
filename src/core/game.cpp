@@ -47,6 +47,8 @@ void sljedeciIgrac() {
     trenutniIgrac = (trenutniIgrac + 1) % brojIgraca;
     logPoruka("Na potezu: " + igraci[trenutniIgrac].ime);
     svirajImeIgraca(trenutniIgrac);
+    // Refresh the scoreboard so the new player's score is immediately visible
+    osvjeziSveBodove();
 }
 
 void krajPoteza() {
